@@ -2,6 +2,27 @@
 {% set active_page = "photos" %}
 {% block body %}
 
+    {% set photo_sidebar = [
+    ('/', 'all', 'All'),
+    ('people', 'people', 'People'),
+    ('nature','nature','Nature'),
+    ('events','events','Events'),
+    ('food', 'food', 'Food')
+] -%}
+    {% set photo_active_sidebar = photo_active_sidebar|default('home') -%}
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox({
+   openEffect  : "fade",
+   closeEffect : "fade",
+   type : "image"
+});
+
+	});
+</script>
+
+
 <div id="wrapper">
 
         <!-- Sidebar -->
@@ -9,20 +30,10 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#">Categories</a>
                 </li>
-                <li><a href="#">All</a>
-                </li>
-                <li><a href="#">People</a>
-                </li>
-                <li><a href="#">Nature</a>
-                </li>
-                <li><a href="#">Events</a>
-                </li>
-                <li><a href="#">Food</a>
-                </li>
-                <li><a href="#">Services</a>
-                </li>
-                <li><a href="#">Contact</a>
-                </li>
+                {% for href, id, caption in photo_sidebar %}
+              <li{% if id == photo_active_sidebar %} class="active"{% endif
+              %}><a href="/photos/{{ href|e }}">{{ caption|e }}</a></li>
+            {% endfor %}
             </ul>
         </div>
 
@@ -39,23 +50,29 @@
 
         </div>
 
-
-
-
-
             <div id="grid">
 
-                <img src="http://placehold.it/1750x450/0000ff" alt="derp" />
-                <img src="http://placehold.it/1050x1450" alt="derp" />
-                <img src="http://placehold.it/1250x850/0000ff" alt="derp" />
-                <img src="http://placehold.it/4450x1650" alt="derp" />
-                <img src="http://placehold.it/750x450/0000ff" alt="derp" />
-                <img src="http://placehold.it/950x850" alt="derp" />
-                <img src="http://placehold.it/500x500/0000ff" alt="derp" />
-                <img src="http://placehold.it/800x400" alt="derp" />
-                <img src="http://placehold.it/700x800/0000ff" alt="derp" />
-                <img src="http://placehold.it/1300x1000" alt="derp" />
-                <img src="http://placehold.it/800x400/0000ff" alt="derp" />
+{#                <img src="http://placehold.it/1750x450/0000ff" alt="derp" />#}
+{#                <img src="http://placehold.it/1050x1450" alt="derp" />#}
+{#                <img src="http://placehold.it/1250x850/0000ff" alt="derp" />#}
+{#                <img src="http://placehold.it/4450x1650" alt="derp" />#}
+{#                <img src="http://placehold.it/750x450/0000ff" alt="derp" />#}
+{#                <img src="http://placehold.it/950x850" alt="derp" />#}
+{#                <img src="http://placehold.it/500x500/0000ff" alt="derp" />#}
+{#                <img src="http://placehold.it/800x400" alt="derp" />#}
+{#                <img src="http://placehold.it/700x800/0000ff" alt="derp" />#}
+{#                <img src="http://placehold.it/1300x1000" alt="derp" />#}
+{#                <img src="http://placehold.it/800x400/0000ff" alt="derp" />#}
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test1.jpg') }}"><img src="{{ url_for('static', filename='images/test1.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test2.jpg') }}"><img src="{{ url_for('static', filename='images/test2.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test3.jpg') }}"><img src="{{ url_for('static', filename='images/test3.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test4.jpg') }}"><img src="{{ url_for('static', filename='images/test4.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test5.jpg') }}"><img src="{{ url_for('static', filename='images/test5.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test6.jpg') }}"><img src="{{ url_for('static', filename='images/test6.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test7.jpg') }}"><img src="{{ url_for('static', filename='images/test7.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test8.jpg') }}"><img src="{{ url_for('static', filename='images/test8.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="{{ url_for('static', filename='images/test9.jpg') }}"><img src="{{ url_for('static', filename='images/test9.jpg') }}" alt="" /></a>
+                <a class="fancybox" rel="group" href="http://placehold.it/1920x1080/00ff00"><img src="http://placehold.it/1920x1080/00ff00" alt="" /></a>
 </div>
 
 
@@ -88,8 +105,6 @@
     <!-- /.container -->
 
     </div>
-
-
 
 
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import os
 
 app = Flask(__name__)
@@ -12,6 +12,12 @@ app.config.update(dict(
 ))
 class Object(object):
     pass
+
+@app.before_request
+def remove_trailing_slash():
+    if request.path != '/' and request.path.endswith('/'):
+        return redirect(request.path[:-1])
+
 @app.route("/")
 def homepage():
     return render_template('home.html')
@@ -19,7 +25,8 @@ def homepage():
 def videoPortfolio():
     return render_template('videos.html')
 @app.route("/photos")
-def photoPortfolio():
+@app.route("/photos/<photocategory>")
+def photoPortfolio(photocategory="all"):
     return render_template('photos.html')
 
 
