@@ -46,7 +46,7 @@
             <div id="grid">
 
                 {% for url, title, description, category in photos %}
-                    <a data-lightbox="gallery" title="{{ title|e }}" href="{{ url_for('static', filename='images/%s' % url) }}"><img src="{{ url_for('static', filename='images/%s' % url) }}" alt="" /></a>
+                    <a data-lightbox="gallery" title="{{ title|e }}" href="{{ url_for('static', filename='images/%s' % url) }}"><img src="{{ url_for('static', filename='images/%s'  % url)| replace('.jpg', '_thumb.jpg') }}" alt="" /></a>
                 {% endfor %}
 
 

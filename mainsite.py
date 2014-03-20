@@ -10,6 +10,7 @@ app.config.update(dict(
     SECRET_KEY='development key',
     SERVER_PORT=4000
 ))
+
 class Object(object):
     pass
 
@@ -70,9 +71,7 @@ def photoPortfolio(photocategory="all"):
         ('nature-3.jpg','test title 1', 'long description','category'),
         ('nature-4.jpg','test title 1', 'long description','category'),
         ('nature-5.jpg','test title 1', 'long description','category'),
-        ('nature-6.jpg','test title 1', 'long description','category'),
-        ('nature-7.jpg','test title 1', 'long description','category'),
-        ('nature-8.jpg','test title 1', 'long description','category')
+        ('nature-6.jpg','test title 1', 'long description','category')
     ]
     if(photocategory=='food'):
         photos=foodphotos
@@ -93,3 +92,6 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     app.run(port=app.config.get('SERVER_PORT'))
+
+
+
