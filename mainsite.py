@@ -27,7 +27,64 @@ def videoPortfolio():
 @app.route("/photos")
 @app.route("/photos/<photocategory>")
 def photoPortfolio(photocategory="all"):
-    return render_template('photos.html')
+    print(photocategory)
+    photosidebar=[
+    ('/', 'all', 'All'),
+    ('people', 'people', 'People'),
+    ('nature','nature','Nature'),
+    ('events','events','Events'),
+    ('food', 'food', 'Food')]
+
+    foodphotos=[
+        ('food-1.jpg','test title 1', 'long description','category'),
+        ('food-2.jpg','test title 1', 'long description','category'),
+        ('food-3.jpg','test title 1', 'long description','category'),
+        ('food-4.jpg','test title 1', 'long description','category'),
+        ('food-5.jpg','test title 1', 'long description','category'),
+        ('food-6.jpg','test title 1', 'long description','category'),
+        ('food-7.jpg','test title 1', 'long description','category'),
+        ('food-8.jpg','test title 1', 'long description','category'),
+        ('food-9.jpg','test title 1', 'long description','category'),
+        ('food-10.jpg','test title 1', 'long description','category'),
+        ('food-11.jpg','test title 1', 'long description','category'),
+        ('food-12.jpg','test title 1', 'long description','category')
+    ]
+    peoplephotos=[
+        ('people-1.jpg','test title 1', 'long description','category'),
+        ('people-2.jpg','test title 1', 'long description','category'),
+        ('people-3.jpg','test title 1', 'long description','category')
+    ]
+    eventphotos=[
+        ('events-2.jpg','test title 1', 'long description','category'),
+        ('events-3.jpg','test title 1', 'long description','category'),
+        ('events-4.jpg','test title 1', 'long description','category'),
+        ('events-5.jpg','test title 1', 'long description','category'),
+        ('events-6.jpg','test title 1', 'long description','category'),
+        ('events-7.jpg','test title 1', 'long description','category'),
+        ('events-8.jpg','test title 1', 'long description','category'),
+        ('events-1.jpg','test title 1', 'long description','category')
+    ]
+    naturephotos=[
+        ('nature-1.jpg','test title 1', 'long description','category'),
+        ('nature-2.jpg','test title 1', 'long description','category'),
+        ('nature-3.jpg','test title 1', 'long description','category'),
+        ('nature-4.jpg','test title 1', 'long description','category'),
+        ('nature-5.jpg','test title 1', 'long description','category'),
+        ('nature-6.jpg','test title 1', 'long description','category'),
+        ('nature-7.jpg','test title 1', 'long description','category'),
+        ('nature-8.jpg','test title 1', 'long description','category')
+    ]
+    if(photocategory=='food'):
+        photos=foodphotos
+    elif(photocategory=='people'):
+        photos=peoplephotos
+    elif(photocategory=='nature'):
+        photos=naturephotos
+    elif(photocategory=='events'):
+        photos=eventphotos
+    else:
+        photos=foodphotos+peoplephotos+naturephotos+eventphotos
+    return render_template('photos.html',photocategory=photocategory,sidebar=photosidebar,photos=photos)
 
 
 @app.errorhandler(404)

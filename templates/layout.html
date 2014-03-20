@@ -25,7 +25,7 @@
     <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
       
-      
+
       
       
       
@@ -33,20 +33,13 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <!-- Add mousewheel plugin (this is optional) -->
-<script type="text/javascript" src="{{ url_for('static', filename='fancybox/lib/jquery.mousewheel-3.0.6.pack.js') }}"></script>
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="{{ url_for('static', filename='fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen" />
-<script type="text/javascript" src="{{ url_for('static', filename='fancybox/source/jquery.fancybox.pack.js') }}"></script>
-
-<!-- Optionally add helpers - button, thumbnail and/or media -->
-<link rel="stylesheet" href="{{ url_for('static', filename='fancybox/source/helpers/jquery.fancybox-buttons.css') }}" type="text/css" media="screen" />
-<script type="text/javascript" src="{{ url_for('static', filename='fancybox/source/helpers/jquery.fancybox-buttons.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='fancybox/source/helpers/jquery.fancybox-media.js') }}"></script>
-
-<link rel="stylesheet" href="{{ url_for('static', filename='fancybox/source/helpers/jquery.fancybox-thumbs.css') }}" type="text/css" media="screen" />
-<script type="text/javascript" src="{{ url_for('static', filename='fancybox/source/helpers/jquery.fancybox-thumbs.js') }}"></script>
-
+<script src="{{ url_for('static', filename='js/lightbox-2.6.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lightbox.css') }}" />
+<script>
+            jQuery(document).ready(function () {
+                jQuery('a.gallery').colorbox({ opacity:0.5 , rel:'group1', maxWidth:'90%', maxHeight:'90%',});
+            });
+        </script>
   </head>
 
   <body>
