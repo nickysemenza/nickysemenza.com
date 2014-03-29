@@ -1,35 +1,24 @@
 {% extends "layout.html" %}
-{% set active_page = "videos" %}
+{% set active_page = "about" %}
 {% block body %}
     <div class="container">
 
 <div class="row">
-
-            <div class="col-lg-12">
-                <h1 class="page-header">Video Portfolio
-                    <small>Projects ranging from documentary, action, and montages.</small>
-                </h1>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-lg-7 col-md-7">
-                <div class="video-container">
-                    <iframe width="1280" height="720" src="//www.youtube.com/embed/_-cqOsKXP70" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <h3>Harker Homecoming 2013</h3>
-                <h4>Spirit Montage Video</h4>
-                <p>A short film depicting the spirit of the Fall Homecoming festivities.</p>
-            </div>
+        <div class="col-md-10">
+            <h2>About Nicky</h2>
+            <p>Nicky is currently a Senior at <a href="http://harker.org">The Harker School</a> in San Jose, California.
+                <br>
+            <a href="/static/files/nickysemenza_resume.pdf">Resume</a>
+            </p>
+            <a class="btn" href="#"><i class="fa fa-youtube fa-2x"></i></a>
+            <a class="btn" href="#"><i class="fa fa-flickr fa-2x"></i></a>
 
         </div>
-
-        <hr>
+        <div class="col-md-2">
+            <h2>me!</h2>
+            <img src="/static/images/aboutme.jpg" width="400">
+        </div>
+    </div>
 
 {#        <div class="row">#}
 {##}

@@ -2,16 +2,6 @@
 {% set active_page = "photos" %}
 {% block body %}
 
-{#    {% set photo_sidebar = [#}
-{#    ('/', 'all', 'All'),#}
-{#    ('people', 'people', 'People'),#}
-{#    ('nature','nature','Nature'),#}
-{#    ('events','events','Events'),#}
-{#    ('food', 'food', 'Food')#}
-{#] -%}#}
-{#    {% set photo_active_sidebar = photo_active_sidebar|default('home') -%}#}
-
-
 <script>
     jQuery('a.gallery').colorbox();
 </script>
@@ -36,17 +26,16 @@
         <div class="row">
 
             <div class="col-lg-12">
-                <h1 class="page-header">4 Col Portfolio
-                    <small>Showcase Your Work</small>
+                <h1 class="page-header">{{ photocategory | capitalize }}
                 </h1>
             </div>
 
         </div>
-{{ photocategory }}
+
             <div id="grid">
 
                 {% for url, title, description, category in photos %}
-                    <a data-lightbox="gallery" title="{{ title|e }}" href="{{ url_for('static', filename='images/%s' % url) }}"><img src="{{ url_for('static', filename='images/%s'  % url)| replace('.jpg', '_thumb.jpg') }}" alt="" /></a>
+                    <a data-lightbox="gallery" title="{{ title|e }}" href="{{ url_for('static', filename='images/portfolio/%s' % url) }}"><img src="{{ url_for('static', filename='images/portfolio/%s'  % url)| replace('.jpg', '_thumb.jpg') }}" alt="" /></a>
                 {% endfor %}
 
 

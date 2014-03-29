@@ -15,16 +15,22 @@ def smallerImage(imagePath):
 
 
 
-path, file = os.path.split(os.path.realpath(__file__))
-path=path+'/static/images'
-print(path)
-for root, _, files in os.walk(path):
-    for f in files:
-        fullpath = os.path.join(root, f)
-        if(fullpath.endswith('.jpg')):
-            print(fullpath)
-            smallerImage(fullpath)
+def iterate():
+    path, file = os.path.split(os.path.realpath(__file__))
+    path=path+'/static/images/portfolio/'
+    print(path)
+    for root, _, files in os.walk(path):
+        for f in files:
+            fullpath = os.path.join(root, f)
+            if(fullpath.__contains__('_thumb')):
+                os.remove(fullpath)
+            elif(fullpath.endswith('.jpg')):
+                print(fullpath)
+                smallerImage(fullpath)
 
+def run():
+    iterate()
 
+run()
 
 
