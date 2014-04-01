@@ -59,15 +59,12 @@ def videoPortfolio():
     db = get_db()
     cur = db.execute('select title, subtitle, description, url from videos order by id asc')
     entries = cur.fetchall()
-
-    videos = [
-        ('Harker Homecoming 2013','Spirit Montage Video','A short film depicting the spirit of the Fall Homecoming festivities.','//www.youtube.com/embed/_-cqOsKXP70'),
-        ('title','subtitle','description','//www.youtube.com/embed/vvyLSgLj58w')
-    ]
     return render_template('videos.html',videos=entries)
+
 @app.route("/software")
 def softwarePortfolio():
     return render_template('software.html')
+
 @app.route("/about")
 def aboutMe():
     return render_template('about.html')
@@ -81,14 +78,8 @@ def photoPortfolio(photocategory="all"):
         for f in files:
             if(f.__contains__('_thumb')==False and f.__contains__('.jpg')):
                     category = str(f).split('-', 1 )[0]
-                    print category
                     t= [f,'title','description',category]
                     allpics.append(t)
-
-
-    print allpics
-
-    print
 
     photosidebar=[
     ('/', 'all', 'All'),
