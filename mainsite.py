@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, g
 import os
+from sqlite3 import dbapi2 as sqlite3
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -11,8 +12,38 @@ app.config.update(dict(
     SERVER_PORT=4000
 ))
 
-class Object(object):
-    pass
+
+def connect_db():
+    """Connects to the specific database."""
+    rv = sqlite3.connect(app.config['DATABASE'])
+    rv.row_factory = sqlite3.Row
+    return rv
+
+
+def init_db():
+    """Creates the database tables."""
+    with app.app_context():
+        db = get_db()
+        with app.open_resource('schema.sql', mode='r') as f:
+            db.cursor().executescript(f.read())
+        db.commit()
+
+
+def get_db():
+    """Opens a new database connection if there is none yet for the
+    current application context.
+    """
+    if not hasattr(g, 'sqlite_db'):
+        g.sqlite_db = connect_db()
+    return g.sqlite_db
+
+@app.teardown_appcontext
+def close_db(error):
+    """Closes the database again at the end of the request."""
+    if hasattr(g, 'sqlite_db'):
+        g.sqlite_db.close()
+
+
 
 @app.before_request
 def remove_trailing_slash():
@@ -24,9 +55,16 @@ def homepage():
     return render_template('home.html')
 @app.route("/videos")
 def videoPortfolio():
-    return render_template('videos.html')
+    videos = [
+        ('Harker Homecoming 2013','Spirit Montage Video','A short film depicting the spirit of the Fall Homecoming festivities.','//www.youtube.com/embed/_-cqOsKXP70'),
+        ('title','subtitle','description','//www.youtube.com/embed/vvyLSgLj58w')
+    ]
+    return render_template('videos.html',videos=videos)
 @app.route("/software")
 def softwarePortfolio():
+    db = get_db()
+    db.execute('insert into videos (title, text) values (?, ?)', ["title1", "text1"])
+    db.commit()
     return render_template('software.html')
 @app.route("/about")
 def aboutMe():
@@ -112,12 +150,12 @@ def photoPortfolio(photocategory="all"):
         photos=foodphotos+peoplephotos+naturephotos+eventphotos
     return render_template('photos.html',photocategory=photocategory,sidebar=photosidebar,photos=photos)
 
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
+    #init_db()
     app.run(port=app.config.get('SERVER_PORT'))
 
 

@@ -192,21 +192,20 @@ footer {
 }
 
 
-
 #grid {
-
+    width: 90%;
     line-height: 0;
     -webkit-column-count: 3;
-    -webkit-column-gap: 10px;
+    -webkit-column-gap: 25px;
     -moz-column-count: 3;
-    -moz-column-gap: 10px;
+    -moz-column-gap: 25px;
     column-count: 3;
-    column-gap: 10px;
+    column-gap: 25px;
 }
 #grid img {
     width: 100% !important;
     height: auto !important;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 
