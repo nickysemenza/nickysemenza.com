@@ -20,15 +20,6 @@ def connect_db():
     return rv
 
 
-def init_db():
-    """Creates the database tables."""
-    with app.app_context():
-        db = get_db()
-        with app.open_resource('schema.sql', mode='r') as f:
-            db.cursor().executescript(f.read())
-        db.commit()
-
-
 def get_db():
     """Opens a new database connection if there is none yet for the
     current application context.
@@ -55,16 +46,18 @@ def homepage():
     return render_template('home.html')
 @app.route("/videos")
 def videoPortfolio():
+
+    db = get_db()
+    cur = db.execute('select title, subtitle, description, url from videos order by id asc')
+    entries = cur.fetchall()
+
     videos = [
         ('Harker Homecoming 2013','Spirit Montage Video','A short film depicting the spirit of the Fall Homecoming festivities.','//www.youtube.com/embed/_-cqOsKXP70'),
         ('title','subtitle','description','//www.youtube.com/embed/vvyLSgLj58w')
     ]
-    return render_template('videos.html',videos=videos)
+    return render_template('videos.html',videos=entries)
 @app.route("/software")
 def softwarePortfolio():
-    db = get_db()
-    db.execute('insert into videos (title, text) values (?, ?)', ["title1", "text1"])
-    db.commit()
     return render_template('software.html')
 @app.route("/about")
 def aboutMe():
@@ -130,11 +123,11 @@ def photoPortfolio(photocategory="all"):
         ('nature-7.jpg','test title 1', 'long description','category')
     ]
     travelphotos=[
-        ('nature-1.jpg','test title 1', 'long description','category'),
-        ('nature-2.jpg','test title 1', 'long description','category'),
-        ('nature-3.jpg','test title 1', 'long description','category'),
-        ('nature-4.jpg','test title 1', 'long description','category'),
-        ('nature-5.jpg','test title 1', 'long description','category')
+        ('travel-1.jpg','test title 1', 'long description','category'),
+        ('travel-2.jpg','test title 1', 'long description','category'),
+        ('travel-3.jpg','test title 1', 'long description','category'),
+        ('travel-4.jpg','test title 1', 'long description','category'),
+        ('travel-5.jpg','test title 1', 'long description','category')
     ]
     if(photocategory=='food'):
         photos=foodphotos
@@ -155,7 +148,6 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    #init_db()
     app.run(port=app.config.get('SERVER_PORT'))
 
 
