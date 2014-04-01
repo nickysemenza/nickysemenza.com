@@ -6,7 +6,7 @@
     ('/about', 'about', 'About')
 ] -%}
 {% set active_page = active_page|default('home') -%}
-
+{% set page_title = page_title %}
 
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Nicky Semenza | {{ active_page }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">

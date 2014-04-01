@@ -13,22 +13,25 @@
 
         </div>
 
+         {% for title,subtitle, description, yturl in videos%}
         <div class="row">
 
             <div class="col-lg-7 col-md-7">
                 <div class="video-container">
-                    <iframe width="1280" height="720" src="//www.youtube.com/embed/_-cqOsKXP70" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="1280" height="720" src="{{ yturl }}" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
             <div class="col-lg-5 col-md-5">
-                <h3>Harker Homecoming 2013</h3>
-                <h4>Spirit Montage Video</h4>
-                <p>A short film depicting the spirit of the Fall Homecoming festivities.</p>
+                <h3>{{ title }}</h3>
+                <h4>{{subtitle}}</h4>
+                <p>{{ description }}</p>
             </div>
 
         </div>
-
+             <br>
+             <hr>
+        {% endfor %}
         <hr>
 
 {#        <div class="row">#}
