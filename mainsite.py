@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, g
-import os
+import os, random
 from sqlite3 import dbapi2 as sqlite3
 
 app = Flask(__name__)
@@ -27,6 +27,15 @@ def get_db():
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
+
+
+def getPicsFromCat(pics, cat):
+    finalPics=[]
+    for eachPic in pics:
+        if(eachPic[3]==cat):
+            finalPics.append(eachPic)
+    return finalPics
+
 
 @app.teardown_appcontext
 def close_db(error):
@@ -65,7 +74,22 @@ def aboutMe():
 @app.route("/photos")
 @app.route("/photos/<photocategory>")
 def photoPortfolio(photocategory="all"):
-    print(photocategory)
+    path, file = os.path.split(os.path.realpath(__file__))
+    path=path+'/static/images/portfolio/'
+    allpics=[]
+    for root, _, files in os.walk(path):
+        for f in files:
+            if(f.__contains__('_thumb')==False and f.__contains__('.jpg')):
+                    category = str(f).split('-', 1 )[0]
+                    print category
+                    t= [f,'title','description',category]
+                    allpics.append(t)
+
+
+    print allpics
+
+    print
+
     photosidebar=[
     ('/', 'all', 'All'),
     ('people', 'people', 'People'),
@@ -74,73 +98,10 @@ def photoPortfolio(photocategory="all"):
     ('events','events','Events'),
     ('food', 'food', 'Food')]
 
-    foodphotos=[
-        ('food-1.jpg','test title 1', 'long description','category'),
-        ('food-2.jpg','test title 1', 'long description','category'),
-        ('food-3.jpg','test title 1', 'long description','category'),
-        ('food-4.jpg','test title 1', 'long description','category'),
-        ('food-5.jpg','test title 1', 'long description','category'),
-        ('food-6.jpg','test title 1', 'long description','category'),
-        ('food-7.jpg','test title 1', 'long description','category'),
-        ('food-8.jpg','test title 1', 'long description','category'),
-        ('food-9.jpg','test title 1', 'long description','category'),
-        ('food-10.jpg','test title 1', 'long description','category'),
-        ('food-11.jpg','test title 1', 'long description','category'),
-        ('food-12.jpg','test title 1', 'long description','category'),
-        ('food-13.jpg','test title 1', 'long description','category'),
-        ('food-14.jpg','test title 1', 'long description','category'),
-        ('food-15.jpg','test title 1', 'long description','category'),
-        ('food-16.jpg','test title 1', 'long description','category')
-    ]
-    peoplephotos=[
-        ('people-1.jpg','test title 1', 'long description','category'),
-        ('people-2.jpg','test title 1', 'long description','category'),
-        ('people-3.jpg','test title 1', 'long description','category'),
-        ('people-4.jpg','test title 1', 'long description','category'),
-        ('people-5.jpg','test title 1', 'long description','category'),
-        ('people-6.jpg','test title 1', 'long description','category')
-    ]
-    eventphotos=[
-        ('events-1.jpg','test title 1', 'long description','category'),
-        ('events-2.jpg','test title 1', 'long description','category'),
-        ('events-3.jpg','test title 1', 'long description','category'),
-        ('events-4.jpg','test title 1', 'long description','category'),
-        ('events-5.jpg','test title 1', 'long description','category'),
-        ('events-6.jpg','test title 1', 'long description','category'),
-        ('events-7.jpg','test title 1', 'long description','category'),
-        ('events-8.jpg','test title 1', 'long description','category'),
-        ('events-9.jpg','test title 1', 'long description','category'),
-        ('events-10.jpg','test title 1', 'long description','category'),
-        ('events-11.jpg','test title 1', 'long description','category')
-    ]
-    naturephotos=[
-        ('nature-1.jpg','test title 1', 'long description','category'),
-        ('nature-2.jpg','test title 1', 'long description','category'),
-        ('nature-3.jpg','test title 1', 'long description','category'),
-        ('nature-4.jpg','test title 1', 'long description','category'),
-        ('nature-5.jpg','test title 1', 'long description','category'),
-        ('nature-6.jpg','test title 1', 'long description','category'),
-        ('nature-7.jpg','test title 1', 'long description','category')
-    ]
-    travelphotos=[
-        ('travel-1.jpg','test title 1', 'long description','category'),
-        ('travel-2.jpg','test title 1', 'long description','category'),
-        ('travel-3.jpg','test title 1', 'long description','category'),
-        ('travel-4.jpg','test title 1', 'long description','category'),
-        ('travel-5.jpg','test title 1', 'long description','category')
-    ]
-    if(photocategory=='food'):
-        photos=foodphotos
-    elif(photocategory=='people'):
-        photos=peoplephotos
-    elif(photocategory=='nature'):
-        photos=naturephotos
-    elif(photocategory=='events'):
-        photos=eventphotos
-    elif(photocategory=='travel'):
-        photos=travelphotos
+    if(photocategory=='food' or photocategory=='people' or photocategory=='nature' or photocategory=='events' or photocategory=='travel'):
+        photos=getPicsFromCat(allpics,photocategory)
     else:
-        photos=foodphotos+peoplephotos+naturephotos+eventphotos
+        photos=sorted(allpics, key=lambda k: random.random())
     return render_template('photos.html',photocategory=photocategory,sidebar=photosidebar,photos=photos)
 
 @app.errorhandler(404)
