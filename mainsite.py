@@ -89,10 +89,11 @@ def photoPortfolio(photocategory="all"):
     ('events','events','Events'),
     ('food', 'food', 'Food')]
 
-    if(photocategory=='food' or photocategory=='people' or photocategory=='nature' or photocategory=='events' or photocategory=='travel'):
+    if(photocategory in ['people','nature','travel','events','food']):
         photos=getPicsFromCat(allpics,photocategory)
     else:
-        photos=sorted(allpics, key=lambda k: random.random())
+        #photos=sorted(allpics, key=lambda k: random.random())
+        photos=allpics
     return render_template('photos.html',photocategory=photocategory,sidebar=photosidebar,photos=photos)
 
 @app.errorhandler(404)
