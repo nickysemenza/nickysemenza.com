@@ -64,7 +64,9 @@ def videoPortfolio():
 @app.route("/software")
 def softwarePortfolio():
     return render_template('software.html')
-
+@app.route("/resume")
+def resume():
+    return redirect('static/files/nickysemenza_resume.pdf')
 @app.route("/about")
 def aboutMe():
     return render_template('about.html')
