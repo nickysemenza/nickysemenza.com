@@ -55,7 +55,7 @@
             <div id="grid">
 
                 {% for url, title, description, category in photos %}
-                    <a class="fancybox" rel="group" title="{{ title|e }}" href="{{ url_for('static', filename='images/portfolio/%s' % url) }}"><img src="{{ url_for('static', filename='images/portfolio/%s'  % url)| replace('.jpg', '_thumb.jpg') }}" alt="" /></a>
+                    <a class="fancybox" rel="group"  href="{{ url_for('static', filename='images/portfolio/%s' % url) }}"><img src="{{ url_for('static', filename='images/portfolio/%s'  % url)| replace('.jpg', '_thumb.jpg') }}"/></a>
                 {% endfor %}
 
 
