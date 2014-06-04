@@ -7,11 +7,19 @@
     <script type="text/javascript">
 	$(document).ready(function() {
 		$(".fancybox").fancybox({
-  padding: 10,
+  padding: 0,
+  margin: 50,
+    openEffect  : 'drop',
+    closeEffect : 'drop',
+    nextEffect  : 'elastic',
+    prevEffect  : 'elastic',
   helpers: {
     overlay: {
       locked: false
-    }
+    },
+      title	: { type : 'float' },
+			buttons	: {}
+
   }
 });
 	});

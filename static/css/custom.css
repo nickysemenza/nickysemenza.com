@@ -196,16 +196,16 @@ footer {
     width: 90%;
     line-height: 0;
     -webkit-column-count: 3;
-    -webkit-column-gap: 25px;
+    -webkit-column-gap: 15px;
     -moz-column-count: 3;
-    -moz-column-gap: 25px;
+    -moz-column-gap: 15px;
     column-count: 3;
-    column-gap: 25px;
+    column-gap: 15px;
 }
 #grid img {
     width: 100% !important;
     height: auto !important;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 
