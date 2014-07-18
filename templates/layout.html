@@ -22,7 +22,7 @@
     <title>Nicky Semenza | {{ active_page }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
       
 
@@ -65,7 +65,15 @@
 <link rel="stylesheet" href="/static/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 <script type="text/javascript" src="/static/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
       
-      
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
+  <script type="text/javascript" src="//use.typekit.net/uco1lgt.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+      {% block extrahead %}
+{% endblock %}
       
   </head>
 
@@ -75,7 +83,7 @@
 
 
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-custom navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -103,7 +111,7 @@
 {% endblock %}
 
     <div class="container">
- <footer>
+        <footer>
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Nicky Semenza 2014</p>
