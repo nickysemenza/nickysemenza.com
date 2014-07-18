@@ -230,9 +230,12 @@ body {
 
 .navbar-custom {
 	background-color:rgba(0,0,0,0.4);
-    color:#ffffff;
-  	border-radius:0;
     border-bottom: 1px solid #585858;
+}
+
+.navbar-custom.past-main {
+	background-color:#222222;
+    border-bottom: 0px;
 }
 
 .navbar-custom .navbar-nav > li > a {
@@ -268,3 +271,4 @@ p, a
 {
     font-family: "proxima-nova";
 }
+

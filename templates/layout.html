@@ -74,13 +74,33 @@
 
       {% block extrahead %}
 {% endblock %}
-      
+
+
+
+
+
+      <script>
+    // get the value of the bottom of the #main element by adding the offset of that element plus its height, set it as a variable
+var mainbottom = 100;
+console.log(mainbottom);
+// on scroll,
+$(window).on('scroll',function(){
+
+    // we round here to reduce a little workload
+    stop = Math.round($(window).scrollTop());
+    if (stop > mainbottom) {
+        $('.navbar-custom').addClass('past-main');
+    } else {
+        $('.navbar-custom').removeClass('past-main');
+   }
+
+});
+    </script>
+
+
   </head>
 
   <body>
-
-
-
 
 
     <div class="navbar navbar-custom navbar-fixed-top" role="navigation">
