@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, g
-import os, random
+import os, random, math
 from sqlite3 import dbapi2 as sqlite3
 
 app = Flask(__name__)
@@ -70,6 +70,9 @@ def resume():
 @app.route("/about")
 def aboutMe():
     return render_template('about.html')
+@app.route("/test")
+def test():
+    return render_template('test.html')
 @app.route("/photos")
 @app.route("/photos/<photocategory>")
 def photoPortfolio(photocategory="all"):
@@ -96,6 +99,11 @@ def photoPortfolio(photocategory="all"):
     else:
         #photos=sorted(allpics, key=lambda k: random.random())
         photos=allpics
+
+    picsPerPage = 20.0
+    picCount = (len(allpics))
+    pageCount = math.ceil(picCount/picsPerPage)
+
     return render_template('photos.html',photocategory=photocategory,sidebar=photosidebar,photos=photos)
 
 @app.errorhandler(404)
