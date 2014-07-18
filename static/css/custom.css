@@ -31,7 +31,7 @@ html, body {
 }
 
 .carousel {
-	height:50%;
+	height:101%;
 }
 
 .item,
@@ -67,6 +67,10 @@ footer {
   /* IE8-9 gradient filter */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
 }
+
+
+
+
 
 
 
@@ -140,6 +144,11 @@ footer {
   background: none;
 }
 
+
+
+
+
+
 .content-header {
   height: 65px;
   line-height: 65px;
@@ -209,3 +218,53 @@ footer {
 }
 
 
+body {
+    background: url(/static/img/bg.png) repeat 0 0;
+}
+
+
+
+
+
+
+
+.navbar-custom {
+	background-color:rgba(0,0,0,0.4);
+    color:#ffffff;
+  	border-radius:0;
+    border-bottom: 1px solid #585858;
+}
+
+.navbar-custom .navbar-nav > li > a {
+  	color:#fff;
+  	padding-left:20px;
+  	padding-right:20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus, .navbar-nav > .active > li.active {
+    color: #ffffff;
+	background-color:transparent;
+}
+
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #33aa33;
+}
+
+.navbar-custom .navbar-brand {
+  	color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+  	background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+  	background-color:#33aa33;
+}
+
+.navbar-custom .navbar-nav>.active>a,.navbar-custom .navbar-nav>.open>a,.navbar-custom .navbar-nav>.open>a, .navbar-custom .navbar-nav>.open>a:hover,.navbar-custom .navbar-nav>.open>a, .navbar-custom .navbar-nav>.open>a:hover, .navbar-custom .navbar-nav>.open>a:focus
+{ background-color: rgba(0,0,0,0.5)}
+
+
+p, a
+{
+    font-family: "proxima-nova";
+}
