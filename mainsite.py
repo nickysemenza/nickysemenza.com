@@ -18,27 +18,10 @@ css_min = Bundle('css/custom.css',
 assets.register('css_min', css_min)
 
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'flaskr.db'),
     DEBUG=True,
-    SECRET_KEY='development key',
     SERVER_PORT=4000
 ))
 
-
-def connect_db():
-    """Connects to the specific database."""
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
-
-
-def get_db():
-    """Opens a new database connection if there is none yet for the
-    current application context.
-    """
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
-    return g.sqlite_db
 
 
 def getPicsFromCat(pics, cat):
@@ -47,16 +30,6 @@ def getPicsFromCat(pics, cat):
         if(eachPic[3]==cat):
             finalPics.append(eachPic)
     return finalPics
-
-
-@app.teardown_appcontext
-def close_db(error):
-    """Closes the database again at the end of the request."""
-    if hasattr(g, 'sqlite_db'):
-        g.sqlite_db.close()
-
-
-
 @app.before_request
 def remove_trailing_slash():
     if request.path != '/' and request.path.endswith('/'):
@@ -67,11 +40,12 @@ def homepage():
     return render_template('home.html')
 @app.route("/videos")
 def videoPortfolio():
-
-    db = get_db()
-    cur = db.execute('select title, subtitle, description, url from videos order by id asc')
-    entries = cur.fetchall()
-    return render_template('videos.html',videos=entries)
+    videos=[
+        ('Harker Class of 2014 Spirit Montage','Spirit Montage','A montage of various senior class spirit activities over the course of the school year','//youtube.com/embed/9RBYU7D77MM'),
+        ('Harker Homecoming 2013','Spirit Montage Video','A short film depicting the spirit of the Fall Homecoming festivities.','//www.youtube.com/embed/_-cqOsKXP70'),
+        ('Harker Summer Camp: Mud Day','Fun in the sun with mud!','Campers enjoy a bright summer day in the mud!','//www.youtube.com/embed/vvyLSgLj58w')
+    ]
+    return render_template('videos.html',videos=videos)
 
 @app.route("/software")
 def softwarePortfolio():
