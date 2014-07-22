@@ -14,7 +14,7 @@ assets.register('js_min', js_min)
 
 css_min = Bundle('css/custom.css',
                  'css/bootstrap.min.css',
-                      filters='yui_css', output='css/min.css')
+                      filters='cssmin', output='css/min.css')
 assets.register('css_min', css_min)
 
 app.config.update(dict(
