@@ -1,2 +1,5 @@
 .idea
 .DS_Store
+static/.webassets-cache
+min.css
+min.js

@@ -1,9 +1,21 @@
 from flask import Flask, render_template, request, redirect, g
 import os, random, math
 from sqlite3 import dbapi2 as sqlite3
+from flask.ext.assets import Environment, Bundle
 
 app = Flask(__name__)
 app.config.from_object(__name__)
+#app.config['ASSETS_DEBUG'] = True
+
+assets = Environment(app)
+js_min = Bundle('js/bootstrap.min.js',
+            filters='rjsmin', output='js/min.js')
+assets.register('js_min', js_min)
+
+css_min = Bundle('css/custom.css',
+                 'css/bootstrap.min.css',
+                      filters='yui_css', output='css/min.css')
+assets.register('css_min', css_min)
 
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'flaskr.db'),
