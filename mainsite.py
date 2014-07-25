@@ -41,7 +41,7 @@ def homepage():
 @app.route("/videos")
 def videoPortfolio():
     videos=[
-        ('Harker Class of 2014 Spirit Montage','Spirit Montage','A montage of various senior class spirit activities over the course of the school year','//youtube.com/embed/9RBYU7D77MM'),
+        ('Harker Class of 2014 Spirit Montage','Spirit Montage','A montage of various senior class spirit activities over the course of the school year','//www.youtube.com/embed/9RBYU7D77MM'),
         ('Harker Homecoming 2013','Spirit Montage Video','A short film depicting the spirit of the Fall Homecoming festivities.','//www.youtube.com/embed/_-cqOsKXP70'),
         ('Harker Summer Camp: Mud Day','Fun in the sun with mud!','Campers enjoy a bright summer day in the mud!','//www.youtube.com/embed/vvyLSgLj58w')
     ]
