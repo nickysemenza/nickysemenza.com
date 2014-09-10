@@ -11,11 +11,14 @@
 |
 */
 
-Route::get('/', array('as' => 'home', function() {
-    return View::make('test');
-}));
+Route::get('/', 'MainController@home');
 
 
 Route::get('/test2', array('as' => 'home', function() {
     return View::make('test2');
 }));
+
+Route::get('/videos','MainController@videos');
+Route::get('/about','MainController@about');
+Route::get('/software','MainController@software');
+Route::get('/resume','MainController@resume');
