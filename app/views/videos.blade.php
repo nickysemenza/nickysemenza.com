@@ -35,8 +35,4 @@
 
 @endforeach
 
-{{var_dump($videos)}}
-
-
-
 @stop
