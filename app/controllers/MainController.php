@@ -59,5 +59,9 @@ class MainController extends BaseController
     {
         return Redirect::to('files/nickysemenza_resume.pdf');
     }
+    public function photos()
+    {
+        return View::make('photos');
+    }
 
 }

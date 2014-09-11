@@ -22,3 +22,4 @@ Route::get('/videos','MainController@videos');
 Route::get('/about','MainController@about');
 Route::get('/software','MainController@software');
 Route::get('/resume','MainController@resume');
+Route::get('/photos','MainController@photos');
