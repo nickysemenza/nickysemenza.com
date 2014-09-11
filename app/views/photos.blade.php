@@ -1,0 +1,8 @@
+@extends('layout')
+
+@section('content')
+
+<h1>omg food</h1>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="800" height="800" id="ssidx"><param name="movie" value="http://cdn.smugmug.com/ria/ShizamSlides-2013072402.swf" /><param name="flashVars" value="AlbumID=44247995&AlbumKey=9zpn8C&transparent=true&bgColor=&borderThickness=&borderColor=&useInside=&endPoint=&mainHost=cdn.smugmug.com&VersionNos=2013072402&showLogo=false&width=800&height=800&clickToImage=true&captions=true&showThumbs=true&autoStart=true&showSpeed=true&pageStyle=white&showButtons=true&randomStart=false&randomize=true&splash=&splashDelay=0&crossFadeSpeed=350" /><param name="wmode" value="transparent" /><param name="allowNetworking" value="all" /><param name="allowScriptAccess" value="always" /><embed src="http://cdn.smugmug.com/ria/ShizamSlides-2013072402.swf" flashVars="AlbumID=44247995&AlbumKey=9zpn8C&transparent=true&bgColor=&borderThickness=&borderColor=&useInside=&endPoint=&mainHost=cdn.smugmug.com&VersionNos=2013072402&showLogo=false&width=800&height=800&clickToImage=true&captions=true&showThumbs=true&autoStart=true&showSpeed=true&pageStyle=white&showButtons=true&randomStart=false&randomize=true&splash=&splashDelay=0&crossFadeSpeed=350" width="800" height="800" wmode="transparent" type="application/x-shockwave-flash" allowScriptAccess="always" allowNetworking="all" ></embed></object>
+
+@stop
