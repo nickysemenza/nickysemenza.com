@@ -35,7 +35,4 @@
 <hr>
 
 @endforeach
-
-{{var_dump($projects)}}
-
 @stop
