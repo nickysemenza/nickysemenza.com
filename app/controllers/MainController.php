@@ -39,17 +39,27 @@ class MainController extends BaseController
     {
         $projects=array(
             array(
-                'image'=>"https://i.cloudup.com/EjV0HII2NK.png",
+                'image'=>"http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1411496134/softwareprojects_screenshot_purduefood_dlv3wr.png",
                 'title'=>"Purdue Food",
                 'url'=>'purduefood.com',
+                'time' => 'July 2014- present',
                 'tech'=>'PHP, Laravel, Facebook API, Purdue HFS API',
                 'description'=>'Yelp-style for Purdue students to browse food court menus and leave reviews on entrees.'
             ),
             array(
-                'image'=>"http://placehold.it/500x300",
+                'image'=>"http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_748/v1411496133/softwareprojects_screenshot_spotifytags_maetej.png",
                 'title'=>"Spotify Tags",
                 'url'=>'spotifytags.com',
+                'time' => 'August 2014- present',
                 'tech'=>'PHP, Laravel, Spotify API',
+                'description'=>'Easily manage categorization of your spotify library across multiple playlists.'
+            ),
+            array(
+                'image'=>"http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_1214/v1411496134/softwareprojects_screenshot_booktradr_kwjjde.png",
+                'title'=>"BookTradr",
+                'url'=>'booktradr.com',
+                'time' => 'May 2013- September 2014',
+                'tech'=>'PHP, Amazon Web Services API',
                 'description'=>'Easily manage categorization of your spotify library across multiple playlists.'
             )
         );

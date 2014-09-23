@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-8">
         <h2 class="featurette-heading">About Nicky<span class="text-muted"> | Autobiography</span></h2>
-        <p class="lead">Nicky is a hacker, coder, photographer, and videographer. He will be a rising freshmen at Purdue University in the fall
+        <p class="lead">Nicky is a hacker, coder, photographer, and videographer. He is a freshmen at Purdue University majoring in Computer Science
             <br>
             <a href="/static/files/nickysemenza_resume.pdf">Resume</a>
         </p>
