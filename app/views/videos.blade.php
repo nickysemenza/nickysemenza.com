@@ -18,9 +18,9 @@
 <div class="row">
 
     <div class="col-lg-7 col-md-7">
-        <div class="video-container">
-            <iframe width="1280" height="720" src="//www.youtube.com/v/{{$eachvideo['ytid']}}" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <div class="videowrapper">
+            <iframe width="1280" height="720" src="http://www.youtube.com/v/{{$eachvideo['ytid']}}&theme=light" frameborder="0" allowfullscreen></iframe>
+            </div>
     </div>
 
     <div class="col-lg-5 col-md-5">
@@ -36,3 +36,7 @@
 @endforeach
 
 @stop
+
+@if(1==2)
+
+@endif
