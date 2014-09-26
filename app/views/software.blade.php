@@ -5,7 +5,7 @@
 <div class="row">
 
     <div class="col-lg-12">
-        <h1 class="page-header">Software Projects
+        <h1 class="page-header headertext">Software Projects
             <small>A collection of various software projects I have worked on.</small>
         </h1>
         <h4>my latest projects can be found at <a href="https://github.com/nickysemenza">github.com/nickysemenza</a></h4`>
@@ -27,10 +27,10 @@
     <div class="col-lg-7 col-md-7">
         <div class="row">
             <div class="col-lg-6">
-            <h3>{{$eachproject['title']}}</h3>
+            <h3 class="headertext">{{$eachproject['title']}}</h3>
             </div>
             <div class="col-lg-6">
-            <h3 style="text-align: right">{{$eachproject['time']}}</h3>
+            <h3 class="headertext" style="text-align: right">{{$eachproject['time']}}</h3>
             </div>
 
         </div>
