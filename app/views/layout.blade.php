@@ -27,26 +27,29 @@
     @section('append_header')@show
 </head>
 <body>
-
+<div class="page-wrap">
 @section('outside_container')@show
 
 
 
 @include('nav')
-<div class="container" style="margin-top:20px;">
-    <h1 id="heading">@section('append_heading')@show</h1>
+<div class="container">
+<!--    <h1 id="heading">@section('append_heading')@show</h1>-->
     @yield('content')
 </div>
 
-<div class="container">
-    <footer>
+
+
+</div>
+<div class="site-footer">
+    <div class="container">
+        <br>
         <div class="row">
             <div class="col-lg-12">
-                <hr>
-                <p>Copyright &copy; Nicky Semenza 2014</p>
+                <p style="color: white">Copyright &copy; Nicky Semenza 2014</p>
             </div>
         </div>
-    </footer>
+    </div>
 </div>
 
 

@@ -10,8 +10,8 @@ html, body {
 /* vide container*/
 .video-container {
     position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
+    /*padding-bottom: 56.25%;*/
+    /*padding-top: 30px; height: 0; overflow: hidden;*/
 }
 
 .video-container iframe,
@@ -34,19 +34,21 @@ p, a
     font-family: "proxima-nova", Times, serif;
 }
 
-h1, h2, h3
+
+/*h1, h2, h3*/
+.headertext
 {
     color:#AC593F;
     font-family: "lato",sans-serif;
-font-style: italic;
-font-weight: 300;
+    font-style: italic;
+    font-weight: 300;
 
 }
 h4
 {
-        font-family: "lato",sans-serif;
-font-style: bold;
-font-weight: 300;
+    font-family: "lato",sans-serif;
+    font-style: bold;
+    font-weight: 300;
 }
 
 
@@ -126,4 +128,31 @@ footer {
 
 
 
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -100px;
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+.site-footer, .page-wrap:after {
+    /* .push must be the same height as footer */
+    height: 100px;
+}
+.site-footer {
+    background: #2c3e50;
+}
 
+
+
+
+
+
+
+.intro-divider {
+    width: 80%;
+    border-top: 5px solid #2c3e50;
+    border-bottom: 1px solid rgba(0,0,0,0.8);
+}
