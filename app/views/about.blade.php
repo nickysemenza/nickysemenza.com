@@ -6,7 +6,7 @@
         <h2 class="featurette-heading headertext">About Nicky<span class="text-muted"> | Autobiography</span></h2>
         <p class="lead">Nicky is a hacker, coder, photographer, and videographer. He is a freshman at Purdue University majoring in Computer Science
             <br>
-            <a href="/static/files/nickysemenza_resume.pdf">Resume</a>
+            <a href="/resume">Resume</a>
         </p>
 
         <a class="btn" href="#"><i class="fa fa-youtube fa-2x"></i></a>
