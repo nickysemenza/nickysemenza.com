@@ -6,15 +6,15 @@
 
     <div class="col-lg-12">
         <h1 class="page-header headertext">Software Projects
-            <small>A collection of various software projects I have worked on.</small>
+            <small>a collection of various software projects I have worked on</small>
         </h1>
-        <h4>my latest projects can be found at <a href="https://github.com/nickysemenza">github.com/nickysemenza</a></h4`>
+        <p>My latest projects can be found at <a href="https://github.com/nickysemenza">github.com/nickysemenza</a></p>
     </div>
 
 </div>
 
 @foreach($projects as $eachproject)
-<hr style="height:1px;border:none;color:#000;background-color:#000;" />
+<hr>
 
 <div class="row">
 
@@ -36,7 +36,7 @@
         </div>
 
         <h4><a href="http://{{$eachproject['url']}}">{{$eachproject['url']}}</a> </h4>
-        <h5>Built with: {{$eachproject['tech']}}</h5>
+        <p>Built with: {{$eachproject['tech']}}</p>
         <p>{{$eachproject['description']}}</p>
     </div>
 

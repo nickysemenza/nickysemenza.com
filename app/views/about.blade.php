@@ -9,8 +9,6 @@
             <a href="/resume">Resume</a>
         </p>
 
-        <a class="btn" href="#"><i class="fa fa-youtube fa-2x"></i></a>
-        <a class="btn" href="#"><i class="fa fa-flickr fa-2x"></i></a>
 
     </div>
     <div class="col-md-2">

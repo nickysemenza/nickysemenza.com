@@ -12,7 +12,7 @@ class MainController extends BaseController
         $videos=array(
             array(
                 "ytid"=>"9RBYU7D77MM",
-                'title'=>'Harker Class of 2014 Spirit Montage',
+                'title'=>'Harker Class of 2014',
                 'subtitle'=>'Spirit Montage',
                 'time'=>'May 2014',
                 'description'=>'A montage of various senior class spirit activities over the course of the school year.'
@@ -20,7 +20,7 @@ class MainController extends BaseController
             array(
                 "ytid"=>"_-cqOsKXP70",
                 'title'=>'Harker Homecoming 2013',
-                'subtitle'=>'Spirit Montage Video',
+                'subtitle'=>'Spirit Montage',
                 'time'=>'November 2013',
                 'description'=>'A short film depicting the spirit of the Fall Homecoming festivities.'
             ),

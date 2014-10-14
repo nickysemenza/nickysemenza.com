@@ -10,12 +10,12 @@
     @section('css')
     {{ HTML::style('css/bootstrap.min.css'); }}
     {{ HTML::style('css/custom.css'); }}
-    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'); }}
+    {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'); }}
     @show
 
     @section('js')
 
-    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'); }}
+    {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js'); }}
     {{ HTML::script('js/bootstrap.min.js'); }}
 
     <script type="text/javascript" src="//use.typekit.net/uco1lgt.js"></script>
@@ -34,7 +34,6 @@
 
 @include('nav')
 <div class="container">
-<!--    <h1 id="heading">@section('append_heading')@show</h1>-->
     @yield('content')
 </div>
 
@@ -45,8 +44,17 @@
     <div class="container">
         <br>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <p style="color: white">Copyright &copy; Nicky Semenza 2014</p>
+                <p>nicky@nickysemenza.com</p>
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+                <a class="icon" href="http://youtube.com/14nicholasse"><i class="fa fa-youtube fa-2x"></i></a>
+                <a class="icon" href="http://linkedin.com/in/nickysemenza"><i class="fa fa-linkedin fa-2x"></i></a>
+                <a class="icon" href="http://github.com/nickysemenza"><i class="fa fa-github-alt fa-2x"></i></a>
+                <a class="icon" href="http://lastfm.com/14nicholasse"><i class="fa fa-lastfm-square fa-2x"></i></a>
+                <a class="icon" href="mailto:nicky@nickysemenza.com"><i class="fa fa-send-o fa-2x"></i></a>
             </div>
         </div>
     </div>

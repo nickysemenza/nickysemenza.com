@@ -1,6 +1,6 @@
 body {
   padding-top: 50px;
-     background: url(/img/cross_scratches_@2X.png) repeat 0 0;
+     background: url(/img/angles.png) repeat 0 0;
 
 }
 html, body {
@@ -24,18 +24,22 @@ html, body {
     height: 100%;
 }
 
-
-p{
-    font-family:"Lato", Times, serif;
-    font-weight: 700;
-}
-
 p, a
 {
-    font-family: "proxima-nova", Times, serif;
+    font-family: "lato", Times, serif;
+    color:#ffffff;
+    font-weight: 700;
+}
+a:link, a:visited, a:hover, a:active {
+    color: #cc9b2d;
 }
 
 
+a.icon
+{
+    color:#ffffff;
+    padding: 5px;
+}
 
 /*h1, h2, h3*/
 .headertext
@@ -54,40 +58,20 @@ h4
 }
 
 
-
-
-
-
-
-/* carousel */
-.carousel {
-	height:101%;
-}
-
-.item,
-.active,
-.carousel-inner {
-	height:100%;
-}
-
-.fill {
-	width:100%;
-	height:100%;
-	background-position: center;
-	background-size: cover;
-}
-
-.section {
-	margin: 50px 0;
-}
-
 footer {
 	margin: 50px 0;
 }
 
 
 
-
+#owl-demo .item{
+    margin: 3px;
+}
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
 
 
@@ -148,20 +132,46 @@ footer {
 }
 
 
+#root
+{
+    width:100%;
+    margin:0 auto;
+    padding-left:20%;
+    padding-right:20%;
+    border-top: 4px solid #cc9b2d;
+
+
+}
+
+#child1
+{
+    width:50%;
+    float:left;
+    border-right: 2px solid #cc9b2d;
+    height: 200px;
+
+
+}
+#child2
+{
+    width:50%;
+    float:left;
+    border-left:    2px solid #cc9b2d;
+    height: 200px;
+    padding-left: 20px;
+}
 
 
 
+hr{
+    height:1px;
+    border:none;
+    color:#cc9b2d;
+    background-color:#cc9b2d;
+}
 
-
-.intro-divider {
+.divider {
     width: 60%;
     border-top: 3px solid #cc9b2d;
     border-bottom: 0px solid #cc9b2d;
-}
-.bordertest {
-    border-left:    3px solid #cc9b2d;
-
-    /*border-width: top right bottom left;*/
-    /*border-style: solid solid solid solid;*/
-    /*border-color: transparent transparent transparent #553c76;*/
 }
