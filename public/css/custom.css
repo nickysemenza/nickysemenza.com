@@ -34,7 +34,10 @@ a:link, a:visited, a:hover, a:active {
     color: #cc9b2d;
 }
 
-
+.gold
+{
+    color:#cc9b2d;
+}
 a.icon
 {
     color:#ffffff;
@@ -49,6 +52,11 @@ a.icon
     font-style: italic;
     font-weight: 300;
 
+}
+h1,h2,h3
+{
+    color:#AC593F;
+    font-family: "lato",sans-serif;
 }
 h4
 {
@@ -81,7 +89,8 @@ footer {
 
 /* custom navbar*/
 .navbar-custom {
-	background-color:#2B164A;
+	background-color:#cc9b2d;
+    opacity: .8;
 }
 
 .navbar-custom .navbar-nav > li > a {
@@ -90,7 +99,7 @@ footer {
   	padding-right:20px;
 }
 .navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus, .navbar-nav > .active > li.active {
-    color: #ffffff;
+    color: #fff;
 	background-color:transparent;
 }
 
@@ -100,10 +109,10 @@ footer {
 }
 
 .navbar-custom .navbar-brand {
-  	color:#eeeeee;
+  	color:#fff;
 }
 .navbar-custom .navbar-toggle {
-  	background-color:#eeeeee;
+  	background-color:#fff;
 }
 .navbar-custom .icon-bar {
   	background-color:#0000ff;

@@ -31,8 +31,8 @@ $(document).ready(function() {
     <div class="container">
 
 
-        <h1 style="text-align: center" class="headertext">nicky semenza</h1>
-        <h2 style="text-align: center" class="headertext">software developer, photographer, videographer</h2>
+        <h1 style="text-align: center">Nicky Semenza</h1>
+        <h2 style="text-align: center">photographer <a class="gold">|</a> software developer <a class="gold">|</a>  videographer</h2>
         <hr class="divider">
 
 
