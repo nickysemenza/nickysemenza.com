@@ -14,18 +14,21 @@ class MainController extends BaseController
                 "ytid"=>"9RBYU7D77MM",
                 'title'=>'Harker Class of 2014 Spirit Montage',
                 'subtitle'=>'Spirit Montage',
+                'time'=>'May 2014',
                 'description'=>'A montage of various senior class spirit activities over the course of the school year.'
             ),
             array(
                 "ytid"=>"_-cqOsKXP70",
                 'title'=>'Harker Homecoming 2013',
                 'subtitle'=>'Spirit Montage Video',
+                'time'=>'November 2013',
                 'description'=>'A short film depicting the spirit of the Fall Homecoming festivities.'
             ),
             array(
                 "ytid"=>"vvyLSgLj58w",
                 'title'=>'Harker Summer Camp: Mud Day',
                 'subtitle'=>'Fun in the sun with mud!',
+                'time'=>'July 2013',
                 'description'=>'Campers enjoy a bright summer day in the mud!'
             )
         );
@@ -58,7 +61,7 @@ class MainController extends BaseController
                 'image'=>"http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_1214/v1411496134/softwareprojects_screenshot_booktradr_kwjjde.png",
                 'title'=>"BookTradr",
                 'url'=>'booktradr.com',
-                'time' => 'May 2013- September 2014',
+                'time' => 'May 2012- November 2013',
                 'tech'=>'PHP, Amazon Web Services API',
                 'description'=>'Easily manage categorization of your spotify library across multiple playlists.'
             )
