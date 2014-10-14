@@ -36,6 +36,7 @@ p, a
 }
 
 
+
 /*h1, h2, h3*/
 .headertext
 {
@@ -143,7 +144,7 @@ footer {
     height: 100px;
 }
 .site-footer {
-    background: #2c3e50;
+    background: #3c525d;
 }
 
 
@@ -153,7 +154,14 @@ footer {
 
 
 .intro-divider {
-    width: 80%;
-    border-top: 5px solid #2c3e50;
-    border-bottom: 1px solid rgba(0,0,0,0.8);
+    width: 60%;
+    border-top: 3px solid #cc9b2d;
+    border-bottom: 0px solid #cc9b2d;
+}
+.bordertest {
+    border-left:    3px solid #cc9b2d;
+
+    /*border-width: top right bottom left;*/
+    /*border-style: solid solid solid solid;*/
+    /*border-color: transparent transparent transparent #553c76;*/
 }
