@@ -64,6 +64,14 @@ class MainController extends BaseController
                 'time' => 'May 2012- November 2013',
                 'tech'=>'PHP, Amazon Web Services API',
                 'description'=>'Easily manage categorization of your spotify library across multiple playlists.'
+            ),
+            array(
+                'image'=>"http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_1214/v1414101705/softwareprojects_screenshot_purduefood_rkbyd3.png",
+                'title'=>"PicSpace",
+                'url'=>'picspace.me',
+                'time' => 'October 2014 (boilermake hackathon)',
+                'tech'=>'PHP, Laravel, Google Maps API',
+                'description'=>'Collaborate on drawings with those nearby!'
             )
         );
         return View::make('software',compact('projects'));
