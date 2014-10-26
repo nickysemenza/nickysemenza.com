@@ -82,7 +82,14 @@ class MainController extends BaseController
     }
     public function photos()
     {
-        return View::make('photos');
+        $images=array();
+        for($x=1; $x<=22;$x++)
+        {
+            $images[]="http://res.cloudinary.com/nickysemenza/image/upload/c_fit,h_500/v1/portfolioimages/portfolioimages_".$x.".png";
+            //$images[]="http://cdn.nickysemenza.com/assets/portfolio_images/img_".$x.".jpg";
+            //$images[]=Cloudy::show('portfolioimages/portfolioimages_'.$x, array( 'crop' => 'fit','width' => 5000,'height' =>500));
+        }
+        return View::make('photos',compact('images'));
     }
 
 }
