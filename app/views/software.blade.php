@@ -8,7 +8,7 @@
         <h1 class="page-header headertext">Software Projects
             <small>a collection of various software projects I have worked on</small>
         </h1>
-        <p>My latest projects can be found at <a href="https://github.com/nickysemenza">github.com/nickysemenza</a></p>
+        <h3>My latest projects can be found at <a href="https://github.com/nickysemenza">github.com/nickysemenza</a></h3>
     </div>
 
 </div>
