@@ -1,5 +1,8 @@
 @extends('layout')
 
+@section('title')
+Software Projects
+@stop
 @section('content')
 
 <div class="row">

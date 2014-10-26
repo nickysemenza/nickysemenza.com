@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('title')
+Videos
+@stop
 @section('content')
 
 
@@ -44,7 +46,3 @@
 @endforeach
 
 @stop
-
-@if(1==2)
-
-@endif

@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('title')
+Nicky Semenza
+@stop
 @section('append_header')
 
     {{ HTML::script('owl-carousel/owl.carousel.js'); }}

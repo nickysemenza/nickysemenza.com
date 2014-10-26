@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('title')
+Photography
+@stop
 
 @section('append_header')
 
