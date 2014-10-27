@@ -9,7 +9,7 @@
     <title>@section('title')@show</title>
     @section('css')
     {{ HTML::style('css/bootstrap.min.css'); }}
-    {{ HTML::style('css/custom.css'); }}
+    {{ HTML::style('css/styles.css'); }}
     {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'); }}
     @show
 
