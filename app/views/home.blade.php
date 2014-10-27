@@ -65,7 +65,7 @@ $(document).ready(function() {
     <div id="root">
            <div id="child1">
                 <h2 class="headertext">Software Development</h2>
-                 <p class="lead">I mainly build webapps, both on the job and for fun. You can check out some of my personal projects over <a href="projects">here.</a> </p>
+                 <p class="lead">I mainly build webapps, both on the job and for fun. You can check out some of my personal projects over <a href="projects">here.</a> <br> Take a look at my <a href="resume">resume</a> </p>
            </div>
            <div id="child2">
                 <h2 class="headertext">Photography/Videography</h2>
