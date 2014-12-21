@@ -120,7 +120,8 @@ footer {
   width: 50%;
   float: left;
   border-right: 2px solid #cc9b2d;
-  height: 200px; }
+  height: 200px;
+  padding-right: 20px; }
 
 #child2 {
   width: 50%;

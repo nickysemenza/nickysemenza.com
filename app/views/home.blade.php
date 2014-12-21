@@ -36,17 +36,17 @@ $(document).ready(function() {
         <h1 style="text-align: center">Nicky Semenza</h1>
         <h2 style="text-align: center">photographer <a class="gold">|</a> software developer <a class="gold">|</a>  videographer</h2>
         <hr class="divider">
+        <img src="http://cdn.nickysemenza.com/assets/banner2.jpg" width="100%" align="center " style="display: block; margin-left: auto; margin-right: auto">
+
+        {{--<div id="owl-demo">--}}
+
+          {{--<div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_scale,h_600/v1409606444/frontpage_2.jpg" alt="Owl Image"></div>--}}
+          {{--<div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_scale,h_600/v1413262534/DSC_4555_jnjbl4.jpg" alt="Owl Image"></div>--}}
+          {{--<div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_scale,h_600/v1413262534/DSC_9350_zlfann.jpg" alt="Owl Image"></div>--}}
+          {{--<div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_scale,h_600/v1409606349/frontpage_1.jpg" alt="Owl Image"></div>--}}
 
 
-        <div id="owl-demo">
-
-          <div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_limit,h_600,w_800/v1409606444/frontpage_2.jpg" alt="Owl Image"></div>
-          <div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_limit,h_600,w_800/v1413262534/DSC_4555_jnjbl4.jpg" alt="Owl Image"></div>
-          <div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_limit,h_800,w_600/v1413262534/DSC_9350_zlfann.jpg" alt="Owl Image"></div>
-          <div class="item"><img src="http://res.cloudinary.com/nickysemenza/image/upload/c_scale,h_600,w_800/v1409606349/frontpage_1.jpg" alt="Owl Image"></div>
-
-
-        </div>
+        {{--</div>--}}
     </div>
 
 </div>

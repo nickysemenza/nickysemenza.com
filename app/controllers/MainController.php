@@ -11,6 +11,13 @@ class MainController extends BaseController
 	{
         $videos=array(
             array(
+                "ytid"=>"gRdyBPoAuJA",
+                'title'=>'Chicago | The Windy City',
+                'subtitle'=>'Nature Video',
+                'time'=>'December 2014',
+                'description'=>'Exploring downtown Chicago'
+            ),
+            array(
                 "ytid"=>"9RBYU7D77MM",
                 'title'=>'Harker Class of 2014',
                 'subtitle'=>'Spirit Montage',
