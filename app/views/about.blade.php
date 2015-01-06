@@ -5,10 +5,16 @@ About
 @section('content')
 <div class="row">
     <div class="col-md-8">
-        <h2 class="featurette-heading headertext">About Nicky<span class="text-muted"> | Autobiography</span></h2>
-        <p class="lead">Nicky is a hacker, coder, photographer, and videographer. He is a freshman at Purdue University majoring in Computer Science
-            <br>
-            <a href="/resume">Resume</a>
+        <h2 class="featurette-heading headertext">About Nicky</h2>
+        <p class="lead">Hi!
+            I'm currently Studying Computer Science at Purdue University
+            <br/><br/>
+
+            The majority of my coding experience is in the realm of web development; both frontend and backend.
+            <br><br>
+            I do freelance photography, you can check out my full portfolio <a href="http://photos.nickysemenza.com" target="_blank">here</a>. I currently work for the <a href="http://purdueexponent.org" target="_blank">Purdue Exponent</a> doing sports photography and photojournalism.</a>
+            <br><br><br>
+            Check out my <a href="/resume">Resume</a>!
         </p>
 
 

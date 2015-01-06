@@ -13,8 +13,9 @@
             <ul class="nav navbar-nav">
                 <li class="{{Request::path() == 'software' ? 'active' : '';}}"><a href="/software">Software Projects</a></li>
                 <li class="{{Request::path() == 'videos' ? 'active' : '';}}"><a href="/videos">Videos</a></li>
-                <li class="{{Request::path() == 'photos' ? 'active' : '';}}"><a href="/photos">Photos</a></li>
+                <li class="{{Request::path() == 'photos' ? 'active' : '';}}"><a href="http://photos.nickysemenza.com?r=n">Photos</a></li>
                 <li class="{{Request::path() == 'about' ? 'active' : '';}}"><a href="/about">About</a></li>
+                <li><a href="http://blog.nickysemenza.com" target="_blank">Blog</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
