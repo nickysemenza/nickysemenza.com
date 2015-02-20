@@ -11,16 +11,23 @@
 |
 */
 
-Route::get('/', 'MainController@home');
-
-
-Route::get('/test2', array('as' => 'home', function() {
-    return View::make('test2');
-}));
-
-Route::get('/videos','MainController@videos');
-Route::get('/about','MainController@about');
-Route::get('/software','MainController@software');
-Route::get('/projects','MainController@software');
+//Route::get('/', 'MainController@home');
+//
+//
+//Route::get('/test2', array('as' => 'home', function() {
+//    return View::make('test2');
+//}));
+//
+//Route::get('/videos','MainController@videos');
+//Route::get('/about','MainController@about');
+//Route::get('/software','MainController@software');
+//Route::get('/projects','MainController@software');
 Route::get('/resume','MainController@resume');
-Route::get('/photos','MainController@photos');
+//Route::get('/photos','MainController@photos');
+
+
+
+App::missing(function($exception)
+{
+    return File::get(public_path() . '/angular.html');
+});
