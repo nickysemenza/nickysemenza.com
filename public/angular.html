@@ -1,7 +1,7 @@
 <!-- index.html -->
     <!DOCTYPE html>
     <html ng-app="app">
-    <head>
+    <head body ng-controller="mainController">
         <base href="/" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +16,10 @@
       <!-- load angular and angular route via CDN -->
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-animate.js"></script>
       <script src="script.js"></script>
         <script src="js/tracking.js"></script>
+        <title>{{pageTitle}}</title>
     </head>
     <body ng-controller="mainController">
 
@@ -46,10 +47,8 @@
     </div>
 </div>
 
-        <!-- MAIN CONTENT AND INJECTED VIEWS -->
         <div class="page-wrap">
-        <div class="container" ng-view>
-        <!-- angular templating -->
+        <div  ng-view>
         <!-- this is where content will be injected -->
       </div>
     </div>
