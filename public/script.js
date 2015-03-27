@@ -31,11 +31,19 @@
                 templateUrl : 'pages/photos.html',
                 controller  : 'photosController'
             })
-
+            .when('/projects', {
+                templateUrl : 'pages/software.html',
+                controller  : 'softwareController'
+            })
             .when('/software', {
                 templateUrl : 'pages/software.html',
                 controller  : 'softwareController'
-            });
+            })
+            .when('/404', {
+                templateUrl : 'pages/404.html',
+            })
+            .otherwise({ redirectTo: '/404' });
+            ;
     });
 
     // create the controller and inject Angular's $scope
