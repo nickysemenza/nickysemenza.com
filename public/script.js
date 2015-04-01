@@ -68,13 +68,23 @@
         $scope.message = 'Contact us! JK. This is just a demo.';
         $scope.pageTitle = "title"
         $scope.projects = [
+        
+            {
+                image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1427928960/softwareprojects_screenshot_datahub.png",
+                title: "Personal Data Hub",
+                url: 'https://github.com/nickysemenza/datahub',
+                time: 'August 2014- Present',
+                tech: 'PHP, Laravel, Facebook API, d3js,',
+                description: 'Analyzing and vizualizing personal facebook chat history data'
+            },
+
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1411496134/softwareprojects_screenshot_purduefood_dlv3wr.png",
                 title: "Purdue Food",
                 url: 'purduefood.com',
-                time: 'July 2014- present',
+                time: 'July 2014- January 2015 (Purdue\'s API Broke)',
                 tech: 'PHP, Laravel, Facebook API, Purdue HFS API',
-                description: 'Yelp-style for Purdue students to browse food court menus and leave reviews on entrees.'
+                description: 'Yelp-style system for Purdue students to browse food court menus and leave reviews on entrees. https://github.com/kedarv/PurdueFood'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_748/v1411496133/softwareprojects_screenshot_spotifytags_maetej.png",
@@ -82,7 +92,7 @@
                 url: 'spotifytags.com',
                 time: 'August 2014- present',
                 tech: 'PHP, Laravel, Spotify API',
-                description: 'Easily manage categorization of your spotify library across multiple playlists.'
+                description: 'Easily manage categorization of your spotify library across multiple playlists. Playlists are treated as\'tags\', allowing for logical categorization'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_1214/v1411496134/softwareprojects_screenshot_booktradr_kwjjde.png",
@@ -90,12 +100,12 @@
                 url: 'booktradr.com',
                 time: 'May 2012- November 2013',
                 tech: 'PHP, Amazon Web Services API',
-                description: 'Easily manage categorization of your spotify library across multiple playlists.'
+                description: 'Defunct project that allowed users to buy and sell books withing their school community.'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_1214/v1414101705/softwareprojects_screenshot_purduefood_rkbyd3.png",
                 title: "PicSpace",
-                url: 'picspace.me',
+                url: 'https://github.com/kedarv/PurdueFood',
                 time: 'October 2014 (boilermake hackathon)',
                 tech: 'PHP, Laravel, Google Maps API',
                 description: 'Collaborate on drawings with those nearby!'
