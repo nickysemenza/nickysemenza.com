@@ -42,6 +42,10 @@
             .when('/404', {
                 templateUrl : 'pages/404.html',
             })
+            .when('/resume', {
+                templateUrl : 'pages/resume.html',
+                controller  : 'mainController'
+            })
             .otherwise({ redirectTo: '/404' });
             ;
     });
