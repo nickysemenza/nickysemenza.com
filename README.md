@@ -1,4 +1,4 @@
 nickysemenza.com
 ================
 Personal Website
-built with angular
+built with angular + bootstrap
