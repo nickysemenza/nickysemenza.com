@@ -11,7 +11,7 @@ html, body {
 .about-text {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 24px;
   color: white; }
 
 .main-icons {
@@ -37,7 +37,7 @@ html, body {
   background-color: #D8D8D8; }
 
 .videos-section {
-  background-color: #74B7D2; }
+  background-color: #F2F2F2; }
 
 .header-name {
   font-family: 'Raleway', sans-serif;
