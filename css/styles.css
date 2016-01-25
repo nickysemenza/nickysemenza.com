@@ -10,7 +10,7 @@ html, body {
 
 .about-text {
   font-family: 'Raleway', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 24px;
   color: white; }
 
@@ -22,29 +22,31 @@ html, body {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 50px;
-  color: #285e8e; }
+  color: white; }
 
 .name-section {
-  background-size: cover; }
+  background-size: cover;
+  /**background-image: url(/img/header.jpg);*/
+  background-color: #574A6F; }
 
 .about-section {
-  background-color: #656565; }
+  background-color: #574A6F; }
 
 .projects-section {
   background-color: #F7BA1E; }
 
 .photos-section {
-  background-color: #D8D8D8; }
+  background-color: black; }
 
 .videos-section {
-  background-color: #F2F2F2; }
+  background-color: #5052b5; }
 
 .header-name {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 90px;
-  color: #9B9B9B;
-  text-shadow: 2px 2px 7px #000000;
+  color: white;
+  /**text-shadow: 2px 2px 2px #000000;*/
   text-transform: uppercase; }
 
 .page-wrap {
@@ -58,7 +60,7 @@ html, body {
 .site-footer, .page-wrap:after {
   /* .push must be the same height as footer */
   height: 100px;
-  background-color: #386DAA; }
+  background-color: #282B34; }
 
 .videowrapper {
   float: none;
@@ -75,3 +77,9 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%; }
+
+a {
+  font-variant: small-caps;
+  /**font-style: italic;
+  color: #DEB431;*/
+  color: black; }

@@ -53,7 +53,12 @@
 
         $scope.videos= [
             {
-                yturl: "http://www.youtube.com/v/5mCiAwCGNy4&theme=light",
+                yturl: "http://www.youtube.com/embed/fJVEEszJPEE",
+                title: 'Purdue Solidarity Rally | November 13 2015',
+                description: 'Protesters gathered  let the Purdue community know that they are tired of racism on campus.'
+            },
+            {
+                yturl: "http://www.youtube.com/embed/5mCiAwCGNy4",
                 title: 'Jump Smokers @ Purdue',
                 description: 'Jump Smokers perform at Slayter Hill'
             },
