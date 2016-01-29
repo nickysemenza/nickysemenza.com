@@ -6,9 +6,12 @@ $dark-blue-color: #285e8e;
 $blue-grey-color: #3c525d;
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
-
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px);
+@import url(https://fonts.googleapis.com/css?family=Lato);
 html, body {
     height: 100%;
+    color: white;
+
 }
 .footer-icons
 {
@@ -43,7 +46,11 @@ html, body {
     background-color: #574A6F;
 }
 .projects-section {
-    background-color: #F7BA1E;
+    /**background-color: #F7BA1E;*/
+   background-color: #737170;
+background-image: url("http://www.transparenttextures.com/patterns/noise-pattern-with-subtle-cross-lines.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 .photos-section {
     background-color: black;
@@ -62,6 +69,8 @@ html, body {
 .page-wrap {
     min-height: 100%;
     margin-bottom: -100px;
+    margin-top: -20px;
+ /**   margin-left: 100px;*/
 }
 .page-wrap:after {
     content: "";
@@ -95,3 +104,13 @@ a {
  color: black;
 
 }
+
+
+.masonry-brick {
+                margin: 1em;
+                display: none;
+            }
+
+            .masonry-brick.loaded {
+                display: block;
+            }

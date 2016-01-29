@@ -1,4 +1,4 @@
-  var app = angular.module('app', ['ngRoute', 'ngAnimate']);
+  var app = angular.module('app', ['ngRoute', 'ngAnimate','wu.masonry']);
     app.config(function($routeProvider,$locationProvider, $sceProvider) {
         $sceProvider.enabled(false);
         $locationProvider.html5Mode(true)
@@ -20,35 +20,59 @@
         $scope.pageTitle = "Nicky Semenza"
         $scope.projects = [
             {
+                image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1453701847/softwareprojects_screenshot_parachute.png",
+                title: "Parachute",
+                url: 'parachute.co',
+                time: 'August 2014- Present',
+                tech: ['PHP','Laravel', 'AngularJS', 'Ionic', 'AWS', 'MySQL'],
+                description: 'I currently work as one two developers at Parachute, developing an API, website, and mobile apps'
+            },
+            {
+                image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1453701491/softwareprojects_screenshot_boilermake.png",
+                title: "BoilerMake Website",
+                url: 'boilermake.org',
+                time: 'August 2014- Present',
+                tech: ['Ruby', 'Rails', 'AngularJS', 'Ionic'],
+                description: 'Hackathon Website + Mobile Checkin app for participants'
+            },
+            {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1427928960/softwareprojects_screenshot_datahub.png",
                 title: "Personal Data Hub",
                 url: 'github.com/nickysemenza/datahub',
                 time: 'August 2014- Present',
-                tech: 'PHP, Laravel, Facebook API, d3js,',
+                tech: ['PHP', 'Laravel', 'Facebook API', 'd3js'],
                 description: 'Analyzing and vizualizing personal facebook chat history data'
+            },
+            {
+                image: "http://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/221/629/datas/gallery.jpg",
+                title: "QRBlast",
+                url: '',
+                time: 'August 2014- Present',
+                tech: ['android'],
+                description: 'QR Blaster splits up a file onto one device into a sequence of QR codes, which can then be read and assembled together on another device.'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1411496134/softwareprojects_screenshot_purduefood_dlv3wr.png",
                 title: "Purdue Food",
                 url: 'github.com/kedarv/PurdueFood',
-                tech: 'PHP, Laravel, Facebook API, Purdue HFS API',
+                tech: ['PHP', 'Laravel', 'Facebook API', 'Purdue Housing API'],
                 description: 'Yelp-style system for Purdue students to browse food court menus and leave reviews on entrees. https://github.com/kedarv/PurdueFood'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_748/v1411496133/softwareprojects_screenshot_spotifytags_maetej.png",
                 title: "Spotify Tags",
                 url: 'github.com/nickysemenza/spotify-tags',
-                tech: 'PHP, Laravel, Spotify API',
+                tech: ['PHP', 'Laravel', 'Spotify API'],
                 description: 'Easily manage categorization of your spotify library across multiple playlists. Playlists are treated as\'tags\', allowing for logical categorization'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_1214/v1414101705/softwareprojects_screenshot_purduefood_rkbyd3.png",
                 title: "PicSpace",
                 url: 'github.com/kedarv/picspace',
-                tech: 'PHP, Laravel, Google Maps API',
+                tech: ['PHP', 'Laravel', 'Google Maps API'],
                 description: 'Collaborate on drawings with those nearby!'
             }
-        ]
+        ];
 
 
         $scope.videos= [
@@ -87,7 +111,43 @@
                 title: 'Purdue BMOC 2014',
                 description: 'Purdue\'s greek life talent show'
             }
-        ]
+        ];
+
+        // function genBrick() {
+        //                 var height = ~~(Math.random() * 500) + 100;
+        //                 var id = ~~(Math.random() * 10000);
+        //                 return {
+        //                     src: 'http://lorempixel.com/g/280/' + height + '/?' + id
+        //                 };
+        //             };
+
+        //             $scope.bricks = [
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick(),
+        //                 genBrick()
+        //             ];
+
+
+$scope.bricks=[];
+        function pic() {
+            for(i=1; i<35; i++)
+            {
+                $scope.bricks.push({src: 'http://cdn.nickysemenza.com/assets/photogrid/'+i+'.jpg'})
+                i++;
+            }
+        }
+        pic();
+        
     });
 
     

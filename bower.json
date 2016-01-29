@@ -1,0 +1,25 @@
+{
+  "name": "nickysemenza.com",
+  "homepage": "https://github.com/nickysemenza/nickysemenza.com",
+  "authors": [
+    "Nicky Semenza <14nicholasse@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-masonry": "~0.15.0",
+    "angular-route": "~1.4.9",
+    "angular-animate": "~1.4.9",
+    "get-size": "~2.0.2",
+    "matches-selector": "~2.0.1"
+  }
+}
