@@ -17,14 +17,14 @@
             .otherwise({ redirectTo: '/404' });
     });
     app.controller('mainController', function($scope) {
-        $scope.pageTitle = "Nicky Semenza"
+        $scope.pageTitle = "Nicky Semenza";
         $scope.projects = [
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1453701847/softwareprojects_screenshot_parachute.png",
                 title: "Parachute",
                 url: 'parachute.co',
                 time: 'August 2014- Present',
-                tech: ['PHP','Laravel', 'AngularJS', 'Ionic', 'AWS', 'MySQL'],
+                tech: ['PHP','Laravel', 'AngularJS', 'Ionic', 'MySQL'],
                 description: 'I currently work as one two developers at Parachute, developing an API, website, and mobile apps'
             },
             {
@@ -159,11 +159,18 @@ $scope.bricks=[];
           //.log to determine when you want the
           //nav bar to stick.
           console.log($(window).scrollTop())
-          if ($(window).scrollTop() > 280) {
-              $('.nav-sticky').addClass('navbar-fixed');
+          if ($(window).scrollTop() > 1020) {
+              $('.nav-sticky').addClass('nav-fixed');
           }
-          if ($(window).scrollTop() < 281) {
-              $('.nav-sticky').removeClass('navbar-fixed');
+          if ($(window).scrollTop() < 1020) {
+              $('.nav-sticky').removeClass('nav-fixed');
+          }
+
+          if ($(window).scrollTop() > 20) {
+              $('.arrow').addClass('hidden');
+          }
+          if ($(window).scrollTop() < 20) {
+              $('.arrow').removeClass('hidden');
           }
       });
   });
