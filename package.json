@@ -1,0 +1,24 @@
+{
+  "name": "nickysemenza.com",
+  "version": "1.0.0",
+  "description": "nickysemenza.com ================ Personal Website built with angular + bootstrap",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickysemenza/nickysemenza.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickysemenza/nickysemenza.com/issues"
+  },
+  "homepage": "https://github.com/nickysemenza/nickysemenza.com#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-util": "^3.0.7"
+  }
+}

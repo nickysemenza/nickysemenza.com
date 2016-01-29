@@ -5,3 +5,5 @@ min.css
 min.js
 vendor
 css/.sass-cache
+bower_components
+node_modules
