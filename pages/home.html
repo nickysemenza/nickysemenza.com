@@ -10,7 +10,7 @@
     </div>
         </div>
     <div class="nav-right">
-        <a class="icon main-icons" href="http://youtube.com/14nicholasse"><i class="fa fa-youtube fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="http://youtube.com/14nicholasse"><i class="fa fa-youtube fa-2x"></i></a>
         <a class="icon main-icons" target="_blank" href="http://linkedin.com/in/nickysemenza"><i class="fa fa-linkedin fa-2x"></i></a>
         <a class="icon main-icons" target="_blank" href="http://github.com/nickysemenza"><i class="fa fa-github-alt fa-2x"></i></a>
         <a class="icon main-icons" target="_blank" href="http://lastfm.com/14nicholasse"><i class="fa fa-lastfm-square fa-2x"></i></a>
@@ -30,18 +30,22 @@
 <div class="about-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                     <br>
                     <p class="about-text">
+                        <br>
+                        <br>
                     I make awesome things with cameras and code.
                     <br><br>
                     If you are looking for my resumé, <a href="resume">here you are!</a><br><br>
-                    Right now, I write software for <a href="http://parachute.co">Parachute</a> and take pictures for the <a href="http://purdueexponent.org">Purdue Exponent</a>. I also help run <a href="http://boilermake.org">BoilerMake</a>, Purdue's Annual hackathon.
+                    Right now, I write software for <a target="_blank" href="http://parachute.co">Parachute</a> and take pictures for the <a target="_blank" href="http://purdueexponent.org">Purdue Exponent</a>. I also help run <a target="_blank" href="http://boilermake.org">BoilerMake</a>, Purdue's Annual hackathon.
+
+                        <br> <br> Hit me up on social media or <a href="mailto:nicky@nickysemenza.com">nicky@nickysemenza.com</a>
                 </p>
 
 
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="http://res.cloudinary.com/nickysemenza/image/upload/c_scale,w_300/v1442865941/2015-09-19_18.06.10_HDR-2_cregtm.jpg" style="padding: 20px;">
             </div>
         </div>
@@ -52,12 +56,12 @@
         <h1 class="section-title">Software Projects</h1>
     </div>
 
-    <div class="flex-container">
+    <div class="flex-container" style="padding-left: 40px">
             <div ng-repeat="project in projects">
                 <div class="flex-item">
                     <h3>{{project.title}}</h3>
                     <img style="height: 150px;" src="{{project.image}}">
-                    <p><a href="http://{{project.url}}">{{project.url}}</a></p>
+                    <p><a target="_blank" href="http://{{project.url}}">{{project.url}}</a></p>
                     <p><span ng-repeat="t in project.tech"><span class="label label-primary">{{t}}</span>&nbsp; </span></p>
                     <p>{{project.description}}</p>
                 </div>
@@ -68,7 +72,7 @@
     <div class="container">
         <div class="row">
             <h1 class="section-title">Photos</h1>
-            <h3>Full portfolio: <a href="http://nicky.photos" style="color: white" target="_blank">nicky.photos</a></h3>
+            <h3 style="text-align: center">full portfolio: <a target="_blank" href="http://nicky.photos" style="color: white" target="_blank">nicky.photos</a></h3>
         </div>
     </div>
     <div masonry masonry-options='{ "isFitWidth": true }' style="margin: 0 auto;">
@@ -77,19 +81,20 @@
     </div>
     </div>
 
-    <hr style="border: 1px solid white;">
+    <!--<hr style="border: 1px solid white;">-->
+    <p style="text-align: center"></p>
     <div class="flex-container">
-        <div class="flex-item">
-            <img width="350px" src="http://cdn.nickysemenza.com/assets/photogrid/box1.png">
+        <div class="flex-item" style="width: 300px">
+            <img width="300px" src="http://cdn.nickysemenza.com/assets/photogrid/box1.png">
         </div>
-        <div class="flex-item">
-            <img width="350px" src="http://cdn.nickysemenza.com/assets/photogrid/box2.png">
+        <div class="flex-item" style="width: 300px">
+            <img width="300px" src="http://cdn.nickysemenza.com/assets/photogrid/box2.png">
         </div>
-        <div class="flex-item">
-            <img width="350px" src="http://cdn.nickysemenza.com/assets/photogrid/box3.png">
+        <div class="flex-item" style="width: 300px">
+            <img width="300px" src="http://cdn.nickysemenza.com/assets/photogrid/box3.png">
         </div>
-        <div class="flex-item">
-            <img width="350px" src="http://cdn.nickysemenza.com/assets/photogrid/box4.png">
+        <div class="flex-item" style="width: 300px">
+            <img width="300px" src="http://cdn.nickysemenza.com/assets/photogrid/box4.png">
         </div>
     </div>
 </div>
@@ -112,4 +117,27 @@
         </div>
     </div>
     <br>
+</div>
+
+
+
+<div class="site-footer">
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-lg-6">
+                <p style="color: white">Copyright <a href="/key"><img height="20px" src="/img/key.png"></a> Nicky Semenza 2016</p>
+            <p style="color: white">nicky@nickysemenza.com</p>
+        </div>
+        <div class="col-lg-3"></div>
+            <div class="col-lg-3"></div>
+            <!--<div class="col-lg-3">-->
+            <!--<a class="icon main-icons" href="http://youtube.com/14nicholasse"><i class="fa fa-youtube fa-2x"></i></a>-->
+            <!--<a class="icon main-icons" href="http://linkedin.com/in/nickysemenza"><i class="fa fa-linkedin fa-2x"></i></a>-->
+            <!--<a class="icon main-icons" href="http://github.com/nickysemenza"><i class="fa fa-github-alt fa-2x"></i></a>-->
+            <!--<a class="icon main-icons" href="http://lastfm.com/14nicholasse"><i class="fa fa-lastfm-square fa-2x"></i></a>-->
+            <!--<a class="icon main-icons" href="mailto:nicky@nickysemenza.com"><i class="fa fa-send-o fa-2x"></i></a>-->
+            <!--</div>-->
+        </div>
+    </div>
 </div>

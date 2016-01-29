@@ -33,7 +33,7 @@
                 url: 'parachute.co',
                 time: 'August 2014- Present',
                 tech: ['PHP','Laravel', 'AngularJS', 'Ionic', 'MySQL'],
-                description: 'I currently work as one two developers at Parachute, developing an API, website, and mobile apps'
+                description: 'I currently work as one two developers at Parachute, building up an API, website, and mobile apps'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_500/v1453701491/softwareprojects_screenshot_boilermake.png",
@@ -54,7 +54,7 @@
             {
                 image: "http://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/221/629/datas/gallery.jpg",
                 title: "QRBlast",
-                url: 'http://devpost.com/software/qr-blast',
+                url: 'devpost.com/software/qr-blast',
                 time: 'August 2014- Present',
                 tech: ['android'],
                 description: 'QR Blaster splits up a file onto one device into a sequence of QR codes, which can then be read and assembled together on another device.'
@@ -79,6 +79,13 @@
                 url: 'github.com/kedarv/picspace',
                 tech: ['PHP', 'Laravel', 'Google Maps API'],
                 description: 'Collaborate on drawings with those nearby!'
+            },
+            {
+                image: "https://placeholdit.imgix.net/~text?txtsize=33&txt=&w=300&h=180",
+                title: "Coming Soon!",
+                url: 'github.com/nickysemenza',
+                tech: ['secret sauce','magic'],
+                description: ';)'
             }
         ];
 
@@ -120,32 +127,6 @@
                 description: 'Purdue\'s greek life talent show'
             }
         ];
-
-        // function genBrick() {
-        //                 var height = ~~(Math.random() * 500) + 100;
-        //                 var id = ~~(Math.random() * 10000);
-        //                 return {
-        //                     src: 'http://lorempixel.com/g/280/' + height + '/?' + id
-        //                 };
-        //             };
-
-        //             $scope.bricks = [
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick(),
-        //                 genBrick()
-        //             ];
-
-
 $scope.bricks=[];
         function pic() {
             for(i=1; i<35; i++)

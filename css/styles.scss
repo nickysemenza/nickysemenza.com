@@ -85,6 +85,7 @@ html, body {
     font-weight: 400;
     font-size: 22px;
     color: white;
+  text-align: right;
 }
 .main-icons
 {
@@ -126,20 +127,20 @@ html, body {
     background-color: black;
 }
 .videos-section {
-    background-color: #172C4C;
+    background-color: rgba(23, 44, 76, 0.71);
 }
 
-.page-wrap {
-    min-height: 100%;
-    margin-bottom: -100px;
-    margin-top: -20px;
- /**   margin-left: 100px;*/
-}
-.page-wrap:after {
-    content: "";
-    display: block;
-}
-.site-footer, .page-wrap:after {
+//.page-wrap {
+//    min-height: 100%;
+//    margin-bottom: -100px;
+//    margin-top: -20px;
+// /**   margin-left: 100px;*/
+//}
+//.page-wrap:after {
+//    content: "";
+//    display: block;
+//}
+.site-footer {
     /* .push must be the same height as footer */
     height: 100px;
     background-color: #282B34;
