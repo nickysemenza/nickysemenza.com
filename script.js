@@ -10,13 +10,21 @@
             .when('/404', {
                 templateUrl : 'pages/404.html',
             })
+            .when('/key', {
+                templateUrl : 'pages/key.html',
+                controller  : 'keyController'
+            })
             .when('/resume', {
                 templateUrl : 'pages/resume.html',
                 controller  : 'mainController'
             })
             .otherwise({ redirectTo: '/404' });
     });
-    app.controller('mainController', function($scope) {
+   app.controller('keyController', function($scope, $rootScope) {
+       $rootScope.bodyClass="pathway-body";
+   });
+    app.controller('mainController', function($scope, $rootScope) {
+        $rootScope.bodyClass="stars-body";
         $scope.pageTitle = "Nicky Semenza";
         $scope.projects = [
             {

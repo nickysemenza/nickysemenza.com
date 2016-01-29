@@ -1,14 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Slabo+27px);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300);
 html, body {
-  height: 100%;
   color: white;
+  font-size: 19px; }
+
+.stars-body {
   background: url(/img/hero_bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-size: 18px; }
+  height: 100%; }
+
+.pathway-body {
+  background: url(/img/pathway.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
 /**
 * Navbar
