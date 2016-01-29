@@ -1,13 +1,27 @@
-<div class="name-section">
-    <div class="container hidden-sm hidden-xs">
-        <!-- <span class="header-name" style="font-weight: 300">nicky semenza</span> -->
-        <span class="header-name" style="font-weight: 800;">nicky</span>
-        <span class="header-name" style="font-weight: 100;">semenza</span>
+<div class="nav-sticky">
+    <div class="nav-left">
+    <div class="hidden-sm hidden-xs" >
+        <span class="header-name" >nicky</span>
+        <span class="header-name" >semenza</span>
     </div>
-    <div class="container hidden-md hidden-lg">
-        <span class="header-name" style="font-weight: 800; font-size: 50px;">nicky</span>
-        <span class="header-name" style="font-weight: 100; font-size: 50px;">semenza</span>
+    <div class="hidden-md hidden-lg" style="padding-left: 25px; padding-top: 10px;">
+        <span class="header-name shrink">nicky</span>
+        <span class="header-name shrink">semenza</span>
     </div>
+        </div>
+    <div class="nav-right">
+        <a class="icon main-icons" href="http://youtube.com/14nicholasse"><i class="fa fa-youtube fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="http://linkedin.com/in/nickysemenza"><i class="fa fa-linkedin fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="http://github.com/nickysemenza"><i class="fa fa-github-alt fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="http://lastfm.com/14nicholasse"><i class="fa fa-lastfm-square fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="http://500px.com/nickysemenza"><i class="fa fa-500px fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="http://twitter.com/nickysemenza"><i class="fa fa-twitter fa-2x"></i></a>
+        <a class="icon main-icons" target="_blank" href="mailto:nicky@nickysemenza.com"><i class="fa fa-send fa-2x"></i></a>
+    </div>
+</div>
+<div class="hero_section">
+    <p class="hero_text">Nicky Semenza</p>
+    <p class="hero_text hero-byline">Software Engineer + Photographer </p>
 </div>
 <div class="about-section">
     <div class="container">
@@ -15,20 +29,10 @@
             <div class="col-md-9">               
                     <br>
                     <p class="about-text">
-                    Hi! I'm a software engineer and photographer.
-                    <br>
-                    In other words, I make awesome things with cameras and code
+                    I make awesome things with cameras and code.
                     <br><br>
                     If you are looking for my resumé, <a href="resume">here you are!</a><br><br>
                     Right now, I write software for <a href="http://parachute.co">Parachute</a> and take pictures for the <a href="http://purdueexponent.org">Purdue Exponent</a>. I also help run <a href="http://boilermake.org">BoilerMake</a>, Purdue's Annual hackathon.
-                    <br><br>
-                    Find me on: <a class="icon main-icons" href="http://youtube.com/14nicholasse"><i class="fa fa-youtube fa-2x"></i></a>
-                    <a class="icon main-icons" target="_blank" href="http://linkedin.com/in/nickysemenza"><i class="fa fa-linkedin fa-2x"></i></a>
-                    <a class="icon main-icons" target="_blank" href="http://github.com/nickysemenza"><i class="fa fa-github-alt fa-2x"></i></a>
-                    <a class="icon main-icons" target="_blank" href="http://lastfm.com/14nicholasse"><i class="fa fa-lastfm-square fa-2x"></i></a>
-                    <a class="icon main-icons" target="_blank" href="http://500px.com/nickysemenza"><i class="fa fa-500px fa-2x"></i></a>
-                    <a class="icon main-icons" target="_blank" href="http://twitter.com/nickysemenza"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a class="icon main-icons" target="_blank" href="mailto:nicky@nickysemenza.com"><i class="fa fa-send fa-2x"></i></a>
                 </p>
 
                 
@@ -42,14 +46,14 @@
 <div class="projects-section">
     <div class="container">
         <div class="row">
-            <h1 class="section-title" style="font-family: 'Slabo 27px', serif;">Software Projects</h1>
+            <h1 class="section-title">Software Projects</h1>
             <div ng-repeat="project in projects">
-                <div class="col-md-3">
-                    <h3 style="font-family: 'Lato', serif;">{{project.title}}</h3>
-                    <img style="width:96%; height: 96%;" src="{{project.image}}">
-                    <p><a style="color: black; text-decoration: underline" href="http://{{project.url}}">{{project.url}}</a></p>
-                    <p>Built with: <span ng-repeat="t in project.tech"><span class="label label-primary">{{t}}</span>&nbsp; </span></p>
-                    <p style="font-family: 'Lato', serif;">{{project.description}}</p>
+                <div class="col-md-4">
+                    <h3>{{project.title}}</h3>
+                    <img style="height: 170px;" src="{{project.image}}">
+                    <p><a href="http://{{project.url}}">{{project.url}}</a></p>
+                    <p><span ng-repeat="t in project.tech"><span class="label label-primary">{{t}}</span>&nbsp; </span></p>
+                    <p>{{project.description}}</p>
                 </div>
             </div>    
         </div>
@@ -62,7 +66,7 @@
             <h3>Full portfolio: <a href="http://nicky.photos" style="color: white" target="_blank">nicky.photos</a></h3>
         </div>
     </div>
-    <div masonry>
+    <div masonry masonry-options='{ "isFitWidth": true }' style="margin: 0 auto;">
     <div class="masonry-brick" ng-repeat="brick in bricks">
         <img ng-src="{{ brick.src }}" alt="A masonry brick">
     </div>

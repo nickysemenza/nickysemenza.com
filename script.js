@@ -46,7 +46,7 @@
             {
                 image: "http://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/221/629/datas/gallery.jpg",
                 title: "QRBlast",
-                url: '',
+                url: 'http://devpost.com/software/qr-blast',
                 time: 'August 2014- Present',
                 tech: ['android'],
                 description: 'QR Blaster splits up a file onto one device into a sequence of QR codes, which can then be read and assembled together on another device.'
@@ -56,7 +56,7 @@
                 title: "Purdue Food",
                 url: 'github.com/kedarv/PurdueFood',
                 tech: ['PHP', 'Laravel', 'Facebook API', 'Purdue Housing API'],
-                description: 'Yelp-style system for Purdue students to browse food court menus and leave reviews on entrees. https://github.com/kedarv/PurdueFood'
+                description: 'Yelp-style system for Purdue students to browse food court menus and leave reviews on entrees.'
             },
             {
                 image: "http://res.cloudinary.com/nickysemenza/image/upload/bo_0px_solid_rgb:000,c_scale,w_748/v1411496133/softwareprojects_screenshot_spotifytags_maetej.png",
@@ -150,4 +150,20 @@ $scope.bricks=[];
         
     });
 
-    
+
+
+  $(document).ready(function() {
+
+      $(window).scroll(function () {
+          //if you hard code, then use console
+          //.log to determine when you want the
+          //nav bar to stick.
+          console.log($(window).scrollTop())
+          if ($(window).scrollTop() > 280) {
+              $('.nav-sticky').addClass('navbar-fixed');
+          }
+          if ($(window).scrollTop() < 281) {
+              $('.nav-sticky').removeClass('navbar-fixed');
+          }
+      });
+  });
