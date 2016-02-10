@@ -101,7 +101,6 @@ html, body {
   font-weight: 300; }
 
 .about-section {
-  margin-top: 500px;
   background-color: #020630; }
 
 .projects-section {
@@ -228,3 +227,14 @@ a {
     transform: translateY(-30px); }
   60% {
     transform: translateY(-15px); } }
+
+@media only screen and (max-width: 768px) {
+  .nav-right {
+    visibility: hidden; }
+  .hero_section {
+    margin-top: 100px; }
+  .gradient-section {
+    margin-top: -100px; } }
+
+.gradient-section {
+  margin-top: 500px; }

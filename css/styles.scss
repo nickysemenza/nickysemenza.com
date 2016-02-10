@@ -116,7 +116,6 @@ html, body {
 
 
 .about-section {
-    margin-top: 500px;
     background-color: #020630;
 }
 .projects-section {
@@ -260,4 +259,29 @@ a {
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
   40% {transform: translateY(-30px);}
   60% {transform: translateY(-15px);}
+}
+
+
+@media only screen and (max-width: 768px) {
+  .nav-right {
+    visibility: hidden;
+  }
+  .hero_section
+  {
+    margin-top: 100px;
+  }
+  .gradient-section {
+    margin-top: -100px;
+  }
+}
+
+.gradient-section {
+  //height: 60px;
+  margin-top: 500px;
+  ///* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,000000+100&0+0,1+100 */
+  //background: -moz-linear-gradient(top,  rgba(238,238,238,0) 0%, rgb(2, 6, 48) 100%); /* FF3.6-15 */
+  //background: -webkit-linear-gradient(top,  rgba(238,238,238,0) 0%, rgb(2, 6, 48) 100%); /* Chrome10-25,Safari5.1-6 */
+  //background: linear-gradient(to bottom,  rgba(238,238,238,0) 0%, rgb(2, 6, 48) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00eeeeee', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
 }
