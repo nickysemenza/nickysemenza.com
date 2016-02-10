@@ -229,8 +229,14 @@ a {
     transform: translateY(-15px); } }
 
 @media only screen and (max-width: 768px) {
-  .nav-right {
+  .nav-left {
     visibility: hidden; }
+  .main-icons {
+    font-size: 10pt; }
+  .nav-right {
+    position: absolute;
+    text-align: center;
+    padding-left: 10%; }
   .hero_section {
     margin-top: 100px; }
   .gradient-section {

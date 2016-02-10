@@ -263,9 +263,21 @@ a {
 
 
 @media only screen and (max-width: 768px) {
-  .nav-right {
+  .nav-left {
     visibility: hidden;
   }
+  .main-icons {
+    font-size: 10pt;
+  }
+  .nav-right
+  {
+    position: absolute;
+    //padding-left: 5px;
+    //padding-top: 20px
+    text-align: center;
+    padding-left: 10%;
+  }
+
   .hero_section
   {
     margin-top: 100px;
