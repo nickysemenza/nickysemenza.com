@@ -18,7 +18,7 @@
   "homepage": "https://github.com/nickysemenza/nickysemenza.com#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-sass": "^2.1.1",
+    "gulp-sass": "^3.0.0",
     "gulp-util": "^3.0.7"
   }
 }
