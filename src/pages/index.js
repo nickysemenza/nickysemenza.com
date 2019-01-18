@@ -15,28 +15,34 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title="All posts"
+          title="Nicky Semenza"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
+        I'm a software engineer at{' '}
+        <a href="https://cloudflare.com" target="_blank">
+          Cloudflare
+        </a>
+        , working on PKI management for our customers - automated issuance,
+        validation, and renewal of SSL Certificates.
+        <br /> I mostly work in a TypeScript/React/golang/Kubernetes environment
+        - you can expect content in that realm here.
+        <br />
+        <h2>I promise i don't just code!</h2>
+        <h3>cooking</h3>
+        One day I'll start a food blog...
+        <h3>photography</h3>
+        I enjoy photography as well - at Purdue I did lots of work in
+        photojournalism and sports photography, but these days I mostly just
+        take pictures of my cooking and the great outdoors.
+        <iframe
+          src="https://www.nicky.photos/frame/slideshow?key=wXtF6f&autoStart=1&captions=1&navigation=1&playButton=0&randomize=0&speed=3&transition=fade&transitionSpeed=2"
+          width="100%"
+          height="600"
+          frameborder="no"
+          scrolling="no"
+        />
+        <br />
+        there's nothing yet, but... <Link to="posts">view all posts</Link>
       </Layout>
     )
   }

@@ -1,14 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
+    title: `Nicky's Home`,
+    author: `Nicky Semenza`,
     description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://nickysemenza.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `nickysemenza`,
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token: '30999454.1677ed0.e96a14c204e34138b0506e6dfaf1cce8',
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -57,7 +63,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `Nicky Semenza`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
