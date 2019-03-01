@@ -1,6 +1,7 @@
 ---
 title: Quick Let's Encrypt Certificates with Certbot's Cloudflare DNS plugin
 date: '2019-01-15T23:46:37.121Z'
+tags: ['code']
 ---
 
 I use Let's Encrypt often to generate valid publicly trusted certificates for testing, but DCV can be annoying to do over and over again. In a production environment, i'd use certbot's nginx or apache plugin to serve http DCV tokens, but I do this on my laptop for daily use, without wanting to expose a server. Luckily certbot [has plugins](https://certbot.eff.org/docs/using.html#dns-plugins) that will automatically place TXT validation records for you, using your DNS provider's (e.g. Cloudflare) API. Unfortunately they only work on some variants of linux, and not on macOS. Docker to the rescue!
