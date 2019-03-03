@@ -1,6 +1,7 @@
 ---
 title: 'Thai Wok Fried Noodles'
 date: '2019-02-28T07:41:00.000Z'
+tags: ['cooking']
 ---
 
 ![pic](NDS_0649.jpg)

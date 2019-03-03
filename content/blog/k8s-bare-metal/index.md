@@ -1,6 +1,7 @@
 ---
 title: 'Running Kubernetes on bare metal: kubeadm, traefik, and more'
 date: '2019-01-27T23:46:37.121Z'
+tags: ['code']
 ---
 
 # Background
