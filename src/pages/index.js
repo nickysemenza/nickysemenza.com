@@ -24,13 +24,14 @@ class BlogIndex extends React.Component {
         </a>
         , working on PKI management for our customers - automated issuance,
         validation, and renewal of SSL Certificates for millions of hostnames.
-        <br /> I mostly work in a TypeScript/React/golang/Kubernetes environment
-        - you can expect content in that realm here.
+        <br /> I mostly work in a golang + Kubernetes + TypeScript + React
+        environment - you can expect content in that realm here. I try to stay
+        active on <a href="https://github.com/nickysemenza">GitHub</a>
         <br />
         <Link to="posts">View all posts</Link>
         <br />
         <h3>cooking</h3>
-        When i'm at home but not at my desk, i'm probably in the kitchen! I
+        When I'm at home but not at my desk, i'm probably in the kitchen! I
         don't have much in terms of posts in that category <i>yet</i> though.
         <h3>photography</h3>
         I enjoy photography as well - at Purdue I did lots of work in
