@@ -10,6 +10,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-26898313-1',
+      },
+    },
+    {
       resolve: `gatsby-source-instagram-all`,
       options: {
         access_token: '30999454.1677ed0.e96a14c204e34138b0506e6dfaf1cce8',
