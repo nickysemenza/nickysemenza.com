@@ -1,6 +1,7 @@
 ---
 title: 'Thai Wok Fried Noodles'
 date: '2019-02-28T07:41:00.000Z'
+tags: ['cooking']
 ---
 
 ![pic](NDS_0649.jpg)
@@ -66,5 +67,5 @@ I'd say this feeds about 3 hungry people, but you can scale it up or down.
 
 # Inspiration
 
-- [Andy Ricker's](https://www.amazon.com/Pok-Stories-Roadside-Restaurants-Thailand/dp/1607742888/) cookbook on thai has a weathy of recipes on these classics.
+- [Andy Ricker's cookbook on Thai food](https://amzn.to/2Vyj8Gr)has a weathy of recipes on these classics.
 - The SF restaurant [Kin Khao](https://www.yelp.com/biz/kin-khao-san-francisco-2) has this dish called the "Yaowaraj Noodle" - billed as "Bangkok Chinatown stir-fried rice noodles with chicken, XO sauce, egg, green onions, cilantro". Strangely what stood out to me most was the inclusion of cilantro leaves with the stalk still attached - even minced cilantro is a rare garnish for noodle dishes at most Thai restaurants, but it works so well. (now I need to go make some XO sauce :))
