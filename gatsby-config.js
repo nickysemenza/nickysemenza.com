@@ -1,3 +1,4 @@
+const GA_TRACKING_ID = 'UA-26898313-1'
 module.exports = {
   siteMetadata: {
     title: `Nicky's Home`,
@@ -12,7 +13,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-26898313-1',
+        trackingId: GA_TRACKING_ID,
       },
     },
     {
@@ -84,6 +85,31 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-amp`,
+      options: {
+        analytics: {
+          type: 'gtag',
+          dataCredentials: 'include',
+          config: {
+            vars: {
+              gtag_id: GA_TRACKING_ID,
+              config: {
+                GA_TRACKING_ID: {
+                  page_location: '{{pathname}}',
+                },
+              },
+            },
+          },
+        },
+        canonicalBaseUrl: 'https://nickysemenza.com/',
+        components: ['amp-form'],
+        excludedPaths: ['/404*', '/'],
+        pathIdentifier: '/amp/',
+        relAmpHtmlPattern: '{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}',
+        useAmpClientIdApi: true,
       },
     },
   ],
