@@ -4,7 +4,7 @@ os:
   - osx
 node_js:
   - node
-  - '8'
+  - "12"
 script:
   - yarn run lint
   - yarn run build
