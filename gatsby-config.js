@@ -17,12 +17,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-instagram-all`,
-      options: {
-        access_token: '30999454.1677ed0.e96a14c204e34138b0506e6dfaf1cce8',
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
