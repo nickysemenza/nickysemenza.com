@@ -60,7 +60,7 @@ function SEO({ description, lang, meta, keywords, title }) {
                   : []
               )
               .concat(meta)}
-          />
+          ><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "127dbd5ce0964f65824c0198de06b5c5"}'></script></Helmet>
         )
       }}
     />
