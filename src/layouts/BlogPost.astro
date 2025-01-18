@@ -1,90 +1,76 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
+import Container from "../components/container.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import type { MarkdownHeading } from "astro";
+import BaseLayout from "./BaseLayout.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+interface Props {
+  post: CollectionEntry<"blog">;
+  headings: MarkdownHeading[];
+  readingTime: any;
+}
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { post, headings, readingTime } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } = post.data;
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-    <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
-      .hero-image {
-        width: 100%;
-      }
-      .hero-image img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
-      }
-      .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
-        color: rgb(var(--gray-dark));
-      }
-      .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
-        text-align: center;
-        line-height: 1;
-      }
-      .title h1 {
-        margin: 0 0 0.5em 0;
-      }
-      .date {
-        margin-bottom: 0.5em;
-        color: rgb(var(--gray));
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
-  </head>
+<BaseLayout title={title} description={description} image={heroImage?.src}>
+  <Container>
+    <div class="max-w-screen-md mx-auto">
+      <h1
+        class="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white"
+      >
+        {title}
+      </h1>
 
-  <body>
-    <Header />
-    <main>
-      <article>
-        <div class="hero-image">
-          {
-            heroImage && (
-              <Image width={1020} height={510} src={heroImage} alt="" />
-            )
-          }
-        </div>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
+      <div class="flex justify-center mt-3 space-x-3 text-gray-500">
+        <div class="flex items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-sm">
               <FormattedDate date={pubDate} />
-              {
-                updatedDate && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={updatedDate} />
-                  </div>
-                )
-              }
             </div>
-            <h1>{title}</h1>
-            <hr />
+            <div class="flex items-center space-x-2 text-sm">
+              {readingTime}
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+
+  {
+    heroImage && (
+      <div class="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
+        <Picture
+          src={heroImage}
+          widths={[400, 800, 1600]}
+          alt="Thumbnail"
+          loading="eager"
+          class="w-full"
+          layout="full-width"
+        />
+      </div>
+    )
+  }
+  <Container>
+    <div class="flex">
+      <article>
+        <!-- prose code form https://github.com/tailwindlabs/tailwindcss-typography/issues/18#issuecomment-2566895115 -->
+        <div
+          class="mx-auto my-3 prose prose-base prose-code:before:hidden prose-code:after:hidden dark:prose-invert prose-a:text-blue-600"
+        >
+          <!-- actual content in the slot -->
           <slot />
         </div>
       </article>
-    </main>
-    <Footer />
-  </body>
-</html>
+      <aside>
+        <div class="pl-2 sticky top-20">
+          <TableOfContents headings={headings} levels={3} />
+        </div>
+      </aside>
+    </div>
+  </Container>
+</BaseLayout>

@@ -3,15 +3,16 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
-<header>
-  <nav>
+<header class="bg-gray-300 shadow-sm border-b-2 border-gray-300">
+  <nav class="flex justify-between items-center">
     <h2><a href="/">{SITE_TITLE}</a></h2>
     <div class="internal-links">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
+      <!-- <HeaderLink href="/gallery">Gallery</HeaderLink> -->
     </div>
-    <div class="social-links">
+    <div class="flex">
       <a href="https://twitter.com/nickysemenza" target="_blank">
         <span class="sr-only">Follow on Twitter</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -49,21 +50,7 @@ import { SITE_TITLE } from "../consts";
   h2 a.active {
     text-decoration: none;
   }
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  nav a {
-    padding: 1em 0.5em;
-    color: var(--black);
-    border-bottom: 4px solid transparent;
-    text-decoration: none;
-  }
-  nav a.active {
-    text-decoration: none;
-    border-bottom-color: var(--accent);
-  }
+
   .social-links,
   .social-links a {
     display: flex;

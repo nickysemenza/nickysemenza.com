@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../../layouts/BlogPost.astro";
+import GalleryView from "../../components/GalleryView.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const albums = await getCollection("album");
+
+  const paths = Object.values(albums).map((album) => {
+    return {
+      params: {
+        id: album.id,
+      },
+      props: {
+        album,
+      },
+    };
+  });
+
+  return paths;
+}
+
+const { album } = Astro.props;
+---
+
+<BaseLayout title={album.data.title} description="Lorem ipsum dolor sit amet">
+  <div class="text-center">
+    <h1 class="text-5xl font-bold">
+      {album.data.title}
+    </h1>
+    <p class="text-xl my-4">
+      {album.data.description}
+    </p>
+
+    <GalleryView gallerySlug={album.id} />
+
+    <p class="text-lg my-4 text-center">
+      <a href="/gallery/" class="hover:underline">View other albums</a>
+    </p>
+  </div>
+</BaseLayout>

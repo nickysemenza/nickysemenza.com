@@ -3,16 +3,13 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Container from "../components/container.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Container>
+    <main class="prose prose-base mx-auto">
       I'm a software engineer at{" "}
       <a href="https://cloudflare.com" target="_blank"> Cloudflare </a>
       , working on PKI management for our customers - automated issuance, validation,
@@ -39,6 +36,5 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       <br />
       It's scarce but... <a href="/blog">view all posts</a>
     </main>
-    <Footer />
-  </body>
-</html>
+  </Container>
+</BaseLayout>

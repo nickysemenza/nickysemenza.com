@@ -1,0 +1,41 @@
+---
+import { getAlbumImages } from "../utils/albums";
+import { Image } from "astro:assets";
+import Container from "./container.astro";
+import FormattedDate from "./FormattedDate.astro";
+interface Props {
+  gallerySlug: string;
+}
+
+const images = await getAlbumImages(Astro.props.gallerySlug);
+---
+
+<!-- <Container> -->
+<div class="w-100 columns-2 lg:columns-3 text-center">
+  {
+    images.map((image) => (
+      <div class="inline-block">
+        <Image
+          src={image.image}
+          alt={image.description || "unknown"}
+          class="mb-0 rounded border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg"
+          loading="lazy"
+          data-album-image
+        />
+        <div class="flex flex-col mt-1">
+          {image.description && (
+            <p class="text-sm text-gray-500 m-0 inline-block">
+              {image.description}
+            </p>
+          )}
+          {image.date && (
+            <p class="text-sm text-gray-500 m-0 inline-block">
+              <FormattedDate date={image.date} />
+            </p>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>
+<!-- </Container> -->
