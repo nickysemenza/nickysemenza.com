@@ -1,3 +1,10 @@
+@import "tailwindcss";
+/* https://github.com/tailwindlabs/tailwindcss-typography/issues/372#issuecomment-2610917304 */
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+	--tw-prose-body: oklch(0.971 0.014 343.198);
+}
 @font-face {
 	font-family: 'Atkinson';
 	src: url('/fonts/atkinson-regular.woff') format('woff');
@@ -14,14 +21,4 @@
 }
 body {
 	font-family: 'Atkinson', sans-serif;
-	/* margin: 0;
-	padding: 0;
-	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
-	font-size: 20px;
-	line-height: 1.7; */
 }

@@ -11,7 +11,7 @@ const images = await getAlbumImages(Astro.props.gallerySlug);
 ---
 
 <!-- <Container> -->
-<div class="w-100 columns-2 lg:columns-3 text-center">
+<div class="w-full columns-2 lg:columns-3 text-center">
   {
     images.map((image) => (
       <div class="inline-block">

@@ -2,17 +2,15 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-
-import tailwind from "@astrojs/tailwind";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import rehypeExternalLinks from "rehype-external-links";
-
 import icon from "astro-icon";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://nickysemenza.com",
-  integrations: [mdx(), sitemap(), tailwind(), icon()],
+  integrations: [mdx(), sitemap(), icon()],
   experimental: {
     responsiveImages: true,
   },
@@ -21,5 +19,8 @@ export default defineConfig({
     rehypePlugins: [
       [rehypeExternalLinks, { rel: ["noopener"], target: "_blank" }],
     ],
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
