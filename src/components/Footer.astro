@@ -1,5 +1,11 @@
 ---
 import Container from "./container.astro";
+import childProcess from "child_process";
+
+const hash = childProcess
+  .execSync("git rev-parse --short HEAD")
+  .toString()
+  .trim();
 ---
 
 <Container class="mt-10 border-t border-gray-100 dark:border-gray-800">
@@ -27,6 +33,16 @@ import Container from "./container.astro";
           target="_blank"
         >
           Github
+        </a>
+      </span>
+      <span>&middot;</span>
+      <span>
+        <a
+          href="https://github.com/nickysemenza/nickysemenza.com"
+          rel="noopener"
+          target="_blank"
+        >
+          Version {hash}
         </a>
       </span>
     </div>
