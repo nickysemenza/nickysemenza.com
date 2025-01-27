@@ -1,7 +1,6 @@
 ---
 title: 'DIY mason jar spice rack'
 pubDate: 'Aug 15 2020'
-description: 'todo'
 tags: ['cooking', 'building']
 heroImage: './IMG_3266.jpeg'
 ---

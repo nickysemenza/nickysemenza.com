@@ -1,7 +1,6 @@
 ---
 title: 'Roast Potatoes with Guajillo Chili Oil'
 pubDate: 'Jul 2 2019'
-description: 'todo'
 tags: ['cooking']
 heroImage: "./NDS_1082-510333a5-b676-47b7-bd10-414d13be59db.jpg"
 ---

@@ -17,7 +17,11 @@ const { post, headings, readingTime } = Astro.props;
 const { title, description, pubDate, updatedDate, heroImage } = post.data;
 ---
 
-<BaseLayout title={title} description={description} image={heroImage?.src}>
+<BaseLayout
+  title={title}
+  description={description || title}
+  image={heroImage?.src}
+>
   <Container>
     <div class="max-w-screen-md mx-auto">
       <h1
@@ -58,7 +62,6 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
   <Container>
     <div class="flex">
       <article>
-        <!-- prose code form https://github.com/tailwindlabs/tailwindcss-typography/issues/18#issuecomment-2566895115 -->
         <div
           class="mx-auto my-3 prose prose-base prose-code:before:hidden prose-code:after:hidden dark:prose-invert prose-a:text-blue-600"
         >

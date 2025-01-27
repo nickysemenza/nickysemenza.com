@@ -1,7 +1,6 @@
 ---
 title: Quick Let's Encrypt Certificates with Certbot's Cloudflare DNS plugin
 pubDate: 'Jan 01 2019'
-description: 'todo'
 tags: ['code']
 ---
 

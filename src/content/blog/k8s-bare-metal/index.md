@@ -1,7 +1,6 @@
 ---
 title: 'Running Kubernetes on bare metal: kubeadm, traefik, and more'
 pubDate: 'Jan 27 2019'
-description: 'todo'
 tags: ['code']
 ---
 

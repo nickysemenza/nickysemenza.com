@@ -1,7 +1,6 @@
 ---
 title: 'Thai Wok Fried Noodles'
 pubDate: 'Feb 28 2019'
-description: 'todo'
 tags: ['cooking']
 heroImage: "./NDS_0649.jpg"
 ---
