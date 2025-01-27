@@ -7,10 +7,12 @@ import tailwind from "@astrojs/tailwind";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import rehypeExternalLinks from "rehype-external-links";
 
+import icon from "astro-icon";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://nickysemenza.com",
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap(), tailwind(), icon()],
   experimental: {
     responsiveImages: true,
   },
