@@ -13,9 +13,14 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
   href={href}
   class:list={[
     "inline-block",
-    "px-[0.5em]",
-    "py-[1em]",
-    isActive && ["underline", "font-semibold"],
+    "px-3",
+    "py-2",
+    "rounded-md",
+    "transition-colors",
+    "font-medium",
+    isActive 
+      ? "bg-blue-100 text-blue-800" 
+      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900",
   ]}
   {...props}
 >

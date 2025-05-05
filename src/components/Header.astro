@@ -4,26 +4,26 @@ import { SITE_TITLE } from "../consts";
 import { Icon } from "astro-icon/components";
 ---
 
-<header class="bg-white shadow-sm border-b-2 border-gray-300">
-  <nav class="flex justify-between items-center">
-    <h2 class="pl-1"><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
+<header class="bg-white shadow-md border-b border-gray-200 sticky top-0 z-10">
+  <nav class="flex justify-between items-center max-w-6xl mx-auto px-4 py-3">
+    <h2 class="font-bold text-xl"><a href="/" class="hover:text-blue-600 transition-colors">{SITE_TITLE}</a></h2>
+    <div class="internal-links space-x-4">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </div>
-    <div class="flex">
-      <a href="https://github.com/nickysemenza" target="_blank">
+    <div class="flex space-x-3">
+      <a href="https://github.com/nickysemenza" target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
         <span class="sr-only">Go to Nicky's GitHub repo</span>
-        <Icon name="fa6-brands:github" size="32" />
+        <Icon name="fa6-brands:github" size="24" />
       </a>
-      <a href="https://linkedin.com/in/nickysemenza/" target="_blank">
-        <span class="sr-only">Follow on Linkedin</span>
-        <Icon name="fa6-brands:linkedin" size="32" />
+      <a href="https://linkedin.com/in/nickysemenza/" target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
+        <span class="sr-only">Follow on LinkedIn</span>
+        <Icon name="fa6-brands:linkedin" size="24" />
       </a>
-      <a href="https://instagram.com/nickysemenza/" target="_blank">
-        <span class="sr-only">Follow on Linkedin</span>
-        <Icon name="fa6-brands:instagram" size="32" />
+      <a href="https://instagram.com/nickysemenza/" target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
+        <span class="sr-only">Follow on Instagram</span>
+        <Icon name="fa6-brands:instagram" size="24" />
       </a>
     </div>
   </nav>
