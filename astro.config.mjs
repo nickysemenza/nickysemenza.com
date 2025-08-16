@@ -11,9 +11,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://nickysemenza.com",
   integrations: [mdx(), sitemap(), icon()],
-  experimental: {
-    responsiveImages: true,
-  },
   markdown: {
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
