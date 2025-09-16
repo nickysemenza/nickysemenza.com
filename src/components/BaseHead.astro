@@ -59,3 +59,28 @@ import "../styles/global.css";
 {image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
 
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- JSON-LD: Person and WebSite -->
+<script type="application/ld+json">
+  {JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: title,
+        url: String(new URL(Astro.url.pathname, Astro.site)),
+        description: description
+      },
+      {
+        '@type': 'Person',
+        name: 'Nicky Semenza',
+        url: String(new URL('/', Astro.site)),
+        sameAs: [
+          'https://github.com/nickysemenza',
+          'https://www.linkedin.com/in/nickysemenza/',
+          'https://instagram.com/nickysemenza/'
+        ]
+      }
+    ]
+  })}
+  </script>
