@@ -47,7 +47,7 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
     }
   })} />
   <!-- Post Header -->
-  <section class="bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50 py-6 md:py-10">
+  <section class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-10 construction-grid">
     <Container>
       <div class="max-w-screen-md mx-auto text-center">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
@@ -80,7 +80,7 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
   <Container>
     <div class="flex gap-8 py-6 md:py-10">
       <article
-        class="min-w-0 flex-1 prose prose-base prose-stone max-w-none prose-code:before:hidden prose-code:after:hidden dark:prose-invert prose-a:text-amber-700 hover:prose-a:text-amber-800 prose-headings:text-stone-800 prose-img:rounded-lg"
+        class="min-w-0 flex-1 prose prose-base prose-stone max-w-none prose-code:before:hidden prose-code:after:hidden dark:prose-invert prose-a:text-[var(--color-copper)] hover:prose-a:text-[var(--color-copper-dark)] prose-headings:text-stone-800 prose-img:rounded-lg"
       >
         <!-- actual content in the slot -->
         <slot />

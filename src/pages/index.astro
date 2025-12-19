@@ -50,37 +50,83 @@ const otherWork = [
     year: "2013 - 2018",
   },
 ];
+
+// Split text into letters for animation
+const heroName = "Nicky";
+const heroGreeting = "Hi, I'm";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <!-- Hero Section -->
   <section
-    class="relative bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50"
+    class="relative bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 construction-grid overflow-hidden"
   >
-    <div
-      class="absolute inset-0 opacity-[0.015]"
-      style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"
-    >
-    </div>
     <Container>
-      <div class="py-6 sm:py-10 md:py-14 relative">
-        <div class="max-w-2xl">
+      <div class="py-12 sm:py-16 md:py-24 relative">
+        <div class="max-w-3xl">
+          <!-- Tagline -->
+          <div class="mb-3">
+            <span
+              class="text-sm font-medium tracking-[0.2em] uppercase text-[var(--color-copper)]"
+            >
+              Builder · Maker · Engineer
+            </span>
+          </div>
+          <!-- Dramatic hero typography -->
           <h1
-            class="text-3xl md:text-4xl font-bold text-stone-800 tracking-tight animate-fade-up"
+            class="text-4xl sm:text-5xl md:text-6xl font-bold text-stone-800 tracking-tight leading-[0.95]"
+            style="perspective: 1000px;"
           >
-            Hi, I'm Nicky
+            <span class="block">
+              {
+                heroGreeting.split("").map((char, i) => (
+                  <span
+                    class="hero-letter"
+                    style={`animation-delay: ${i * 50}ms`}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))
+              }
+            </span>
+            <span class="block text-[var(--color-copper)]">
+              {
+                heroName.split("").map((char, i) => (
+                  <span
+                    class="hero-letter"
+                    style={`animation-delay: ${(i + heroGreeting.length) * 50}ms`}
+                  >
+                    {char}
+                  </span>
+                ))
+              }
+            </span>
           </h1>
-          <div class="mt-6 flex flex-wrap gap-3 animate-fade-up delay-100">
+          <div class="hero-line mt-6 max-w-[200px]"></div>
+          <p
+            class="mt-6 text-lg sm:text-xl text-stone-600 max-w-xl animate-fade-up"
+            style="animation-delay: 600ms;"
+          >
+            I build things with my hands and with code. Currently renovating an
+            1886 Victorian in San Francisco.
+          </p>
+          <div
+            class="mt-8 flex flex-wrap gap-4 animate-fade-up"
+            style="animation-delay: 700ms;"
+          >
             <a
               href="/blog"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-stone-800 hover:bg-stone-900 text-white text-sm rounded-lg transition-all duration-200 font-medium hover:shadow-lg"
+              class="group inline-flex items-center gap-2 px-5 py-2.5 bg-stone-800 hover:bg-stone-900 text-white text-sm rounded-lg transition-all duration-300 font-medium hover:shadow-xl hover:-translate-y-0.5"
             >
               Read the blog
-              <Icon name="tabler:arrow-right" class="w-4 h-4" />
+              <Icon
+                name="tabler:arrow-right"
+                class="w-4 h-4 transition-transform group-hover:translate-x-1"
+              />
             </a>
             <a
               href="/about"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-stone-50 text-stone-700 text-sm rounded-lg transition-all duration-200 font-medium border border-stone-200 hover:border-stone-300 hover:shadow-md"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-stone-50 text-stone-700 text-sm rounded-lg transition-all duration-300 font-medium border border-stone-200 hover:border-[var(--color-copper)] hover:shadow-lg hover:-translate-y-0.5"
             >
               About me
             </a>
@@ -91,19 +137,17 @@ const otherWork = [
   </section>
 
   <!-- Featured Projects -->
-  <section class="py-12 sm:py-16 md:py-20 bg-white">
+  <section class="py-12 sm:py-16 md:py-20 bg-white construction-grid">
     <Container>
       <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
         {
           featuredProjects.map((project, index) => (
             <a
               href={project.link}
-              class:list={[
-                "group block animate-fade-up",
-                index === 0 ? "delay-200" : "delay-300",
-              ]}
+              class="group block reveal reveal-scale"
+              style={`--reveal-delay: ${index * 100}ms`}
             >
-              <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 image-grain image-copper-hover">
                 <div class="aspect-[4/3] overflow-hidden">
                   <Image
                     src={project.image}
@@ -116,7 +160,7 @@ const otherWork = [
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
-                  <p class="text-xs sm:text-sm font-medium text-amber-300 mb-1">
+                  <p class="text-xs sm:text-sm font-medium text-[var(--color-copper-light)] mb-1">
                     {project.subtitle}
                   </p>
                   <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
@@ -136,8 +180,11 @@ const otherWork = [
       <div class="mt-10 sm:mt-16">
         <div class="grid sm:grid-cols-3 gap-4 sm:gap-5">
           {
-            otherWork.map((item) => (
-              <div class="group relative bg-gradient-to-br from-stone-50 to-amber-50/40 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-amber-300/60 hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 hover:-translate-y-1">
+            otherWork.map((item, index) => (
+              <div
+                class="group relative bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-[var(--color-copper)]/40 hover:shadow-lg hover:shadow-[var(--color-copper)]/10 transition-all duration-300 hover:-translate-y-1 reveal"
+                style={`--reveal-delay: ${(index + 2) * 100}ms`}
+              >
                 {item.link ? (
                   <a
                     href={item.link}
@@ -147,11 +194,11 @@ const otherWork = [
                   >
                     <div class="flex items-center justify-between mb-3">
                       <span class="text-2xl">{item.emoji}</span>
-                      <span class="text-xs font-medium text-amber-600">
+                      <span class="text-xs font-medium text-[var(--color-copper)]">
                         {item.year}
                       </span>
                     </div>
-                    <h4 class="text-lg font-semibold text-stone-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                    <h4 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors flex items-center gap-1.5">
                       {item.title}
                       {item.external && (
                         <Icon
@@ -168,7 +215,7 @@ const otherWork = [
                   <>
                     <div class="flex items-center justify-between mb-3">
                       <span class="text-2xl">{item.emoji}</span>
-                      <span class="text-xs font-medium text-amber-600">
+                      <span class="text-xs font-medium text-[var(--color-copper)]">
                         {item.year}
                       </span>
                     </div>
@@ -192,11 +239,11 @@ const otherWork = [
   <section class="py-12 sm:py-16 bg-stone-800">
     <Container>
       <div
-        class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8"
+        class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8 reveal"
       >
         <div>
           <h2
-            class="text-xs sm:text-sm font-semibold text-amber-400 uppercase tracking-wider mb-1 sm:mb-2"
+            class="text-xs sm:text-sm font-semibold text-[var(--color-copper-light)] uppercase tracking-wider mb-1 sm:mb-2"
           >
             Photography
           </h2>
@@ -206,13 +253,13 @@ const otherWork = [
           href="https://nicky.photos"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-sm font-medium text-stone-400 hover:text-amber-400 transition-colors duration-200 flex items-center gap-1"
+          class="text-sm font-medium text-stone-400 hover:text-[var(--color-copper-light)] transition-colors duration-200 flex items-center gap-1"
         >
           View portfolio
           <Icon name="tabler:external-link" class="w-4 h-4" />
         </a>
       </div>
-      <div class="rounded-xl overflow-hidden shadow-2xl">
+      <div class="rounded-xl overflow-hidden shadow-2xl reveal reveal-scale">
         <iframe
           src="https://www.nicky.photos/frame/slideshow?key=wXtF6f&autoStart=1&captions=1&navigation=1&playButton=0&randomize=1&speed=2&transition=fade&transitionSpeed=1"
           width="100%"
@@ -223,4 +270,42 @@ const otherWork = [
       </div>
     </Container>
   </section>
+
+  <!-- Scroll reveal observer -->
+  <script>
+    function initReveal() {
+      const reveals = document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-scale"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const delay =
+                getComputedStyle(entry.target).getPropertyValue(
+                  "--reveal-delay"
+                ) || "0ms";
+              setTimeout(() => {
+                entry.target.classList.add("revealed");
+              }, parseInt(delay));
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      reveals.forEach((el) => observer.observe(el));
+    }
+
+    // Run on initial load
+    initReveal();
+
+    // Re-run after view transitions
+    document.addEventListener("astro:page-load", initReveal);
+  </script>
 </BaseLayout>

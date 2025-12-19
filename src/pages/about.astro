@@ -31,18 +31,18 @@ const skills = {
 
 <BaseLayout title="About Me" description="About Nicky Semenza">
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50 py-6 md:py-12">
+  <section class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-12 construction-grid">
     <Container>
       <h1 class="text-3xl md:text-4xl font-bold text-stone-800 tracking-tight">About</h1>
     </Container>
   </section>
 
   <!-- Skills -->
-  <section class="py-10 md:py-16 bg-white">
+  <section class="py-10 md:py-16 bg-white construction-grid">
     <Container>
       <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
-        <div>
-          <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-2">Software</h2>
+        <div class="reveal">
+          <h2 class="text-sm font-semibold text-[var(--color-copper)] uppercase tracking-wider mb-2">Software</h2>
           <p class="text-xl font-bold text-stone-800 mb-6">Engineering skills</p>
           <div class="flex flex-wrap gap-2">
             {
@@ -55,13 +55,13 @@ const skills = {
           </div>
         </div>
 
-        <div>
-          <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-2">Making</h2>
+        <div class="reveal" style="--reveal-delay: 100ms">
+          <h2 class="text-sm font-semibold text-[var(--color-copper)] uppercase tracking-wider mb-2">Making</h2>
           <p class="text-xl font-bold text-stone-800 mb-6">Building & craft</p>
           <div class="flex flex-wrap gap-2">
             {
               skills.making.map((skill) => (
-                <span class="inline-block bg-amber-50 text-amber-800 px-3 py-1.5 rounded-lg text-sm font-medium border border-amber-200">
+                <span class="inline-block bg-[var(--color-copper)]/10 text-[var(--color-copper-dark)] px-3 py-1.5 rounded-lg text-sm font-medium border border-[var(--color-copper)]/20">
                   {skill}
                 </span>
               ))
@@ -71,4 +71,22 @@ const skills = {
       </div>
     </Container>
   </section>
+
+  <script>
+    function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = getComputedStyle(entry.target).getPropertyValue('--reveal-delay') || '0ms';
+            setTimeout(() => entry.target.classList.add('revealed'), parseInt(delay));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      reveals.forEach(el => observer.observe(el));
+    }
+    initReveal();
+    document.addEventListener('astro:page-load', initReveal);
+  </script>
 </BaseLayout>

@@ -13,7 +13,7 @@ const posts = (await getCollection("blog")).sort(
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <!-- Page Header -->
-  <section class="bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50 py-6 md:py-10">
+  <section class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-10 construction-grid">
     <Container>
       <header class="text-center">
         <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">Blog</h1>
@@ -22,17 +22,17 @@ const posts = (await getCollection("blog")).sort(
     </Container>
   </section>
 
-  <section class="py-8 md:py-12 bg-white">
+  <section class="py-8 md:py-12 bg-white construction-grid">
     <Container>
       <!-- Posts Grid -->
       <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
-          posts.map((post) => (
-            <li>
+          posts.map((post, index) => (
+            <li class="reveal" style={`--reveal-delay: ${index * 80}ms`}>
               <a href={`/blog/${post.id}/`} class="group block h-full">
                 <article class="h-full flex flex-col">
                   {post.data.heroImage ? (
-                    <div class="overflow-hidden rounded-lg mb-4 aspect-[4/3]">
+                    <div class="overflow-hidden rounded-lg mb-4 aspect-[4/3] image-grain image-copper-hover">
                       <Image
                         width={600}
                         height={450}
@@ -42,14 +42,14 @@ const posts = (await getCollection("blog")).sort(
                       />
                     </div>
                   ) : (
-                    <div class="rounded-lg mb-4 aspect-[4/3] bg-gradient-to-br from-stone-100 to-amber-100/50 flex items-center justify-center">
+                    <div class="rounded-lg mb-4 aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-200/50 flex items-center justify-center">
                       <span class="text-4xl opacity-50">
                         {post.data.tags?.[0] === 'code' ? '💻' : post.data.tags?.[0] === 'cooking' ? '🍳' : '📝'}
                       </span>
                     </div>
                   )}
                   <div class="flex-1 flex flex-col">
-                    <h3 class="text-lg font-semibold text-stone-800 group-hover:text-amber-700 transition-colors leading-snug">
+                    <h3 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors leading-snug">
                       {post.data.title}
                     </h3>
                     {post.data.description && (
@@ -62,7 +62,7 @@ const posts = (await getCollection("blog")).sort(
                       {post.data.tags && post.data.tags.length > 0 && (
                         <>
                           <span>·</span>
-                          <span class="text-amber-600">{post.data.tags[0]}</span>
+                          <span class="text-[var(--color-copper)]">{post.data.tags[0]}</span>
                         </>
                       )}
                     </div>
@@ -75,4 +75,22 @@ const posts = (await getCollection("blog")).sort(
       </ul>
     </Container>
   </section>
+
+  <script>
+    function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = getComputedStyle(entry.target).getPropertyValue('--reveal-delay') || '0ms';
+            setTimeout(() => entry.target.classList.add('revealed'), parseInt(delay));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      reveals.forEach(el => observer.observe(el));
+    }
+    initReveal();
+    document.addEventListener('astro:page-load', initReveal);
+  </script>
 </BaseLayout>
