@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<BaseLayout title="Page Not Found" description="The page you're looking for doesn't exist.">
+  <section class="min-h-[60vh] flex items-center justify-center py-16">
+    <Container>
+      <div class="text-center max-w-md mx-auto animate-fade-up">
+        <div class="text-8xl mb-6 text-amber-300">404</div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-stone-800 mb-4">
+          Page not found
+        </h1>
+        <p class="text-stone-500 mb-8">
+          Sorry, the page you're looking for doesn't exist or has been moved.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors font-medium"
+          >
+            <Icon name="tabler:home" class="w-5 h-5" />
+            Go home
+          </a>
+          <a
+            href="/blog"
+            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-100 text-stone-700 rounded-lg hover:bg-stone-200 transition-colors font-medium"
+          >
+            <Icon name="tabler:article" class="w-5 h-5" />
+            Read the blog
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

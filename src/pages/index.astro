@@ -86,8 +86,9 @@ const otherWork = [
                 <Image
                   src={project.image}
                   alt={project.title}
-                  width={800}
-                  height={600}
+                  widths={[400, 600, 800]}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading={index === 0 ? "eager" : "lazy"}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>

@@ -22,6 +22,30 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
   description={description || title}
   image={heroImage?.src}
 >
+  <!-- BlogPosting Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description || title,
+    datePublished: pubDate.toISOString(),
+    dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+    author: {
+      '@type': 'Person',
+      name: 'Nicky Semenza',
+      url: 'https://nickysemenza.com/about'
+    },
+    ...(heroImage && {
+      image: {
+        '@type': 'ImageObject',
+        url: heroImage.src
+      }
+    }),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': Astro.url.href
+    }
+  })} />
   <!-- Post Header -->
   <section class="bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50 py-6 md:py-10">
     <Container>

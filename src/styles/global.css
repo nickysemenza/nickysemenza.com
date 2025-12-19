@@ -59,3 +59,37 @@ h1, h2, h3 {
 html {
 	scroll-behavior: smooth;
 }
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+/* Accessibility: Enhanced focus styles */
+:focus-visible {
+	outline: 2px solid #d97706; /* amber-600 */
+	outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: #292524; /* stone-800 */
+	color: white;
+	padding: 8px 16px;
+	z-index: 100;
+	transition: top 0.2s;
+}
+
+.skip-link:focus {
+	top: 0;
+}
