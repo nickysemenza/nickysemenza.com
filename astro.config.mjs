@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { remarkReadingTime } from "./remark-reading-time.mjs";
+import { remarkReadingTime } from "./remark-reading-time";
 import rehypeExternalLinks from "rehype-external-links";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";

@@ -1,5 +1,6 @@
 ---
-import Container from "./container.astro";
+import Container from "./Container.astro";
+import { SOCIAL_LINKS } from "../consts";
 import childProcess from "child_process";
 
 const hash = childProcess
@@ -16,25 +17,16 @@ const hash = childProcess
     <div
       class="flex justify-center gap-1 mt-1 text-sm text-center text-gray-500 dark:text-gray-600"
     >
-      <span>
-        <a
-          href="https://instagram.com/nickysemenza"
-          rel="noopener"
-          target="_blank"
-        >
-          Instagram
-        </a>
-      </span>
-      <span>&middot;</span>
-      <span>
-        <a
-          href="https://github.com/nickysemenza"
-          rel="noopener"
-          target="_blank"
-        >
-          Github
-        </a>
-      </span>
+      {SOCIAL_LINKS.map((link, index) => (
+        <>
+          {index > 0 && <span>&middot;</span>}
+          <span>
+            <a href={link.url} rel="noopener" target="_blank">
+              {link.name}
+            </a>
+          </span>
+        </>
+      ))}
       <span>&middot;</span>
       <span>
         <a
@@ -46,8 +38,5 @@ const hash = childProcess
         </a>
       </span>
     </div>
-    <!-- <div class="flex items-center justify-between mt-2">
-      <Themeswitch />
-    </div> -->
   </footer>
 </Container>

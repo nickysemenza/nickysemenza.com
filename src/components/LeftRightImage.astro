@@ -1,15 +1,16 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   images: ImageMetadata[];
   cols?: number;
 }
 
-const { images, cols } = Astro.props;
-import { Image } from "astro:assets";
-// Fetch external data, even from a private API or database
-let colCount = cols || 2;
+const { images, cols = 2 } = Astro.props;
 ---
 
-<div class={`grid ${colCount == 2 ? "grid-cols-2" : "grid-cols-3"} gap-3`}>
-  {images.map((x) => <Image src={x} alt="unknown" class="" />)}
+<div class={`grid ${cols === 2 ? "grid-cols-2" : "grid-cols-3"} gap-3`}>
+  {images.map((image, index) => (
+    <Image src={image} alt={`Image ${index + 1} of ${images.length}`} />
+  ))}
 </div>

@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 const { album } = Astro.props;
 ---
 
-<BaseLayout title={album.data.title} description="Lorem ipsum dolor sit amet">
+<BaseLayout title={album.data.title} description={album.data.description || `Photo album: ${album.data.title}`}>
   <div class="text-center">
     <h1 class="text-5xl font-bold">
       {album.data.title}

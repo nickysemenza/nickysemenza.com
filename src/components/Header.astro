@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE, SOCIAL_LINKS } from "../consts";
 import { Icon } from "astro-icon/components";
 ---
 
@@ -13,18 +13,12 @@ import { Icon } from "astro-icon/components";
       <HeaderLink href="/about">About</HeaderLink>
     </div>
     <div class="flex space-x-3">
-      <a href="https://github.com/nickysemenza" target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
-        <span class="sr-only">Go to Nicky's GitHub repo</span>
-        <Icon name="fa6-brands:github" size="24" />
-      </a>
-      <a href="https://linkedin.com/in/nickysemenza/" target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
-        <span class="sr-only">Follow on LinkedIn</span>
-        <Icon name="fa6-brands:linkedin" size="24" />
-      </a>
-      <a href="https://instagram.com/nickysemenza/" target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
-        <span class="sr-only">Follow on Instagram</span>
-        <Icon name="fa6-brands:instagram" size="24" />
-      </a>
+      {SOCIAL_LINKS.map((link) => (
+        <a href={link.url} target="_blank" class="text-gray-700 hover:text-gray-900 transition-colors">
+          <span class="sr-only">{link.name}</span>
+          <Icon name={link.icon} size="24" />
+        </a>
+      ))}
     </div>
   </nav>
 </header>

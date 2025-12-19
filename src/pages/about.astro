@@ -1,8 +1,59 @@
 ---
-import Container from "../components/container.astro";
+import Container from "../components/Container.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const skills = {
+  software: [
+    "Infrastructure as Code",
+    "Container Orchestration",
+    "Cloud Platforms",
+    "Monitoring & Observability",
+    "Certificate Management",
+    "Systems Engineering",
+  ],
+  construction: [
+    "Custom Cabinet Design & Fabrication",
+    "CAD & Technical Drawing",
+    "Project Management",
+    "Building Code & Permitting",
+    "Electrical Systems",
+    "Plumbing Systems",
+    "Landscaping & Irrigation",
+    "Woodworking",
+  ],
+};
 ---
 
-<BaseLayout title="About Me" description="Lorem ipsum dolor sit amet">
-  <Container> hello </Container>
+<BaseLayout title="About Me" description="About Nicky Semenza">
+  <Container>
+    <main class="prose prose-base mx-auto">
+      <h1 class="font-bold mb-6">Skills</h1>
+
+      <section class="mb-8">
+        <h2 class="font-bold mb-4">Software</h2>
+        <div class="not-prose flex flex-wrap gap-2">
+          {
+            skills.software.map((skill) => (
+              <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="font-bold mb-4">Construction</h2>
+        <div class="not-prose flex flex-wrap gap-2">
+          {
+            skills.construction.map((skill) => (
+              <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                {skill}
+              </span>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+  </Container>
 </BaseLayout>

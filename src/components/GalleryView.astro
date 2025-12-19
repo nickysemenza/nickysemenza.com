@@ -1,7 +1,6 @@
 ---
 import { getAlbumImages } from "../utils/albums";
 import { Image } from "astro:assets";
-import Container from "./container.astro";
 import FormattedDate from "./FormattedDate.astro";
 interface Props {
   gallerySlug: string;
@@ -10,7 +9,6 @@ interface Props {
 const images = await getAlbumImages(Astro.props.gallerySlug);
 ---
 
-<!-- <Container> -->
 <div class="w-full columns-2 lg:columns-3 text-center">
   {
     images.map((image) => (
@@ -38,4 +36,3 @@ const images = await getAlbumImages(Astro.props.gallerySlug);
     ))
   }
 </div>
-<!-- </Container> -->
