@@ -2,102 +2,165 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Container from "../components/Container.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import { getCollection } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
-const projects = [
+import kitchenHero from "../content/blog/kitchen-renovation/main-after.jpg";
+import backyardHero from "../content/blog/backyard-renovation/hero.jpg";
+
+const featuredProjects = [
+  {
+    title: "Kitchen Renovation",
+    subtitle: "2024",
+    description: "Full gut renovation of an 1886 kitchen",
+    link: "/blog/kitchen-renovation/",
+    image: kitchenHero,
+  },
+  {
+    title: "Backyard Renovation",
+    subtitle: "2025",
+    description: "Hardscaping, irrigation, and outdoor living",
+    link: "/blog/backyard-renovation/",
+    image: backyardHero,
+  },
+];
+
+const otherWork = [
   {
     emoji: "☁️",
     title: "Cloudflare",
-    content: "Job since 2018, currently a senior software engineer."
-  },
-  {
-    emoji: "🔨",
-    title: "Kitchen Renovation",
-    content: "Planning, project management, and construction. 2024.",
-    link: {
-      url: "/blog/kitchen-renovation/",
-      text: "Photos and more"
-    }
+    description: "Senior software engineer building distributed systems",
+    year: "2018 - present",
   },
   {
     emoji: "🥕",
     title: "Ingredient Parser",
-    content: "Rust based ingredient parser. Started in 2021, an intermittent project.",
-    link: {
-      url: "https://ingredient.nickysemenza.com",
-      text: "Demo site"
-    }
+    description: "Rust-based NLP for recipe parsing",
+    link: "https://ingredient.nickysemenza.com",
+    external: true,
+    year: "2021 - present",
   },
   {
     emoji: "📸",
     title: "Photography",
-    content: "Photojournalism and freelance work from 2013 - 2018. Lately just travel and photos of my food.",
-    link: {
-      url: "https://nicky.photos",
-      text: "View portfolio"
-    }
-  }
+    description: "Editorial and food photography",
+    link: "https://nicky.photos",
+    external: true,
+    year: "2013 - 2018",
+  },
 ];
-
-// Latest posts for the homepage
-const posts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <Container>
-    <main class="prose prose-base mx-auto">
-      <h1 class="font-bold mb-6 text-center">Recently working on</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        {projects.map((project) => (
-          <ProjectCard
-            emoji={project.emoji}
-            title={project.title}
-            content={project.content}
-            link={project.link}
-          />
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50">
+    <div class="absolute inset-0 opacity-[0.015]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+    <Container>
+      <div class="py-10 md:py-14 relative">
+        <div class="max-w-2xl">
+          <h1 class="text-3xl md:text-4xl font-bold text-stone-800 tracking-tight">
+            Hi, I'm Nicky
+          </h1>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 bg-stone-800 hover:bg-stone-900 text-white text-sm rounded-lg transition-colors font-medium">
+              Read the blog
+              <Icon name="tabler:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/about" class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-stone-50 text-stone-700 text-sm rounded-lg transition-colors font-medium border border-stone-200">
+              About me
+            </a>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-20 bg-white">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-8">
+        {featuredProjects.map((project) => (
+          <a href={project.link} class="group block">
+            <article class="relative rounded-2xl overflow-hidden">
+              <div class="aspect-[4/3] overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={800}
+                  height={600}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <p class="text-sm font-medium text-amber-300 mb-1">{project.subtitle}</p>
+                <h3 class="text-2xl font-bold tracking-tight">{project.title}</h3>
+                <p class="mt-1 text-white/80 text-sm">{project.description}</p>
+              </div>
+            </article>
+          </a>
         ))}
       </div>
-      
-      <div class="mt-8 mb-6">
-        <h2 class="font-bold mb-3">Photos</h2>
+
+      <!-- Other Work -->
+      <div class="mt-16">
+        <div class="grid sm:grid-cols-3 gap-5">
+          {otherWork.map((item) => (
+            <div class="group relative bg-gradient-to-br from-stone-50 to-amber-50/40 rounded-xl p-6 border border-stone-200/60 hover:border-amber-300/60 hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300">
+              {item.link ? (
+                <a href={item.link} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} class="block">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-2xl">{item.emoji}</span>
+                    <span class="text-xs font-medium text-amber-600">{item.year}</span>
+                  </div>
+                  <h4 class="text-lg font-semibold text-stone-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                    {item.title}
+                    {item.external && <Icon name="tabler:external-link" class="w-4 h-4 opacity-40" />}
+                  </h4>
+                  <p class="mt-2 text-sm text-stone-600 leading-relaxed">{item.description}</p>
+                </a>
+              ) : (
+                <>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-2xl">{item.emoji}</span>
+                    <span class="text-xs font-medium text-amber-600">{item.year}</span>
+                  </div>
+                  <h4 class="text-lg font-semibold text-stone-800">{item.title}</h4>
+                  <p class="mt-2 text-sm text-stone-600 leading-relaxed">{item.description}</p>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Photos Section -->
+  <section class="py-16 bg-stone-800">
+    <Container>
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Photography</h2>
+          <p class="text-2xl font-bold text-white">Recent photos</p>
+        </div>
+        <a href="https://nicky.photos" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-stone-400 hover:text-amber-400 transition-colors flex items-center gap-1">
+          View portfolio
+          <Icon name="tabler:external-link" class="w-4 h-4" />
+        </a>
+      </div>
+      <div class="rounded-xl overflow-hidden shadow-2xl">
         <iframe
           src="https://www.nicky.photos/frame/slideshow?key=wXtF6f&autoStart=1&captions=1&navigation=1&playButton=0&randomize=1&speed=2&transition=fade&transitionSpeed=1"
           width="100%"
-          height="600"
+          height="500"
           frameborder="0"
-          class="rounded-lg shadow-lg"
           scrolling="no"
           loading="lazy"
-          title="Featured photos slideshow from nicky.photos"></iframe>
+          title="Featured photos slideshow from nicky.photos"
+          class="bg-stone-900"
+        ></iframe>
       </div>
-
-      {posts.length > 0 && (
-        <section class="mt-10">
-          <h2 class="font-bold mb-4">Latest posts</h2>
-          <ul class="not-prose divide-y divide-gray-100">
-            {posts.map((post) => (
-              <li class="py-3">
-                <a href={`/blog/${post.id}/`} class="flex items-baseline justify-between gap-4 group">
-                  <span class="text-gray-900 group-hover:text-blue-700 transition-colors">{post.data.title}</span>
-                  <span class="text-sm text-gray-500 whitespace-nowrap">
-                    <FormattedDate date={post.data.pubDate} />
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      <div class="text-center mt-8">
-        <a href="/blog" class="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-label="View all blog posts">
-          View all blog posts
-        </a>
-      </div>
-    </main>
-  </Container>
+    </Container>
+  </section>
 </BaseLayout>

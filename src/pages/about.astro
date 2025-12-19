@@ -4,56 +4,71 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const skills = {
   software: [
+    "Go",
+    "TypeScript",
+    "Rust",
     "Infrastructure as Code",
     "Container Orchestration",
-    "Cloud Platforms",
+    "Distributed Systems",
     "Monitoring & Observability",
-    "Certificate Management",
-    "Systems Engineering",
   ],
-  construction: [
+  making: [
     "Custom Cabinet Design & Fabrication",
+    "Millwork & Trim",
+    "Framing & Insulation",
     "CAD & Technical Drawing",
+    "3D Printing",
     "Project Management",
     "Building Code & Permitting",
     "Electrical Systems",
     "Plumbing Systems",
+    "Metalworking & Welding",
+    "Hardscaping",
     "Landscaping & Irrigation",
-    "Woodworking",
   ],
 };
 ---
 
 <BaseLayout title="About Me" description="About Nicky Semenza">
-  <Container>
-    <main class="prose prose-base mx-auto">
-      <h1 class="font-bold mb-6">Skills</h1>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50 py-12">
+    <Container>
+      <h1 class="text-3xl md:text-4xl font-bold text-stone-800 tracking-tight">About</h1>
+    </Container>
+  </section>
 
-      <section class="mb-8">
-        <h2 class="font-bold mb-4">Software</h2>
-        <div class="not-prose flex flex-wrap gap-2">
-          {
-            skills.software.map((skill) => (
-              <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                {skill}
-              </span>
-            ))
-          }
+  <!-- Skills -->
+  <section class="py-16 bg-white">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-12 max-w-4xl">
+        <div>
+          <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-2">Software</h2>
+          <p class="text-xl font-bold text-stone-800 mb-6">Engineering skills</p>
+          <div class="flex flex-wrap gap-2">
+            {
+              skills.software.map((skill) => (
+                <span class="inline-block bg-stone-100 text-stone-700 px-3 py-1.5 rounded-lg text-sm font-medium border border-stone-200">
+                  {skill}
+                </span>
+              ))
+            }
+          </div>
         </div>
-      </section>
 
-      <section class="mb-8">
-        <h2 class="font-bold mb-4">Construction</h2>
-        <div class="not-prose flex flex-wrap gap-2">
-          {
-            skills.construction.map((skill) => (
-              <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                {skill}
-              </span>
-            ))
-          }
+        <div>
+          <h2 class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-2">Making</h2>
+          <p class="text-xl font-bold text-stone-800 mb-6">Building & craft</p>
+          <div class="flex flex-wrap gap-2">
+            {
+              skills.making.map((skill) => (
+                <span class="inline-block bg-amber-50 text-amber-800 px-3 py-1.5 rounded-lg text-sm font-medium border border-amber-200">
+                  {skill}
+                </span>
+              ))
+            }
+          </div>
         </div>
-      </section>
-    </main>
-  </Container>
+      </div>
+    </Container>
+  </section>
 </BaseLayout>
