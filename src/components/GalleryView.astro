@@ -104,7 +104,7 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
               <span class="bg-black/70 backdrop-blur-sm rounded px-1 py-0.5 text-white text-xs leading-none inline-flex items-center gap-1.5">
                 {image.description && <span class="font-medium">{image.description}</span>}
                 {image.description && image.date && <span class="text-white/50">·</span>}
-                {image.date && <span class="text-white/80"><FormattedDate date={image.date} /></span>}
+                {image.date && <span class="text-white/80"><FormattedDate date={image.date} pill={false} /></span>}
               </span>
             </div>
           )}

@@ -8,6 +8,7 @@ heroImage: "./main-after.jpg"
 import { Image } from 'astro:assets';
 import LeftRightImage from '../../../components/LeftRightImage.astro';
 import GalleryView from "../../../components/GalleryView.astro";
+import DatePill from '../../../components/DatePill.astro';
 
 
 Most of 2024 was spent renovating our kitchen. 
@@ -127,20 +128,20 @@ Faucets were sourced from [Lutz Kitchen and Bath](https://www.lbksf.com/)
 
 ### Layout, Permitting
 
-In `November 2023`, I started drawing some as-builts, and playing with potential layouts. I slowly refined on and off, and then In `Feb 2024` we had it mostly finalized and I made some 3D prints to visualize the different appliances.
+In <DatePill d="November 2023" />, I started drawing some as-builts, and playing with potential layouts. I slowly refined on and off, and then In <DatePill d="Feb 2024" /> we had it mostly finalized and I made some 3D prints to visualize the different appliances.
 <LeftRightImage images={[nov3_2023_as_built_1,nov6_2023_initial_sketch, feb25_3dmodel]} cols={3}/>
 
 For developing the plans, I used Chief Architect. All in, I spent over 30 active hours on the computer building the construction documents. I modeled everything in 2D and 3D, allowing me to generate visualizations as well as prepare all the required plans for permitting to succeed.
 <LeftRightImage images={[ca_timetracker, apr8_2024_elec, apr8_2024_elev, apr8_2024_rendering]} cols={2}/>
 I hired a [drafting firm](https://gratefulcad.com/) to help review the plans and give me some corrections before taking them to the city
-`April 26, 2024`: I went downtown to the planning department before work and went through the permitting process. I had to bring a bunch of forms along with a 24"x36" plan set, and was sent around to a couple different departments.
+<DatePill d="April 26, 2024" />: I went downtown to the planning department before work and went through the permitting process. I had to bring a bunch of forms along with a 24"x36" plan set, and was sent around to a couple different departments.
 Plans were approved on the first try! 
 ![](./planning/plans_redacted.jpeg)
 
 ## Demolition
 
 
-`May 13, 2024` We started our 6 week break from work, and demolition began!
+<DatePill d="May 13, 2024" /> We started our 6 week break from work, and demolition began!
 
 First, I put down floor protection and plastic sheeting with zippers everywhere to contain the dust. I setup a box fan in the window to achieve negative pressure.
 <GalleryView gallerySlug={"2024_05_14_demoprep"} />
@@ -237,7 +238,7 @@ This was another thing we hired out. It didn't take them much time but I didn't 
 ## Cabinets
 
 Now that all of the messy work was done, it was time to start on the cabinets, while keeping the walls and floors in pristine condition of course.
-More importantly, the plastic sheeting could finally come down, after `68 days`.
+More importantly, the plastic sheeting could finally come down, after <DatePill d="68 days" />.
 
 {/* BEGIN CABINETS */}
 
@@ -329,7 +330,7 @@ With the countertop isntalled and the sink basin glued to it, we could finally h
 
 
 ## Final Touches
-On `October 23, 2024` I passed the final building inspection and closed the permits. This was before we were finished with painting and some other small punch list items that don't require a permit, and in `November 2024` we declared the project done!
+On <DatePill d="October 23, 2024" /> I passed the final building inspection and closed the permits. This was before we were finished with painting and some other small punch list items that don't require a permit, and in <DatePill d="November 2024" /> we declared the project done!
 
 We had a long list of small touches, including painting the dining room to match, transitioning 100 year old trim into 100 day old trim, an d doing some cleanup and organizing
 
