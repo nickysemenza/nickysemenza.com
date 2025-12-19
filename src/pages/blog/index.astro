@@ -13,27 +13,58 @@ const posts = (await getCollection("blog")).sort(
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <Container>
-    <main>
+    <main class="py-12">
+      <!-- Page Header -->
+      <header class="mb-10 text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 mb-3">Blog</h1>
+        <p class="text-gray-500 text-lg">Projects, recipes, and things I've built</p>
+      </header>
+
+      <!-- Posts Grid -->
       <section>
-        <ul class="grid grid-cols-2 gap-1 p-1">
+        <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {
             posts.map((post) => (
-              <li class="">
-                <a href={`/blog/${post.id}/`}>
-                  {post.data.heroImage && (
-                    <Image
-                      width={720}
-                      height={400}
-                      src={post.data.heroImage}
-                      alt=""
-                      layout="responsive"
-                      class="rounded-lg"
-                    />
-                  )}
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
+              <li>
+                <a href={`/blog/${post.id}/`} class="group block h-full">
+                  <article class="h-full flex flex-col">
+                    {post.data.heroImage ? (
+                      <div class="overflow-hidden rounded-lg mb-4 aspect-[4/3]">
+                        <Image
+                          width={600}
+                          height={450}
+                          src={post.data.heroImage}
+                          alt=""
+                          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <div class="rounded-lg mb-4 aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                        <span class="text-4xl opacity-50">
+                          {post.data.tags?.[0] === 'code' ? '💻' : post.data.tags?.[0] === 'cooking' ? '🍳' : '📝'}
+                        </span>
+                      </div>
+                    )}
+                    <div class="flex-1 flex flex-col">
+                      <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors leading-snug">
+                        {post.data.title}
+                      </h3>
+                      {post.data.description && (
+                        <p class="mt-2 text-gray-600 text-sm line-clamp-2 flex-1">
+                          {post.data.description}
+                        </p>
+                      )}
+                      <div class="mt-3 flex items-center gap-2 text-sm text-gray-400">
+                        <FormattedDate date={post.data.pubDate} pill={false} />
+                        {post.data.tags && post.data.tags.length > 0 && (
+                          <>
+                            <span>·</span>
+                            <span>{post.data.tags[0]}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </article>
                 </a>
               </li>
             ))
