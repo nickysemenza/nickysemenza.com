@@ -4,26 +4,27 @@ import Container from "../components/Container.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
-import kitchenHero from "../content/blog/kitchen-renovation/main-after.jpg";
-import backyardHero from "../content/blog/backyard-renovation/hero.jpg";
+const blogPosts = await getCollection("blog");
 
-const featuredProjects = [
-  {
-    title: "Kitchen Renovation",
-    subtitle: "2024",
-    description: "Full gut renovation of an 1886 kitchen",
-    link: "/blog/kitchen-renovation/",
-    image: kitchenHero,
-  },
-  {
-    title: "Backyard Renovation",
-    subtitle: "2025",
-    description: "Hardscaping, irrigation, and outdoor living",
-    link: "/blog/backyard-renovation/",
-    image: backyardHero,
-  },
+const featuredProjectsConfig = [
+  { title: "Kitchen Renovation", subtitle: "2024", slug: "kitchen-renovation" },
+  // { title: "Backyard Renovation", subtitle: "2025", slug: "backyard-renovation" },
 ];
+
+const featuredProjects = featuredProjectsConfig
+  .map((project) => {
+    const post = blogPosts.find((p) => p.id === project.slug);
+    if (!post?.data.heroImage) return null;
+    return {
+      ...project,
+      description: post.data.description,
+      link: `/blog/${project.slug}/`,
+      image: post.data.heroImage,
+    };
+  })
+  .filter((p) => p !== null);
 
 const otherWork = [
   {
@@ -53,20 +54,34 @@ const otherWork = [
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50">
-    <div class="absolute inset-0 opacity-[0.015]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+  <section
+    class="relative bg-gradient-to-b from-amber-50/80 to-stone-50 border-b border-amber-100/50"
+  >
+    <div
+      class="absolute inset-0 opacity-[0.015]"
+      style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"
+    >
+    </div>
     <Container>
       <div class="py-6 sm:py-10 md:py-14 relative">
         <div class="max-w-2xl">
-          <h1 class="text-3xl md:text-4xl font-bold text-stone-800 tracking-tight animate-fade-up">
+          <h1
+            class="text-3xl md:text-4xl font-bold text-stone-800 tracking-tight animate-fade-up"
+          >
             Hi, I'm Nicky
           </h1>
           <div class="mt-6 flex flex-wrap gap-3 animate-fade-up delay-100">
-            <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 bg-stone-800 hover:bg-stone-900 text-white text-sm rounded-lg transition-all duration-200 font-medium hover:shadow-lg">
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-stone-800 hover:bg-stone-900 text-white text-sm rounded-lg transition-all duration-200 font-medium hover:shadow-lg"
+            >
               Read the blog
               <Icon name="tabler:arrow-right" class="w-4 h-4" />
             </a>
-            <a href="/about" class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-stone-50 text-stone-700 text-sm rounded-lg transition-all duration-200 font-medium border border-stone-200 hover:border-stone-300 hover:shadow-md">
+            <a
+              href="/about"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-stone-50 text-stone-700 text-sm rounded-lg transition-all duration-200 font-medium border border-stone-200 hover:border-stone-300 hover:shadow-md"
+            >
               About me
             </a>
           </div>
@@ -79,59 +94,95 @@ const otherWork = [
   <section class="py-12 sm:py-16 md:py-20 bg-white">
     <Container>
       <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
-        {featuredProjects.map((project, index) => (
-          <a href={project.link} class:list={["group block animate-fade-up", index === 0 ? "delay-200" : "delay-300"]}>
-            <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <div class="aspect-[4/3] overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  widths={[400, 600, 800]}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
-                <p class="text-xs sm:text-sm font-medium text-amber-300 mb-1">{project.subtitle}</p>
-                <h3 class="text-xl sm:text-2xl font-bold tracking-tight">{project.title}</h3>
-                <p class="mt-1 text-white/80 text-xs sm:text-sm">{project.description}</p>
-              </div>
-            </article>
-          </a>
-        ))}
+        {
+          featuredProjects.map((project, index) => (
+            <a
+              href={project.link}
+              class:list={[
+                "group block animate-fade-up",
+                index === 0 ? "delay-200" : "delay-300",
+              ]}
+            >
+              <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                <div class="aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    widths={[400, 600, 800]}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+                  <p class="text-xs sm:text-sm font-medium text-amber-300 mb-1">
+                    {project.subtitle}
+                  </p>
+                  <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
+                    {project.title}
+                  </h3>
+                  <p class="mt-1 text-white/80 text-xs sm:text-sm">
+                    {project.description}
+                  </p>
+                </div>
+              </article>
+            </a>
+          ))
+        }
       </div>
 
       <!-- Other Work -->
       <div class="mt-10 sm:mt-16">
         <div class="grid sm:grid-cols-3 gap-4 sm:gap-5">
-          {otherWork.map((item) => (
-            <div class="group relative bg-gradient-to-br from-stone-50 to-amber-50/40 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-amber-300/60 hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 hover:-translate-y-1">
-              {item.link ? (
-                <a href={item.link} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} class="block">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="text-2xl">{item.emoji}</span>
-                    <span class="text-xs font-medium text-amber-600">{item.year}</span>
-                  </div>
-                  <h4 class="text-lg font-semibold text-stone-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
-                    {item.title}
-                    {item.external && <Icon name="tabler:external-link" class="w-4 h-4 opacity-40" />}
-                  </h4>
-                  <p class="mt-2 text-sm text-stone-600 leading-relaxed">{item.description}</p>
-                </a>
-              ) : (
-                <>
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="text-2xl">{item.emoji}</span>
-                    <span class="text-xs font-medium text-amber-600">{item.year}</span>
-                  </div>
-                  <h4 class="text-lg font-semibold text-stone-800">{item.title}</h4>
-                  <p class="mt-2 text-sm text-stone-600 leading-relaxed">{item.description}</p>
-                </>
-              )}
-            </div>
-          ))}
+          {
+            otherWork.map((item) => (
+              <div class="group relative bg-gradient-to-br from-stone-50 to-amber-50/40 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-amber-300/60 hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 hover:-translate-y-1">
+                {item.link ? (
+                  <a
+                    href={item.link}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
+                    class="block"
+                  >
+                    <div class="flex items-center justify-between mb-3">
+                      <span class="text-2xl">{item.emoji}</span>
+                      <span class="text-xs font-medium text-amber-600">
+                        {item.year}
+                      </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-stone-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                      {item.title}
+                      {item.external && (
+                        <Icon
+                          name="tabler:external-link"
+                          class="w-4 h-4 opacity-40"
+                        />
+                      )}
+                    </h4>
+                    <p class="mt-2 text-sm text-stone-600 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </a>
+                ) : (
+                  <>
+                    <div class="flex items-center justify-between mb-3">
+                      <span class="text-2xl">{item.emoji}</span>
+                      <span class="text-xs font-medium text-amber-600">
+                        {item.year}
+                      </span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-stone-800">
+                      {item.title}
+                    </h4>
+                    <p class="mt-2 text-sm text-stone-600 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </>
+                )}
+              </div>
+            ))
+          }
         </div>
       </div>
     </Container>
@@ -140,12 +191,23 @@ const otherWork = [
   <!-- Photos Section -->
   <section class="py-12 sm:py-16 bg-stone-800">
     <Container>
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+      <div
+        class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8"
+      >
         <div>
-          <h2 class="text-xs sm:text-sm font-semibold text-amber-400 uppercase tracking-wider mb-1 sm:mb-2">Photography</h2>
+          <h2
+            class="text-xs sm:text-sm font-semibold text-amber-400 uppercase tracking-wider mb-1 sm:mb-2"
+          >
+            Photography
+          </h2>
           <p class="text-xl sm:text-2xl font-bold text-white">Recent photos</p>
         </div>
-        <a href="https://nicky.photos" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-stone-400 hover:text-amber-400 transition-colors duration-200 flex items-center gap-1">
+        <a
+          href="https://nicky.photos"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-medium text-stone-400 hover:text-amber-400 transition-colors duration-200 flex items-center gap-1"
+        >
           View portfolio
           <Icon name="tabler:external-link" class="w-4 h-4" />
         </a>
@@ -157,8 +219,7 @@ const otherWork = [
           height="400"
           class="sm:h-[500px] bg-stone-900"
           loading="lazy"
-          title="Featured photos slideshow from nicky.photos"
-        ></iframe>
+          title="Featured photos slideshow from nicky.photos"></iframe>
       </div>
     </Container>
   </section>
