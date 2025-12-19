@@ -9,34 +9,33 @@ const hash = childProcess
   .trim();
 ---
 
-<Container class="mt-10 border-t border-gray-100 dark:border-gray-800">
-  <footer class="flex flex-col items-center">
-    <div class="text-sm text-center">
-      Copyright © {new Date().getFullYear()} Nicky Semenza
-    </div>
-    <div
-      class="flex justify-center gap-1 mt-1 text-sm text-center text-gray-500 dark:text-gray-600"
-    >
-      {SOCIAL_LINKS.map((link, index) => (
-        <>
-          {index > 0 && <span>&middot;</span>}
-          <span>
-            <a href={link.url} rel="noopener" target="_blank">
-              {link.name}
-            </a>
-          </span>
-        </>
-      ))}
-      <span>&middot;</span>
-      <span>
+<footer class="bg-stone-50 border-t border-stone-200/60 mt-16">
+  <Container>
+    <div class="py-8 flex flex-col items-center gap-4">
+      <div class="flex items-center gap-3">
+        {SOCIAL_LINKS.map((link) => (
+          <a
+            href={link.url}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="text-stone-400 hover:text-amber-600 transition-colors duration-200"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+      <div class="text-sm text-stone-400">
+        © {new Date().getFullYear()} Nicky Semenza
+        <span class="mx-2">·</span>
         <a
           href="https://github.com/nickysemenza/nickysemenza.com"
-          rel="noopener"
+          rel="noopener noreferrer"
           target="_blank"
+          class="hover:text-amber-600 transition-colors duration-200"
         >
-          Version {hash}
+          {hash}
         </a>
-      </span>
+      </div>
     </div>
-  </footer>
-</Container>
+  </Container>
+</footer>

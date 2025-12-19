@@ -15,12 +15,14 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
     "inline-block",
     "px-3",
     "py-2",
-    "rounded-md",
-    "transition-colors",
+    "rounded-lg",
+    "transition-all",
+    "duration-200",
+    "text-sm",
     "font-medium",
-    isActive 
-      ? "bg-blue-100 text-blue-800" 
-      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900",
+    isActive
+      ? "bg-amber-100 text-amber-800"
+      : "text-stone-600 hover:bg-stone-100 hover:text-stone-900",
   ]}
   {...props}
 >

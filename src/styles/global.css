@@ -4,22 +4,58 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
 	--tw-prose-body: oklch(0.971 0.014 343.198);
+	--font-display: 'Fraunces Variable', serif;
+	--font-body: 'Atkinson Hyperlegible', sans-serif;
 }
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Atkinson';
-	src: url('/fonts/atkinson-bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
+
 body {
-	font-family: 'Atkinson', sans-serif;
-	background-color: #f9fafb;
+	font-family: 'Atkinson Hyperlegible', sans-serif;
+	background-color: #fafaf9; /* stone-50 */
+}
+
+/* Display font for headings */
+h1, h2, h3 {
+	font-family: 'Fraunces Variable', serif;
+	font-optical-sizing: auto;
+}
+
+/* Entrance animations */
+@keyframes fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.animate-fade-up {
+	animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+	animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Start invisible for animation */
+.animate-fade-up, .animate-fade-in {
+	opacity: 0;
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
 }

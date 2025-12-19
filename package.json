@@ -13,6 +13,8 @@
     "@astrojs/mdx": "^4.3.9",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource/atkinson-hyperlegible": "^5.2.8",
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/tabler": "^1.2.23",
     "@tailwindcss/vite": "^4.1.16",
