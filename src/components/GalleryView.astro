@@ -1,25 +1,72 @@
 ---
 import { getAlbumImages } from "../utils/albums";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import FormattedDate from "./FormattedDate.astro";
+
 interface Props {
   gallerySlug: string;
 }
 
 const images = await getAlbumImages(Astro.props.gallerySlug);
+
+// Generate full-size images for lightbox and tiny placeholders for blur effect
+const processedImages = await Promise.all(
+  images.map(async (img) => {
+    const [fullSize, placeholder] = await Promise.all([
+      getImage({
+        src: img.image,
+        format: "webp",
+        quality: 85,
+        width: Math.min(img.image.width, 1600),
+      }),
+      getImage({
+        src: img.image,
+        format: "webp",
+        quality: 10,
+        width: 20,
+      }),
+    ]);
+    return {
+      fullSrc: fullSize.src,
+      placeholderSrc: placeholder.src,
+    };
+  })
+);
+
+const galleryId = Astro.props.gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
 ---
 
-<div class="w-full columns-2 lg:columns-3 text-center">
+<div
+  class="gallery-grid w-full columns-2 lg:columns-3 text-center"
+  data-gallery-id={galleryId}
+>
   {
-    images.map((image) => (
-      <div class="inline-block">
-        <Image
-          src={image.image}
-          alt={image.description || "unknown"}
-          class="mb-0 rounded border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg"
-          loading="lazy"
-          data-album-image
-        />
+    images.map((image, index) => (
+      <div class="inline-block mb-2">
+        <button
+          type="button"
+          class="gallery-thumb cursor-zoom-in block w-full border-0 bg-transparent p-0 relative overflow-hidden"
+          data-index={index}
+          data-full-src={processedImages[index].fullSrc}
+          data-description={image.description || ""}
+          aria-label={`View ${image.description || "image"} full size`}
+        >
+          <div
+            class="gallery-placeholder absolute inset-0 bg-cover bg-center blur-lg scale-110 transition-opacity duration-300"
+            style={`background-image: url('${processedImages[index].placeholderSrc}')`}
+          />
+          <Image
+            src={image.image}
+            alt={image.description || "Gallery image"}
+            width={400}
+            widths={[200, 300, 400]}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
+            class="gallery-image relative mb-0 rounded border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-[1.02] opacity-0"
+            loading="lazy"
+            quality={75}
+            onload="this.classList.remove('opacity-0'); this.previousElementSibling.classList.add('opacity-0')"
+          />
+        </button>
         <div class="flex flex-col mt-1">
           {image.description && (
             <p class="text-sm text-gray-500 m-0 inline-block">
@@ -36,3 +83,36 @@ const images = await getAlbumImages(Astro.props.gallerySlug);
     ))
   }
 </div>
+
+<script define:vars={{ galleryId, imageCount: images.length }}>
+  // Initialize lightbox for this gallery
+  document.addEventListener("DOMContentLoaded", () => {
+    const gallery = document.querySelector(
+      `[data-gallery-id="${galleryId}"]`
+    );
+    if (!gallery) return;
+
+    const thumbs = gallery.querySelectorAll(".gallery-thumb");
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        const index = parseInt(thumb.dataset.index, 10);
+        const fullSrc = thumb.dataset.fullSrc;
+        const description = thumb.dataset.description;
+
+        // Collect all images in this gallery for navigation
+        const allImages = Array.from(thumbs).map((t) => ({
+          src: t.dataset.fullSrc,
+          description: t.dataset.description,
+        }));
+
+        // Dispatch custom event to open lightbox
+        window.dispatchEvent(
+          new CustomEvent("openLightbox", {
+            detail: { images: allImages, startIndex: index },
+          })
+        );
+      });
+    });
+  });
+</script>
