@@ -11,7 +11,9 @@
       "mcp__plugin_playwright_playwright__browser_click",
       "mcp__plugin_playwright_playwright__browser_close",
       "Bash(sort:*)",
-      "Bash(exiftool:*)"
+      "Bash(exiftool:*)",
+      "Bash(pnpm build:*)",
+      "mcp__plugin_playwright_playwright__browser_evaluate"
     ]
   }
 }

@@ -20,6 +20,8 @@ const { title, description, image } = Astro.props;
   </head>
 
   <body>
+    <!-- Reading Progress Bar (must be outside main for z-index to work) -->
+    <div id="reading-progress" class="reading-progress"></div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header transition:persist />
     <main id="main-content" transition:animate="fade">
@@ -27,5 +29,7 @@ const { title, description, image } = Astro.props;
     </main>
     <Footer />
     <Lightbox />
+
+    <script src="../scripts/reading-progress.ts"></script>
   </body>
 </html>

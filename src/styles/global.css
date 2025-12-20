@@ -232,3 +232,38 @@ html {
 .text-copper {
 	color: var(--color-copper);
 }
+
+/* Animated underline links */
+.link-underline {
+	position: relative;
+	text-decoration: none;
+}
+
+.link-underline::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 0;
+	height: 2px;
+	background: var(--color-copper);
+	transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+	width: 100%;
+}
+
+/* Reading progress bar */
+.reading-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 5px;
+	background: linear-gradient(90deg, var(--color-copper), var(--color-copper-light));
+	z-index: 9999;
+	width: 0%;
+	transition: width 0.1s linear;
+	box-shadow: 0 2px 4px rgba(184, 115, 51, 0.4);
+}
+

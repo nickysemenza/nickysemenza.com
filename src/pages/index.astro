@@ -147,7 +147,7 @@ const heroGreeting = "Hi, I'm";
               class="group block reveal reveal-scale"
               style={`--reveal-delay: ${index * 100}ms`}
             >
-              <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 image-grain image-copper-hover">
+              <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 image-grain">
                 <div class="aspect-[4/3] overflow-hidden">
                   <Image
                     src={project.image}
@@ -158,8 +158,8 @@ const heroGreeting = "Hi, I'm";
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" style="z-index: 4;" />
+                <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white" style="z-index: 5;">
                   <p class="text-xs sm:text-sm font-medium text-[var(--color-copper-light)] mb-1">
                     {project.subtitle}
                   </p>
@@ -271,41 +271,5 @@ const heroGreeting = "Hi, I'm";
     </Container>
   </section>
 
-  <!-- Scroll reveal observer -->
-  <script>
-    function initReveal() {
-      const reveals = document.querySelectorAll(
-        ".reveal, .reveal-left, .reveal-scale"
-      );
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const delay =
-                getComputedStyle(entry.target).getPropertyValue(
-                  "--reveal-delay"
-                ) || "0ms";
-              setTimeout(() => {
-                entry.target.classList.add("revealed");
-              }, parseInt(delay));
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        }
-      );
-
-      reveals.forEach((el) => observer.observe(el));
-    }
-
-    // Run on initial load
-    initReveal();
-
-    // Re-run after view transitions
-    document.addEventListener("astro:page-load", initReveal);
-  </script>
+  <script src="../scripts/reveal.ts"></script>
 </BaseLayout>

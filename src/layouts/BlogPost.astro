@@ -92,4 +92,27 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
       </aside>
     </div>
   </Container>
+
+  <style>
+    /* Animated underlines for prose links */
+    article.prose :global(a) {
+      position: relative;
+      text-decoration: none;
+    }
+
+    article.prose :global(a::after) {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-copper);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    article.prose :global(a:hover::after) {
+      width: 100%;
+    }
+  </style>
 </BaseLayout>
