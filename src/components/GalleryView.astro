@@ -76,11 +76,10 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, '_');
         class="absolute"
         style={`left: ${boxes[index].left}%; top: ${(boxes[index].top / layout.containerHeight) * 100}%; width: ${boxes[index].width}%; height: ${(boxes[index].height / layout.containerHeight) * 100}%;`}
       >
-        <button
-          type="button"
-          class="gallery-thumb cursor-zoom-in block w-full h-full border-0 bg-transparent p-0 relative overflow-hidden rounded"
-          data-index={index}
-          data-full-src={processedImages[index].fullSrc}
+        <a
+          href={processedImages[index].fullSrc}
+          class="glightbox gallery-thumb cursor-zoom-in block w-full h-full border-0 bg-transparent p-0 relative overflow-hidden rounded"
+          data-gallery={galleryId}
           data-description={image.description || ''}
           aria-label={`View ${image.description || 'image'} full size`}
         >
@@ -116,39 +115,8 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, '_');
               </span>
             </div>
           )}
-        </button>
+        </a>
       </div>
     ))
   }
 </div>
-
-<script define:vars={{ galleryId, imageCount: images.length }}>
-  // Initialize lightbox for this gallery
-  document.addEventListener('DOMContentLoaded', () => {
-    const gallery = document.querySelector(`[data-gallery-id="${galleryId}"]`);
-    if (!gallery) return;
-
-    const thumbs = gallery.querySelectorAll('.gallery-thumb');
-
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener('click', () => {
-        const index = parseInt(thumb.dataset.index, 10);
-        const fullSrc = thumb.dataset.fullSrc;
-        const description = thumb.dataset.description;
-
-        // Collect all images in this gallery for navigation
-        const allImages = Array.from(thumbs).map((t) => ({
-          src: t.dataset.fullSrc,
-          description: t.dataset.description,
-        }));
-
-        // Dispatch custom event to open lightbox
-        window.dispatchEvent(
-          new CustomEvent('openLightbox', {
-            detail: { images: allImages, startIndex: index },
-          })
-        );
-      });
-    });
-  });
-</script>
