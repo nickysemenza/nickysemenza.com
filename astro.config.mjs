@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { remarkReadingTime } from "./remark-reading-time";
 import rehypeExternalLinks from "rehype-external-links";
+import { rehypeLightbox } from "./rehype-lightbox";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 
@@ -25,6 +26,7 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
       [rehypeExternalLinks, { rel: ["noopener"], target: "_blank" }],
+      rehypeLightbox,
     ],
   },
   vite: {

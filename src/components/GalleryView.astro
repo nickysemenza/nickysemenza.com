@@ -1,7 +1,7 @@
 ---
-import { getAlbumImages } from '../utils/albums';
-import { Image, getImage } from 'astro:assets';
-import FormattedDate from './FormattedDate.astro';
+import { getAlbumImages } from '../utils/images';
+import { getImage } from 'astro:assets';
+import ImageItem from './ImageItem.astro';
 import justifiedLayout from 'justified-layout';
 
 interface Props {
@@ -31,6 +31,7 @@ const processedImages = await Promise.all(
       }),
     ]);
     return {
+      ...img,
       fullSrc: fullSize.src,
       placeholderSrc: placeholder.src,
     };
@@ -71,51 +72,23 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, '_');
   style={`aspect-ratio: ${containerAspectRatio};`}
 >
   {
-    images.map((image, index) => (
+    processedImages.map((img, index) => (
       <div
         class="absolute"
         style={`left: ${boxes[index].left}%; top: ${(boxes[index].top / layout.containerHeight) * 100}%; width: ${boxes[index].width}%; height: ${(boxes[index].height / layout.containerHeight) * 100}%;`}
       >
-        <a
-          href={processedImages[index].fullSrc}
-          class="glightbox gallery-thumb cursor-zoom-in block w-full h-full border-0 bg-transparent p-0 relative overflow-hidden rounded"
-          data-gallery={galleryId}
-          data-description={image.description || ''}
-          aria-label={`View ${image.description || 'image'} full size`}
-        >
-          <div
-            class="gallery-placeholder absolute inset-0 bg-cover bg-center blur-lg scale-110 transition-opacity duration-300"
-            style={`background-image: url('${processedImages[index].placeholderSrc}')`}
-          />
-          <Image
-            src={image.image}
-            alt={image.description || 'Gallery image'}
-            width={Math.round(boxes[index].width * 12)}
-            widths={[200, 400, 600]}
-            sizes={`${Math.round(boxes[index].width)}vw`}
-            class="gallery-image w-full h-full object-cover relative transition-all duration-300 ease-in-out opacity-0"
-            loading="lazy"
-            quality={75}
-            onload="this.classList.remove('opacity-0'); this.previousElementSibling.classList.add('opacity-0')"
-          />
-          {(image.description || image.date) && (
-            <div class="gallery-caption absolute bottom-2 left-2 pointer-events-none">
-              <span class="bg-black/70 backdrop-blur-sm rounded px-1 py-0.5 text-white text-xs leading-none inline-flex items-center gap-1.5">
-                {image.description && (
-                  <span class="font-medium">{image.description}</span>
-                )}
-                {image.description && image.date && (
-                  <span class="text-white/50">·</span>
-                )}
-                {image.date && (
-                  <span class="text-white/80">
-                    <FormattedDate date={image.date} pill={false} />
-                  </span>
-                )}
-              </span>
-            </div>
-          )}
-        </a>
+        <ImageItem
+          image={img.image}
+          fullSrc={img.fullSrc}
+          galleryId={galleryId}
+          description={img.description}
+          date={img.date}
+          placeholderSrc={img.placeholderSrc}
+          width={Math.round(boxes[index].width * 12)}
+          widths={[200, 400, 600]}
+          sizes={`${Math.round(boxes[index].width)}vw`}
+          fill
+        />
       </div>
     ))
   }

@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  image: ImageMetadata;
+  fullSrc: string;
+  galleryId: string;
+  description?: string;
+  date?: Date;
+  showCaption?: boolean;
+  // Optional blur placeholder
+  placeholderSrc?: string;
+  // Optional custom image sizing (for justified layout)
+  width?: number;
+  widths?: number[];
+  sizes?: string;
+  // Fill container (for justified layout) vs natural size
+  fill?: boolean;
+}
+
+const {
+  image,
+  fullSrc,
+  galleryId,
+  description,
+  date,
+  showCaption = true,
+  placeholderSrc,
+  width,
+  widths,
+  sizes,
+  fill = false,
+} = Astro.props;
+
+const hasCaption = showCaption && (description || date);
+const alt = description || 'Image';
+---
+
+<a
+  href={fullSrc}
+  class:list={[
+    'glightbox block relative overflow-hidden rounded',
+    fill && 'w-full h-full cursor-zoom-in',
+  ]}
+  data-gallery={galleryId}
+  data-description={description || ''}
+  aria-label={`View ${alt} full size`}
+>
+  {
+    placeholderSrc && (
+      <div
+        class="absolute inset-0 bg-cover bg-center blur-lg scale-110 transition-opacity duration-300"
+        style={`background-image: url('${placeholderSrc}')`}
+      />
+    )
+  }
+  <Image
+    src={image}
+    alt={alt}
+    width={width}
+    widths={widths}
+    sizes={sizes}
+    class:list={[
+      fill
+        ? 'w-full h-full object-cover relative transition-all duration-300 ease-in-out'
+        : 'w-full h-auto',
+      placeholderSrc && 'opacity-0',
+    ]}
+    loading="lazy"
+    quality={75}
+    onload={placeholderSrc
+      ? "this.classList.remove('opacity-0'); this.previousElementSibling.classList.add('opacity-0')"
+      : undefined}
+  />
+  {
+    hasCaption && (
+      <div class="absolute bottom-2 left-2 pointer-events-none">
+        <span class="bg-black/70 backdrop-blur-sm rounded px-1 py-0.5 text-white text-xs leading-none inline-flex items-center gap-1.5">
+          {description && <span class="font-medium">{description}</span>}
+          {description && date && <span class="text-white/50">·</span>}
+          {date && (
+            <span class="text-white/80">
+              <FormattedDate date={date} pill={false} />
+            </span>
+          )}
+        </span>
+      </div>
+    )
+  }
+</a>

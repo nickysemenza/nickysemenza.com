@@ -19,6 +19,7 @@
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/tabler": "^1.2.23",
     "@tailwindcss/vite": "^4.1.16",
+    "@types/hast": "^3.0.4",
     "astro": "^5.15.3",
     "astro-icon": "^1.1.5",
     "fast-exif": "^2.0.1",
@@ -28,7 +29,8 @@
     "reading-time": "^1.5.0",
     "rehype-external-links": "^3.0.0",
     "sharp": "^0.34.4",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.16",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",

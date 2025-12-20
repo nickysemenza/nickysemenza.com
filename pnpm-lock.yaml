@@ -32,6 +32,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.16
         version: 4.1.16(vite@6.4.1(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.42.0)(yaml@2.8.2))
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
       astro:
         specifier: ^5.15.3
         version: 5.15.3(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(terser@5.42.0)(typescript@5.7.3)(yaml@2.8.2)
@@ -62,6 +65,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.16
         version: 4.1.16
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
     devDependencies:
       '@tailwindcss/typography':
         specifier: ^0.5.19

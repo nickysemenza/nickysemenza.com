@@ -9,6 +9,18 @@ function initLightbox() {
     lightbox.destroy();
   }
 
+  // Fix hrefs for markdown images (rehype runs before Astro's image optimization)
+  // Copy the optimized img src to the parent anchor's href
+  document
+    .querySelectorAll('a.glightbox[data-gallery="markdown"] > img')
+    .forEach((img) => {
+      const anchor = img.parentElement as HTMLAnchorElement;
+      const imgSrc = (img as HTMLImageElement).src;
+      if (anchor && imgSrc) {
+        anchor.href = imgSrc;
+      }
+    });
+
   // Initialize GLightbox
   lightbox = GLightbox({
     selector: '.glightbox',

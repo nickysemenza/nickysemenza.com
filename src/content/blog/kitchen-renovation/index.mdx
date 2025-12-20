@@ -6,7 +6,6 @@ tags: ['building']
 heroImage: './main-after.jpg'
 ---
 
-import { Image } from 'astro:assets';
 import LeftRightImage from '../../../components/LeftRightImage.astro';
 import GalleryView from '../../../components/GalleryView.astro';
 import DatePill from '../../../components/DatePill.astro';
@@ -51,15 +50,6 @@ And subcontracted out these:
 We took a 6 week sabbatical from work and worked around 60 hours a week, taking occasional days off to rest. Once back at work, I spent 10-20 hours a week on evenings and weekends.
 
 ## Planning
-
-import plans_redacted from './planning/plans_redacted.jpeg';
-import ca_timetracker from './planning/ca_timetracker.png';
-import feb25_3dmodel from './planning/feb25_3dmodel.jpeg';
-import nov3_2023_as_built_1 from './planning/nov3_2023_as_built_1.jpeg';
-import nov6_2023_initial_sketch from './planning/nov6_2023_initial_sketch.jpeg';
-import apr8_2024_rendering from './planning/apr8_2024_rendering.png';
-import apr8_2024_elec from './planning/apr8_2024_elec.png';
-import apr8_2024_elev from './planning/apr8_2024_elev.png';
 
 Before we even moved in, we knew that we wanted/needed to renovate the kitchen. The house was built in 1886, and while the flooring, cabinets, and appliances had been slightly updated, most of the kitchen was decades old, if not more.
 
@@ -157,14 +147,25 @@ Faucets were sourced from [Lutz Kitchen and Bath](https://www.lbksf.com/)
 In <DatePill d="November 2023" />, I started drawing some as-builts, and playing with potential layouts. I slowly refined on and off, and then In <DatePill d="Feb 2024" /> we had it mostly finalized and I made some 3D prints to visualize the different appliances.
 
 <LeftRightImage
-  images={[nov3_2023_as_built_1, nov6_2023_initial_sketch, feb25_3dmodel]}
+  base="kitchen-renovation"
+  images={[
+    'planning/nov3_2023_as_built_1.jpeg',
+    'planning/nov6_2023_initial_sketch.jpeg',
+    'planning/feb25_3dmodel.jpeg',
+  ]}
   cols={3}
 />
 
 For developing the plans, I used Chief Architect. All in, I spent over 30 active hours on the computer building the construction documents. I modeled everything in 2D and 3D, allowing me to generate visualizations as well as prepare all the required plans for permitting to succeed.
 
 <LeftRightImage
-  images={[ca_timetracker, apr8_2024_elec, apr8_2024_elev, apr8_2024_rendering]}
+  base="kitchen-renovation"
+  images={[
+    'planning/ca_timetracker.png',
+    'planning/apr8_2024_elec.png',
+    'planning/apr8_2024_elev.png',
+    'planning/apr8_2024_rendering.png',
+  ]}
   cols={2}
 />
 I hired a [drafting firm](https://gratefulcad.com/) to help review the plans and
@@ -408,23 +409,37 @@ We had a long list of small touches, including painting the dining room to match
 
 ## Result
 
-import after_br from './before-after-pics/after-br.jpg';
-import after_cad from './before-after-pics/after-cad.jpeg';
-import after_dining from './before-after-pics/after-dining.jpg';
-import after_sunroom from './before-after-pics/after-sunroom.jpg';
-import before_br from './before-after-pics/before-br.jpeg';
-import before_dining from './before-after-pics/before-dining.jpeg';
-import before_sunroom from './before-after-pics/before-sunroom.jpeg';
-
 Here's some side by side before and after photos
 
-<LeftRightImage images={[before_br, after_br]} />
-<LeftRightImage images={[before_sunroom, after_sunroom]} />
-<LeftRightImage images={[before_dining, after_dining]} />
+<LeftRightImage
+  base="kitchen-renovation"
+  images={[
+    'before-after-pics/before-br.jpeg',
+    'before-after-pics/after-br.jpg',
+  ]}
+/>
+<LeftRightImage
+  base="kitchen-renovation"
+  images={[
+    'before-after-pics/before-sunroom.jpeg',
+    'before-after-pics/after-sunroom.jpg',
+  ]}
+/>
+<LeftRightImage
+  base="kitchen-renovation"
+  images={[
+    'before-after-pics/before-dining.jpeg',
+    'before-after-pics/after-dining.jpg',
+  ]}
+/>
 
 My 3D model versus the final product
 
-<Image src={after_cad} alt="cad" />
+<LeftRightImage
+  base="kitchen-renovation"
+  images={['before-after-pics/after-cad.jpeg']}
+  cols={1}
+/>
 
 ## Statistics
 

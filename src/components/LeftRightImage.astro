@@ -1,18 +1,52 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
+import { loadImages } from '../utils/images';
+import ImageItem from './ImageItem.astro';
 
 interface Props {
-  images: ImageMetadata[];
+  base: string;
+  images: string[];
   cols?: number;
+  showCaptions?: boolean;
 }
 
-const { images, cols = 2 } = Astro.props;
+const { base, images: imagePaths, cols = 2, showCaptions = true } = Astro.props;
+const images = await loadImages(base, imagePaths);
+
+// Generate full-size images for lightbox
+const processedImages = await Promise.all(
+  images.map(async (img) => {
+    const fullSize = await getImage({
+      src: img.image,
+      format: 'webp',
+      quality: 85,
+      width: Math.min(img.image.width, 1600),
+    });
+    return { ...img, fullSrc: fullSize.src };
+  })
+);
+
+const galleryId = `grid_${base.replace(/[^a-zA-Z0-9]/g, '_')}`;
+
+const gridColsClass: Record<number, string> = {
+  1: 'grid-cols-1',
+  2: 'grid-cols-2',
+  3: 'grid-cols-3',
+  4: 'grid-cols-4',
+};
 ---
 
-<div class={`grid ${cols === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-3`}>
+<div class={`grid ${gridColsClass[cols] || 'grid-cols-2'} gap-3`}>
   {
-    images.map((image, index) => (
-      <Image src={image} alt={`Image ${index + 1} of ${images.length}`} />
+    processedImages.map((img) => (
+      <ImageItem
+        image={img.image}
+        fullSrc={img.fullSrc}
+        galleryId={galleryId}
+        description={img.description}
+        date={img.date}
+        showCaption={showCaptions}
+      />
     ))
   }
 </div>
