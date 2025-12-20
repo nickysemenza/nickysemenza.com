@@ -9,7 +9,11 @@ import { getAllProjects, getProjectBySlug } from '@/lib/projects';
 const allProjects = await getAllProjects();
 
 // Curated featured projects (large cards)
-const featuredProjectsSlugs = ['kitchen-renovation', 'ingredient-parser'];
+const featuredProjectsSlugs = [
+  'kitchen-renovation',
+  // 'ingredient-parser',
+  'record-holder',
+];
 const featuredProjects = featuredProjectsSlugs
   .map((slug) => getProjectBySlug(allProjects, slug))
   .filter((p) => p !== undefined);

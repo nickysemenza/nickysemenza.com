@@ -37,6 +37,7 @@ export async function getAllProjects(): Promise<Project[]> {
       heroImage: post.data.heroImage,
       url: `/blog/${post.id}/`,
       external: false,
+      githubUrl: post.data.githubUrl,
     }));
 
   // Standalone projects
