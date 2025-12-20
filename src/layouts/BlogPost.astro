@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import FormattedDate from "../components/FormattedDate.astro";
-import { Picture } from "astro:assets";
-import Container from "../components/Container.astro";
-import TableOfContents from "../components/TableOfContents.astro";
-import type { MarkdownHeading } from "astro";
-import BaseLayout from "./BaseLayout.astro";
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Picture } from 'astro:assets';
+import Container from '../components/Container.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
   headings: MarkdownHeading[];
   readingTime: string;
 }
@@ -23,38 +23,49 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
   image={heroImage?.src}
 >
   <!-- BlogPosting Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: title,
-    description: description || title,
-    datePublished: pubDate.toISOString(),
-    dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
-    author: {
-      '@type': 'Person',
-      name: 'Nicky Semenza',
-      url: 'https://nickysemenza.com/about'
-    },
-    ...(heroImage && {
-      image: {
-        '@type': 'ImageObject',
-        url: heroImage.src
-      }
-    }),
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': Astro.url.href
-    }
-  })} />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: description || title,
+      datePublished: pubDate.toISOString(),
+      dateModified: updatedDate
+        ? updatedDate.toISOString()
+        : pubDate.toISOString(),
+      author: {
+        '@type': 'Person',
+        name: 'Nicky Semenza',
+        url: 'https://nickysemenza.com/about',
+      },
+      ...(heroImage && {
+        image: {
+          '@type': 'ImageObject',
+          url: heroImage.src,
+        },
+      }),
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': Astro.url.href,
+      },
+    })}
+  />
   <!-- Post Header -->
-  <section class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-10 construction-grid">
+  <section
+    class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-10 construction-grid"
+  >
     <Container>
       <div class="max-w-screen-md mx-auto text-center">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-800">
+        <h1
+          class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-stone-800"
+        >
           {title}
         </h1>
 
-        <div class="flex justify-center items-center gap-2 sm:gap-3 mt-3 md:mt-4 text-stone-500 text-sm">
+        <div
+          class="flex justify-center items-center gap-2 sm:gap-3 mt-3 md:mt-4 text-stone-500 text-sm"
+        >
           <FormattedDate date={pubDate} pill={false} />
           <span class="text-stone-300">·</span>
           <span>{readingTime}</span>

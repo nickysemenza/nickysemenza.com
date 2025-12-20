@@ -1,10 +1,10 @@
 ---
-import Container from "./Container.astro";
-import { SOCIAL_LINKS } from "../consts";
-import childProcess from "child_process";
+import Container from './Container.astro';
+import { SOCIAL_LINKS } from '../consts';
+import childProcess from 'child_process';
 
 const hash = childProcess
-  .execSync("git rev-parse --short HEAD")
+  .execSync('git rev-parse --short HEAD')
   .toString()
   .trim();
 ---
@@ -13,16 +13,18 @@ const hash = childProcess
   <Container>
     <div class="py-8 flex flex-col items-center gap-4">
       <div class="flex items-center gap-3">
-        {SOCIAL_LINKS.map((link) => (
-          <a
-            href={link.url}
-            rel="noopener noreferrer"
-            target="_blank"
-            class="text-stone-500 hover:text-[var(--color-copper)] transition-colors duration-200"
-          >
-            {link.name}
-          </a>
-        ))}
+        {
+          SOCIAL_LINKS.map((link) => (
+            <a
+              href={link.url}
+              rel="noopener noreferrer"
+              target="_blank"
+              class="text-stone-500 hover:text-[var(--color-copper)] transition-colors duration-200"
+            >
+              {link.name}
+            </a>
+          ))
+        }
       </div>
       <div class="text-sm text-stone-500">
         © {new Date().getFullYear()} Nicky Semenza

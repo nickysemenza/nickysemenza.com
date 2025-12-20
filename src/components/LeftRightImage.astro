@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 interface Props {
   images: ImageMetadata[];
@@ -9,8 +9,10 @@ interface Props {
 const { images, cols = 2 } = Astro.props;
 ---
 
-<div class={`grid ${cols === 2 ? "grid-cols-2" : "grid-cols-3"} gap-3`}>
-  {images.map((image, index) => (
-    <Image src={image} alt={`Image ${index + 1} of ${images.length}`} />
-  ))}
+<div class={`grid ${cols === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-3`}>
+  {
+    images.map((image, index) => (
+      <Image src={image} alt={`Image ${index + 1} of ${images.length}`} />
+    ))
+  }
 </div>

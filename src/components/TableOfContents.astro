@@ -1,7 +1,7 @@
 ---
 // https://cosmicthemes.com/blog/astro-table-of-contents-component/#creating-the-table-of-contents-component
 
-import type { MarkdownHeading } from "astro";
+import type { MarkdownHeading } from 'astro';
 
 interface Props {
   headings: MarkdownHeading[];
@@ -15,14 +15,18 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 ---
 
 <nav class="rounded-lg border border-stone-200 bg-stone-50/50 p-4 text-sm">
-  <h4 class="text-xs font-semibold text-[var(--color-copper)] uppercase tracking-wider mb-3">On this page</h4>
+  <h4
+    class="text-xs font-semibold text-[var(--color-copper)] uppercase tracking-wider mb-3"
+  >
+    On this page
+  </h4>
   <ul class="flex flex-col gap-1.5">
     {
       filteredHeadings.map((heading) => (
         <li
           class:list={{
-            "": heading.depth === 2,
-            "pl-3 border-l border-stone-200": heading.depth === 3,
+            '': heading.depth === 2,
+            'pl-3 border-l border-stone-200': heading.depth === 3,
           }}
         >
           <a

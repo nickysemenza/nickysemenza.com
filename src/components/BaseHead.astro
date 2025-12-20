@@ -9,13 +9,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image } = Astro.props;
 
-import { ClientRouter } from "astro:transitions";
-import "../styles/global.css";
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
 
 // Fontsource fonts - bundled with the site, no external requests
-import "@fontsource/atkinson-hyperlegible/400.css";
-import "@fontsource/atkinson-hyperlegible/700.css";
-import "@fontsource-variable/fraunces";
+import '@fontsource/atkinson-hyperlegible/400.css';
+import '@fontsource/atkinson-hyperlegible/700.css';
+import '@fontsource-variable/fraunces';
 ---
 
 <!-- Global Metadata -->
@@ -50,15 +50,16 @@ import "@fontsource-variable/fraunces";
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- JSON-LD: Person and WebSite -->
-<script type="application/ld+json">
-  {JSON.stringify({
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebSite',
         name: title,
         url: String(new URL(Astro.url.pathname, Astro.site)),
-        description: description
+        description: description,
       },
       {
         '@type': 'Person',
@@ -67,9 +68,9 @@ import "@fontsource-variable/fraunces";
         sameAs: [
           'https://github.com/nickysemenza',
           'https://www.linkedin.com/in/nickysemenza/',
-          'https://instagram.com/nickysemenza/'
-        ]
-      }
-    ]
+          'https://instagram.com/nickysemenza/',
+        ],
+      },
+    ],
   })}
-  </script>
+/>

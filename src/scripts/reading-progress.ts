@@ -16,7 +16,10 @@ function initReadingProgress() {
     const articleHeight = article!.offsetHeight;
     const windowHeight = window.innerHeight;
     const scrolled = window.scrollY - articleTop + windowHeight * 0.3;
-    const progress = Math.min(Math.max((scrolled / articleHeight) * 100, 0), 100);
+    const progress = Math.min(
+      Math.max((scrolled / articleHeight) * 100, 0),
+      100
+    );
     progressBar!.style.width = `${progress}%`;
   }
 

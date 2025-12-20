@@ -50,8 +50,7 @@ function showImage(index: number) {
     prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
   }
   if (nextBtn) {
-    nextBtn.style.visibility =
-      index < images.length - 1 ? 'visible' : 'hidden';
+    nextBtn.style.visibility = index < images.length - 1 ? 'visible' : 'hidden';
   }
 }
 

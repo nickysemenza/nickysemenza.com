@@ -1,8 +1,8 @@
 ---
-import { getAlbumImages } from "../utils/albums";
-import { Image, getImage } from "astro:assets";
-import FormattedDate from "./FormattedDate.astro";
-import justifiedLayout from "justified-layout";
+import { getAlbumImages } from '../utils/albums';
+import { Image, getImage } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+import justifiedLayout from 'justified-layout';
 
 interface Props {
   gallerySlug: string;
@@ -19,13 +19,13 @@ const processedImages = await Promise.all(
     const [fullSize, placeholder] = await Promise.all([
       getImage({
         src: img.image,
-        format: "webp",
+        format: 'webp',
         quality: 85,
         width: Math.min(img.image.width, 1600),
       }),
       getImage({
         src: img.image,
-        format: "webp",
+        format: 'webp',
         quality: 10,
         width: 20,
       }),
@@ -38,9 +38,7 @@ const processedImages = await Promise.all(
 );
 
 // Calculate aspect ratios for justified layout
-const aspectRatios = images.map(
-  (img) => img.image.width / img.image.height
-);
+const aspectRatios = images.map((img) => img.image.width / img.image.height);
 
 // Compute layout at a base width - we'll convert to percentages for responsiveness
 // Use a width closer to typical content area for better row height scaling
@@ -52,17 +50,19 @@ const layout = justifiedLayout(aspectRatios, {
 });
 
 // Convert to percentage-based positions for responsive scaling
-const boxes = layout.boxes.map((box: { left: number; top: number; width: number; height: number }) => ({
-  left: (box.left / BASE_WIDTH) * 100,
-  top: box.top,
-  width: (box.width / BASE_WIDTH) * 100,
-  height: box.height,
-}));
+const boxes = layout.boxes.map(
+  (box: { left: number; top: number; width: number; height: number }) => ({
+    left: (box.left / BASE_WIDTH) * 100,
+    top: box.top,
+    width: (box.width / BASE_WIDTH) * 100,
+    height: box.height,
+  })
+);
 
 // Calculate aspect ratio of the entire container for responsive height
 const containerAspectRatio = BASE_WIDTH / layout.containerHeight;
 
-const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
+const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, '_');
 ---
 
 <div
@@ -81,8 +81,8 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
           class="gallery-thumb cursor-zoom-in block w-full h-full border-0 bg-transparent p-0 relative overflow-hidden rounded"
           data-index={index}
           data-full-src={processedImages[index].fullSrc}
-          data-description={image.description || ""}
-          aria-label={`View ${image.description || "image"} full size`}
+          data-description={image.description || ''}
+          aria-label={`View ${image.description || 'image'} full size`}
         >
           <div
             class="gallery-placeholder absolute inset-0 bg-cover bg-center blur-lg scale-110 transition-opacity duration-300"
@@ -90,7 +90,7 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
           />
           <Image
             src={image.image}
-            alt={image.description || "Gallery image"}
+            alt={image.description || 'Gallery image'}
             width={Math.round(boxes[index].width * 12)}
             widths={[200, 400, 600]}
             sizes={`${Math.round(boxes[index].width)}vw`}
@@ -102,9 +102,17 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
           {(image.description || image.date) && (
             <div class="gallery-caption absolute bottom-2 left-2 pointer-events-none">
               <span class="bg-black/70 backdrop-blur-sm rounded px-1 py-0.5 text-white text-xs leading-none inline-flex items-center gap-1.5">
-                {image.description && <span class="font-medium">{image.description}</span>}
-                {image.description && image.date && <span class="text-white/50">·</span>}
-                {image.date && <span class="text-white/80"><FormattedDate date={image.date} pill={false} /></span>}
+                {image.description && (
+                  <span class="font-medium">{image.description}</span>
+                )}
+                {image.description && image.date && (
+                  <span class="text-white/50">·</span>
+                )}
+                {image.date && (
+                  <span class="text-white/80">
+                    <FormattedDate date={image.date} pill={false} />
+                  </span>
+                )}
               </span>
             </div>
           )}
@@ -116,16 +124,14 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
 
 <script define:vars={{ galleryId, imageCount: images.length }}>
   // Initialize lightbox for this gallery
-  document.addEventListener("DOMContentLoaded", () => {
-    const gallery = document.querySelector(
-      `[data-gallery-id="${galleryId}"]`
-    );
+  document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.querySelector(`[data-gallery-id="${galleryId}"]`);
     if (!gallery) return;
 
-    const thumbs = gallery.querySelectorAll(".gallery-thumb");
+    const thumbs = gallery.querySelectorAll('.gallery-thumb');
 
     thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => {
+      thumb.addEventListener('click', () => {
         const index = parseInt(thumb.dataset.index, 10);
         const fullSrc = thumb.dataset.fullSrc;
         const description = thumb.dataset.description;
@@ -138,7 +144,7 @@ const galleryId = gallerySlug.replace(/[^a-zA-Z0-9]/g, "_");
 
         // Dispatch custom event to open lightbox
         window.dispatchEvent(
-          new CustomEvent("openLightbox", {
+          new CustomEvent('openLightbox', {
             detail: { images: allImages, startIndex: index },
           })
         );

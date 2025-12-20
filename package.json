@@ -33,7 +33,8 @@
     "@tailwindcss/typography": "^0.5.19",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1"
   },
   "lint-staged": {
     "*.{js,ts,astro,css,md,mdx,json}": "prettier --write"

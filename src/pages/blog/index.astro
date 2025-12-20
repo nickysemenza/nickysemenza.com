@@ -1,23 +1,31 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-import { Image } from "astro:assets";
-import Container from "../../components/Container.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+import Container from '../../components/Container.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <!-- Page Header -->
-  <section class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-10 construction-grid">
+  <section
+    class="bg-gradient-to-b from-stone-100/80 to-stone-50 border-b border-stone-200/50 py-6 md:py-10 construction-grid"
+  >
     <Container>
       <header class="text-center">
-        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-stone-800">Blog</h1>
-        <p class="text-stone-500 text-lg mt-3">Projects, recipes, and things I've built</p>
+        <h1
+          class="text-3xl md:text-4xl font-bold tracking-tight text-stone-800"
+        >
+          Blog
+        </h1>
+        <p class="text-stone-500 text-lg mt-3">
+          Projects, recipes, and things I've built
+        </p>
       </header>
     </Container>
   </section>
@@ -44,7 +52,11 @@ const posts = (await getCollection("blog")).sort(
                   ) : (
                     <div class="rounded-lg mb-4 aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-200/50 flex items-center justify-center">
                       <span class="text-4xl opacity-50">
-                        {post.data.tags?.[0] === 'code' ? '💻' : post.data.tags?.[0] === 'cooking' ? '🍳' : '📝'}
+                        {post.data.tags?.[0] === 'code'
+                          ? '💻'
+                          : post.data.tags?.[0] === 'cooking'
+                            ? '🍳'
+                            : '📝'}
                       </span>
                     </div>
                   )}
@@ -62,7 +74,9 @@ const posts = (await getCollection("blog")).sort(
                       {post.data.tags && post.data.tags.length > 0 && (
                         <>
                           <span>·</span>
-                          <span class="text-[var(--color-copper)]">{post.data.tags[0]}</span>
+                          <span class="text-[var(--color-copper)]">
+                            {post.data.tags[0]}
+                          </span>
                         </>
                       )}
                     </div>

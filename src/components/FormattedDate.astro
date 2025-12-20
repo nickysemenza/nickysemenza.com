@@ -6,19 +6,17 @@ interface Props {
 
 const { date, pill = true } = Astro.props;
 
-const pillClasses = "inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300";
-const plainClasses = "text-inherit";
+const pillClasses =
+  'inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300';
+const plainClasses = 'text-inherit';
 ---
 
-<time
-  datetime={date.toISOString()}
-  class={pill ? pillClasses : plainClasses}
->
+<time datetime={date.toISOString()} class={pill ? pillClasses : plainClasses}>
   {
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    date.toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
     })
   }
 </time>

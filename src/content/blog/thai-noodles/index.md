@@ -2,7 +2,7 @@
 title: 'Thai Wok Fried Noodles'
 pubDate: 'Feb 28 2019'
 tags: ['cooking']
-heroImage: "./NDS_0649.jpg"
+heroImage: './NDS_0649.jpg'
 ---
 
 This is somewhere between _pad kee mao_ and _pad see ew_.
@@ -17,6 +17,7 @@ The key to wok cooking with a normal stove is _batching_. We can everything to c
 Note that a wok is by no means necessary - woks are advantageous for their heat control - since they are very thin, they respond quickly to changes in heat from the flame. In this case we want everything to cook on high, so that "feature" isn't necssary. A cast iron frying pan can honestly be better on a weaker stove, since the heat capacity is quite high. Just make sure to get it smoking hot, and not crowd the pan :)
 
 ![](./NDS_0619.jpg) mise en place: all the requisite ingredients
+
 # recipe
 
 This should take about 10 minutes to cook if you spend 10 minutes preparing all your components before even turning on the stove (well you can start the water boiling I suppose).
