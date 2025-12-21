@@ -14,6 +14,7 @@ export interface Project {
   emoji?: string;
   url?: string;
   external?: boolean;
+  githubUrl?: string;
 }
 
 export async function getAllProjects(): Promise<Project[]> {
@@ -52,6 +53,7 @@ export async function getAllProjects(): Promise<Project[]> {
       ? `/blog/${project.data.blogPostSlug}/`
       : project.data.externalUrl,
     external: !project.data.blogPostSlug && !!project.data.externalUrl,
+    githubUrl: project.data.githubUrl,
   }));
 
   return [...blogProjects, ...standalone].sort(
