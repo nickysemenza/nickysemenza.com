@@ -1,52 +1,183 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-
-interface Link {
-  url: string;
-  text: string;
-}
+import { categoryColors, formatDateRange, type Project } from '@/lib/projects';
 
 interface Props {
-  emoji: string;
-  title: string;
-  content: string;
-  link?: Link;
+  project: Project;
+  variant?: 'featured' | 'card' | 'compact';
+  showCategory?: boolean;
+  loading?: 'eager' | 'lazy';
 }
 
-const { emoji, title, content, link } = Astro.props;
-const isExternalLink = link?.url && !link.url.startsWith('/');
+const {
+  project,
+  variant = 'card',
+  showCategory = true,
+  loading = 'lazy',
+} = Astro.props;
+
+const dateDisplay = formatDateRange(project.startDate, project.endDate);
 ---
 
-<div
-  class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
->
-  <div class="flex-grow">
-    <h3 class="flex items-center gap-2">
-      <span class="text-xl">{emoji}</span>
-      <span>{title}</span>
-    </h3>
-    <p>
-      {content}
-    </p>
-  </div>
-
-  {
-    link && (
-      <div class="mt-3 pt-2 border-t border-gray-100">
-        <a
-          href={link.url}
-          target={isExternalLink ? '_blank' : undefined}
-          rel={isExternalLink ? 'noopener noreferrer' : undefined}
-          class="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
-        >
-          {link.text}
-          {isExternalLink ? (
-            <Icon name="tabler:external-link" class="h-4 w-4" />
+{
+  variant === 'featured' && (
+    <a
+      href={project.url}
+      target={project.external ? '_blank' : undefined}
+      rel={project.external ? 'noopener noreferrer' : undefined}
+      class="group block"
+    >
+      <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 image-grain">
+        <div class="aspect-[4/3] overflow-hidden">
+          {project.heroImage ? (
+            <Image
+              src={project.heroImage}
+              alt={project.title}
+              widths={[400, 600, 800]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              loading={loading}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
           ) : (
-            <Icon name="tabler:arrow-right" class="h-4 w-4" />
+            <div
+              class="w-full h-full flex items-center justify-center text-8xl group-hover:scale-105 transition-transform duration-700 ease-out"
+              style={`background: linear-gradient(135deg, ${categoryColors[project.category]}30, ${categoryColors[project.category]}60);`}
+            >
+              {project.emoji || '📁'}
+            </div>
+          )}
+        </div>
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"
+          style="z-index: 4;"
+        />
+        <div
+          class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white"
+          style="z-index: 5;"
+        >
+          <p class="text-xs sm:text-sm font-medium text-[var(--color-copper-light)] mb-1">
+            {project.startDate.getFullYear()}
+          </p>
+          <h3 class="text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-2">
+            {project.title}
+            {project.external && (
+              <Icon name="tabler:external-link" class="w-5 h-5 opacity-60" />
+            )}
+          </h3>
+          {project.description && (
+            <p class="mt-1 text-white/80 text-xs sm:text-sm">
+              {project.description}
+            </p>
+          )}
+        </div>
+      </article>
+    </a>
+  )
+}
+
+{
+  variant === 'card' && (
+    <a
+      href={project.url}
+      target={project.external ? '_blank' : undefined}
+      rel={project.external ? 'noopener noreferrer' : undefined}
+      class="group block bg-white rounded-xl overflow-hidden border border-stone-200 hover:border-[var(--color-copper)]/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+    >
+      {project.heroImage ? (
+        <div class="aspect-[16/10] overflow-hidden">
+          <Image
+            src={project.heroImage}
+            alt={project.title}
+            widths={[300, 400, 500]}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            loading={loading}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      ) : (
+        <div
+          class="aspect-[16/10] flex items-center justify-center text-5xl"
+          style={`background: linear-gradient(135deg, ${categoryColors[project.category]}15, ${categoryColors[project.category]}30);`}
+        >
+          {project.emoji || '📁'}
+        </div>
+      )}
+      <div class="p-5">
+        {showCategory && (
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <div
+              class="w-2.5 h-2.5 rounded-full flex-shrink-0 mt-1.5"
+              style={`background-color: ${categoryColors[project.category]}`}
+            />
+            <span class="text-xs font-medium text-stone-500 uppercase tracking-wide">
+              {project.category}
+            </span>
+          </div>
+        )}
+        <h3 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors flex items-center gap-1.5">
+          {project.title}
+          {project.external && (
+            <Icon name="tabler:external-link" class="w-4 h-4 opacity-40" />
+          )}
+        </h3>
+        {project.description && (
+          <p class="mt-2 text-sm text-stone-600 line-clamp-2">
+            {project.description}
+          </p>
+        )}
+        <p class="mt-3 text-xs font-medium text-[var(--color-copper)]">
+          {dateDisplay}
+        </p>
+      </div>
+    </a>
+  )
+}
+
+{
+  variant === 'compact' && (
+    <div class="group relative bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-[var(--color-copper)]/40 hover:shadow-lg hover:shadow-[var(--color-copper)]/10 transition-all duration-300 hover:-translate-y-1">
+      {project.url ? (
+        <a
+          href={project.url}
+          target={project.external ? '_blank' : undefined}
+          rel={project.external ? 'noopener noreferrer' : undefined}
+          class="block"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">{project.emoji || '📁'}</span>
+            <span class="text-xs font-medium text-[var(--color-copper)]">
+              {dateDisplay}
+            </span>
+          </div>
+          <h4 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors flex items-center gap-1.5">
+            {project.title}
+            {project.external && (
+              <Icon name="tabler:external-link" class="w-4 h-4 opacity-40" />
+            )}
+          </h4>
+          {project.description && (
+            <p class="mt-2 text-sm text-stone-600 leading-relaxed">
+              {project.description}
+            </p>
           )}
         </a>
-      </div>
-    )
-  }
-</div>
+      ) : (
+        <>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">{project.emoji || '📁'}</span>
+            <span class="text-xs font-medium text-[var(--color-copper)]">
+              {dateDisplay}
+            </span>
+          </div>
+          <h4 class="text-lg font-semibold text-stone-800">{project.title}</h4>
+          {project.description && (
+            <p class="mt-2 text-sm text-stone-600 leading-relaxed">
+              {project.description}
+            </p>
+          )}
+        </>
+      )}
+    </div>
+  )
+}

@@ -14,7 +14,8 @@
       "Bash(exiftool:*)",
       "Bash(pnpm build:*)",
       "mcp__plugin_playwright_playwright__browser_evaluate",
-      "Bash(pnpm exec prettier:*)"
+      "Bash(pnpm exec prettier:*)",
+      "Bash(git add:*)"
     ]
   }
 }

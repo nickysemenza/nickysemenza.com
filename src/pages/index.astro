@@ -2,54 +2,23 @@
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
 import Container from '@/components/Container.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
 import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import { getAllProjects, getProjectBySlug } from '@/lib/projects';
 
-const blogPosts = await getCollection('blog');
+const allProjects = await getAllProjects();
 
-const featuredProjectsConfig = [
-  { title: 'Kitchen Renovation', subtitle: '2024', slug: 'kitchen-renovation' },
-  // { title: "Backyard Renovation", subtitle: "2025", slug: "backyard-renovation" },
-];
+// Curated featured projects (large cards)
+const featuredProjectsSlugs = ['kitchen-renovation', 'ingredient-parser'];
+const featuredProjects = featuredProjectsSlugs
+  .map((slug) => getProjectBySlug(allProjects, slug))
+  .filter((p) => p !== undefined);
 
-const featuredProjects = featuredProjectsConfig
-  .map((project) => {
-    const post = blogPosts.find((p) => p.id === project.slug);
-    if (!post?.data.heroImage) return null;
-    return {
-      ...project,
-      description: post.data.description,
-      link: `/blog/${project.slug}/`,
-      image: post.data.heroImage,
-    };
-  })
-  .filter((p) => p !== null);
-
-const otherWork = [
-  {
-    emoji: '☁️',
-    title: 'Cloudflare',
-    description: 'Senior software engineer building distributed systems',
-    year: '2018 - present',
-  },
-  {
-    emoji: '🥕',
-    title: 'Ingredient Parser',
-    description: 'Rust-based NLP for recipe parsing',
-    link: 'https://ingredient.nickysemenza.com',
-    external: true,
-    year: '2021 - present',
-  },
-  {
-    emoji: '📸',
-    title: 'Photography',
-    description: 'Editorial and food photography',
-    link: 'https://nicky.photos',
-    external: true,
-    year: '2013 - 2018',
-  },
-];
+// Curated other work (compact cards)
+const otherWorkSlugs = ['cloudflare', 'half-bath', 'shoe-rack'];
+const otherWork = otherWorkSlugs
+  .map((slug) => getProjectBySlug(allProjects, slug))
+  .filter((p) => p !== undefined);
 
 // Split text into letters for animation
 const heroName = 'Nicky';
@@ -115,10 +84,10 @@ const heroGreeting = "Hi, I'm";
             style="animation-delay: 700ms;"
           >
             <a
-              href="/blog"
+              href="/projects"
               class="group inline-flex items-center gap-2 px-5 py-2.5 bg-stone-800 hover:bg-stone-900 text-white text-sm rounded-lg transition-all duration-300 font-medium hover:shadow-xl hover:-translate-y-0.5"
             >
-              Read the blog
+              View projects
               <Icon
                 name="tabler:arrow-right"
                 class="w-4 h-4 transition-transform group-hover:translate-x-1"
@@ -142,42 +111,16 @@ const heroGreeting = "Hi, I'm";
       <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
         {
           featuredProjects.map((project, index) => (
-            <a
-              href={project.link}
-              class="group block reveal reveal-scale"
+            <div
+              class="reveal reveal-scale"
               style={`--reveal-delay: ${index * 100}ms`}
             >
-              <article class="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 image-grain">
-                <div class="aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    widths={[400, 600, 800]}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                </div>
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"
-                  style="z-index: 4;"
-                />
-                <div
-                  class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white"
-                  style="z-index: 5;"
-                >
-                  <p class="text-xs sm:text-sm font-medium text-[var(--color-copper-light)] mb-1">
-                    {project.subtitle}
-                  </p>
-                  <h3 class="text-xl sm:text-2xl font-bold tracking-tight">
-                    {project.title}
-                  </h3>
-                  <p class="mt-1 text-white/80 text-xs sm:text-sm">
-                    {project.description}
-                  </p>
-                </div>
-              </article>
-            </a>
+              <ProjectCard
+                project={project}
+                variant="featured"
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+            </div>
           ))
         }
       </div>
@@ -186,56 +129,24 @@ const heroGreeting = "Hi, I'm";
       <div class="mt-10 sm:mt-16">
         <div class="grid sm:grid-cols-3 gap-4 sm:gap-5">
           {
-            otherWork.map((item, index) => (
+            otherWork.map((project, index) => (
               <div
-                class="group relative bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-[var(--color-copper)]/40 hover:shadow-lg hover:shadow-[var(--color-copper)]/10 transition-all duration-300 hover:-translate-y-1 reveal"
+                class="reveal"
                 style={`--reveal-delay: ${(index + 2) * 100}ms`}
               >
-                {item.link ? (
-                  <a
-                    href={item.link}
-                    target={item.external ? '_blank' : undefined}
-                    rel={item.external ? 'noopener noreferrer' : undefined}
-                    class="block"
-                  >
-                    <div class="flex items-center justify-between mb-3">
-                      <span class="text-2xl">{item.emoji}</span>
-                      <span class="text-xs font-medium text-[var(--color-copper)]">
-                        {item.year}
-                      </span>
-                    </div>
-                    <h4 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors flex items-center gap-1.5">
-                      {item.title}
-                      {item.external && (
-                        <Icon
-                          name="tabler:external-link"
-                          class="w-4 h-4 opacity-40"
-                        />
-                      )}
-                    </h4>
-                    <p class="mt-2 text-sm text-stone-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </a>
-                ) : (
-                  <>
-                    <div class="flex items-center justify-between mb-3">
-                      <span class="text-2xl">{item.emoji}</span>
-                      <span class="text-xs font-medium text-[var(--color-copper)]">
-                        {item.year}
-                      </span>
-                    </div>
-                    <h4 class="text-lg font-semibold text-stone-800">
-                      {item.title}
-                    </h4>
-                    <p class="mt-2 text-sm text-stone-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </>
-                )}
+                <ProjectCard project={project} variant="compact" />
               </div>
             ))
           }
+        </div>
+        <div class="mt-8 text-center">
+          <a
+            href="/projects"
+            class="inline-flex items-center gap-2 text-sm font-medium text-stone-600 hover:text-[var(--color-copper)] transition-colors"
+          >
+            View all projects
+            <Icon name="tabler:arrow-right" class="w-4 h-4" />
+          </a>
         </div>
       </div>
     </Container>

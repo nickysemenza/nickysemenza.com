@@ -3,6 +3,8 @@ title: 'DIY mason jar spice rack'
 pubDate: 'Aug 15 2020'
 tags: ['cooking', 'building']
 heroImage: './IMG_3266.jpeg'
+startDate: 'Aug 15 2020'
+endDate: 'Aug 15 2020'
 ---
 
 I have quite a plethora of different spices that I actually do use on a regular basis - within a given week i'd say I use about 20 or so different onces. I buy them in bulk since it's much cheaper and they tend to be fresher, and I keep them all in 4oz/8oz mason jars. However, it's kind of a mess keeping a ton of mason jars around. I
