@@ -65,7 +65,20 @@ export function formatDateRange(start: Date, end?: Date): string {
       year: 'numeric',
       month: 'short',
     });
-  return end ? `${fmt(start)} - ${fmt(end)}` : `${fmt(start)} - Present`;
+
+  if (!end) {
+    return `${fmt(start)} - Present`;
+  }
+
+  // If same month and year, just show single date
+  if (
+    start.getMonth() === end.getMonth() &&
+    start.getFullYear() === end.getFullYear()
+  ) {
+    return fmt(start);
+  }
+
+  return `${fmt(start)} - ${fmt(end)}`;
 }
 
 export function getProjectBySlug(
