@@ -1,11 +1,11 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import FormattedDate from '@/components/FormattedDate.astro';
 import { Picture } from 'astro:assets';
-import Container from '../components/Container.astro';
-import TableOfContents from '../components/TableOfContents.astro';
+import Container from '@/components/Container.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
 import type { MarkdownHeading } from 'astro';
-import BaseLayout from './BaseLayout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
