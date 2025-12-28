@@ -56,7 +56,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
           class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white"
           style="z-index: 5;"
         >
-          <p class="text-xs sm:text-sm font-medium text-[var(--color-copper-light)] mb-1">
+          <p class="text-xs sm:text-sm font-medium text-[var(--color-accent-light)] mb-1">
             {project.startDate.getFullYear()}
           </p>
           <h3 class="text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-2">
@@ -78,7 +78,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
 
 {
   variant === 'card' && (
-    <div class="group relative bg-white rounded-xl overflow-hidden border border-stone-200 hover:border-[var(--color-copper)]/40 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <div class="group relative bg-white rounded-xl overflow-hidden border border-stone-200 hover:border-[var(--color-accent)]/30 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
       {project.githubUrl && (
         <a
           href={project.githubUrl}
@@ -127,7 +127,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
               </span>
             </div>
           )}
-          <h3 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors flex items-center gap-1.5">
+          <h3 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-accent-dark)] transition-colors flex items-center gap-1.5">
             {project.title}
             {project.external && (
               <Icon name="tabler:external-link" class="w-4 h-4 opacity-40" />
@@ -138,7 +138,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
               {project.description}
             </p>
           )}
-          <p class="mt-3 text-xs font-medium text-[var(--color-copper)]">
+          <p class="mt-3 text-xs font-medium text-[var(--color-accent)]">
             {dateDisplay}
           </p>
         </div>
@@ -149,7 +149,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
 
 {
   variant === 'compact' && (
-    <div class="group relative bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-[var(--color-copper)]/40 hover:shadow-lg hover:shadow-[var(--color-copper)]/10 transition-all duration-300 hover:-translate-y-1">
+    <div class="group relative h-full bg-gradient-to-br from-stone-50 to-stone-100/60 rounded-xl p-5 sm:p-6 border border-stone-200/60 hover:border-[var(--color-accent)]/30 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
       {project.githubUrl && (
         <a
           href={project.githubUrl}
@@ -171,12 +171,12 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
           <div class="flex items-center justify-between mb-3">
             <span class="text-2xl">{project.emoji || '📁'}</span>
             <span
-              class={`text-xs font-medium text-[var(--color-copper)] ${project.githubUrl ? 'mr-6' : ''}`}
+              class={`text-xs font-medium text-[var(--color-accent)] ${project.githubUrl ? 'mr-6' : ''}`}
             >
               {dateDisplay}
             </span>
           </div>
-          <h4 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors flex items-center gap-1.5">
+          <h4 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-accent-dark)] transition-colors flex items-center gap-1.5">
             {project.title}
             {project.external && (
               <Icon name="tabler:external-link" class="w-4 h-4 opacity-40" />
@@ -193,7 +193,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
           <div class="flex items-center justify-between mb-3">
             <span class="text-2xl">{project.emoji || '📁'}</span>
             <span
-              class={`text-xs font-medium text-[var(--color-copper)] ${project.githubUrl ? 'mr-6' : ''}`}
+              class={`text-xs font-medium text-[var(--color-accent)] ${project.githubUrl ? 'mr-6' : ''}`}
             >
               {dateDisplay}
             </span>

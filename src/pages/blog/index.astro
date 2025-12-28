@@ -40,7 +40,7 @@ const posts = (await getCollection('blog')).sort(
               <a href={`/blog/${post.id}/`} class="group block h-full">
                 <article class="h-full flex flex-col">
                   {post.data.heroImage ? (
-                    <div class="overflow-hidden rounded-lg mb-4 aspect-[4/3] image-grain image-copper-hover">
+                    <div class="overflow-hidden rounded-lg mb-4 aspect-[4/3] image-grain image-accent-hover">
                       <Image
                         width={600}
                         height={450}
@@ -61,7 +61,7 @@ const posts = (await getCollection('blog')).sort(
                     </div>
                   )}
                   <div class="flex-1 flex flex-col">
-                    <h3 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-copper-dark)] transition-colors leading-snug">
+                    <h3 class="text-lg font-semibold text-stone-800 group-hover:text-[var(--color-accent-dark)] transition-colors leading-snug">
                       {post.data.title}
                     </h3>
                     {post.data.description && (
@@ -74,7 +74,7 @@ const posts = (await getCollection('blog')).sort(
                       {post.data.tags && post.data.tags.length > 0 && (
                         <>
                           <span>·</span>
-                          <span class="text-[var(--color-copper)]">
+                          <span class="text-[var(--color-accent)]">
                             {post.data.tags[0]}
                           </span>
                         </>

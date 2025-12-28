@@ -47,7 +47,7 @@ function setCurrent(e: IntersectionObserverEntry[]) {
   e.map((i) => {
     if (i.isIntersecting === true) {
       allSectionLinks.forEach((link) => {
-        link.classList.remove('text-copper', 'font-medium');
+        link.classList.remove('toc-active', 'font-medium');
         link.classList.add('text-stone-500');
       });
       const targetLink = document.querySelector(
@@ -56,7 +56,7 @@ function setCurrent(e: IntersectionObserverEntry[]) {
 
       if (targetLink) {
         targetLink.classList.remove('text-stone-500');
-        targetLink.classList.add('text-copper', 'font-medium');
+        targetLink.classList.add('toc-active', 'font-medium');
         // Scroll the active link into view within the TOC container
         targetLink.scrollIntoView({
           behavior: 'smooth',
