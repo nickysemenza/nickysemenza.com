@@ -1,0 +1,174 @@
+---
+import {
+  getAllProjects,
+  formatDateRange,
+  categoryColors,
+  type ProjectCategory,
+} from '@/lib/projects';
+import {
+  calculateYearRange,
+  calculateProjectStrips,
+  getStripPosition,
+  type ProjectStrip,
+} from '@/lib/timeline';
+
+const projects = await getAllProjects();
+const fullYearRange = calculateYearRange(projects);
+const strips = calculateProjectStrips(projects);
+
+// Only display from 2018 onwards
+const MIN_DISPLAY_YEAR = 2018;
+const yearRange = {
+  ...fullYearRange,
+  startYear: MIN_DISPLAY_YEAR,
+  years: fullYearRange.years.filter((y) => y >= MIN_DISPLAY_YEAR),
+};
+
+const categoryLabels: Record<ProjectCategory, string> = {
+  building: 'Building',
+  code: 'Code',
+  career: 'Career',
+  creative: 'Creative',
+};
+
+// Group strips by category
+const categories: ProjectCategory[] = ['building', 'code', 'career', 'creative'];
+const groupedStrips = categories.reduce(
+  (acc, cat) => {
+    acc[cat] = strips
+      .filter((s) => s.project.category === cat)
+      .sort((a, b) => a.project.startDate.getTime() - b.project.startDate.getTime());
+    return acc;
+  },
+  {} as Record<ProjectCategory, ProjectStrip[]>
+);
+---
+
+<div>
+
+  <!-- Year headers -->
+  <div class="flex border-b border-[#e8e4df] pb-2 mb-1">
+    <div class="w-44 shrink-0 pr-3"></div>
+    <div class="flex-1 flex">
+      {
+        yearRange.years.map((year) => (
+          <div class="flex-1 text-center text-[11px] font-semibold text-[#2d2a26] tracking-wide">
+            '{String(year).slice(2)}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Project rows grouped by category -->
+  <div class="relative">
+    {
+      categories.map((category) => {
+        const categoryStrips = groupedStrips[category];
+        if (categoryStrips.length === 0) return null;
+
+        const color = categoryColors[category];
+
+        return (
+          <div class="mb-0.5 last:mb-0">
+            {/* Category header row */}
+            <div class="flex items-center h-5">
+              <div class="w-44 shrink-0 pr-3">
+                <span
+                  class="block text-[9px] font-semibold uppercase tracking-wider text-right"
+                  style={`color: ${color};`}
+                >
+                  {categoryLabels[category]}
+                </span>
+              </div>
+              <div class="flex-1 relative h-full">
+                <div
+                  class="absolute inset-x-0 top-1/2 h-px"
+                  style={`background-color: ${color}20;`}
+                />
+              </div>
+            </div>
+
+            {/* Projects in this category */}
+            {categoryStrips.map((strip) => {
+              const pos = getStripPosition(strip, yearRange);
+              const dateRange = formatDateRange(
+                strip.project.startDate,
+                strip.project.endDate
+              );
+
+              // Check if project extends before visible range
+              const extendsBefore = strip.startYear < MIN_DISPLAY_YEAR;
+              // Clamp left position to 0 if extends before
+              const clampedLeft = Math.max(0, pos.leftPercent);
+              // Adjust width if we clamped
+              const clampedWidth = extendsBefore
+                ? pos.widthPercent + pos.leftPercent
+                : pos.widthPercent;
+
+              return (
+                <div class="flex items-center h-5">
+                  <div class="w-44 shrink-0 pr-3">
+                    {strip.project.url ? (
+                      <a
+                        href={strip.project.url}
+                        class="block text-[10px] text-[#6b6560] text-right truncate hover:text-[#2d2a26] transition-colors"
+                        title={strip.project.title}
+                      >
+                        {strip.project.title}
+                      </a>
+                    ) : (
+                      <span
+                        class="block text-[10px] text-[#6b6560] text-right truncate"
+                        title={strip.project.title}
+                      >
+                        {strip.project.title}
+                      </span>
+                    )}
+                  </div>
+                  <div class="flex-1 relative h-full">
+                    {/* Year grid lines */}
+                    {yearRange.years.map((_, idx) => (
+                      <div
+                        class={`absolute top-0 bottom-0 w-px ${idx === 0 ? 'bg-transparent' : 'bg-[#f0ece7]'}`}
+                        style={`left: ${(idx / yearRange.years.length) * 100}%;`}
+                      />
+                    ))}
+
+                    {/* Project bar */}
+                    {extendsBefore && (
+                      <span
+                        class="absolute top-1/2 -translate-y-1/2 -left-4 text-[11px] font-bold opacity-70"
+                        style={`color: ${color};`}
+                      >««</span>
+                    )}
+                    <a
+                      href={strip.project.url || '#'}
+                      class="project-strip absolute top-1/2 -translate-y-1/2 h-1.5 rounded-sm cursor-pointer transition-all duration-150 overflow-hidden hover:h-2.5 hover:shadow-md hover:z-10"
+                      style={`
+                        left: ${clampedLeft}%;
+                        width: ${Math.max(clampedWidth, 1.5)}%;
+                        background-color: ${color};
+                      `}
+                      data-title={strip.project.title}
+                      data-dates={dateRange}
+                      data-category={strip.project.category}
+                      data-description={strip.project.description || ''}
+                    >
+                      {strip.isOngoing && (
+                        <div
+                          class="absolute right-0 top-0 bottom-0 w-3"
+                          style={`background: linear-gradient(to right, ${color}, transparent);`}
+                        />
+                      )}
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })
+    }
+  </div>
+</div>

@@ -42,7 +42,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
           ) : (
             <div
               class="w-full h-full flex items-center justify-center text-8xl group-hover:scale-105 transition-transform duration-700 ease-out"
-              style={`background: linear-gradient(135deg, ${categoryColors[project.category]}30, ${categoryColors[project.category]}60);`}
+              style={`background: linear-gradient(135deg, ${categoryColors[project.category]}35, ${categoryColors[project.category]}60);`}
             >
               {project.emoji || '📁'}
             </div>
@@ -110,7 +110,7 @@ const dateDisplay = formatDateRange(project.startDate, project.endDate);
         ) : (
           <div
             class="aspect-[16/10] flex items-center justify-center text-5xl"
-            style={`background: linear-gradient(135deg, ${categoryColors[project.category]}15, ${categoryColors[project.category]}30);`}
+            style={`background: linear-gradient(135deg, ${categoryColors[project.category]}25, ${categoryColors[project.category]}45);`}
           >
             {project.emoji || '📁'}
           </div>

@@ -1,0 +1,16 @@
+---
+// Server-rendered tooltip template (hydrated by client JS)
+---
+
+<div
+  id="timeline-tooltip"
+  class="fixed hidden z-50 bg-stone-800 text-white px-3 py-2 rounded-lg shadow-xl text-sm pointer-events-none max-w-xs"
+>
+  <div class="font-semibold" data-tooltip-title></div>
+  <div class="text-stone-300 text-xs mt-0.5" data-tooltip-dates></div>
+  <div class="text-stone-400 text-xs mt-1 line-clamp-2" data-tooltip-description></div>
+  <div class="flex items-center gap-1.5 mt-1.5 pt-1.5 border-t border-stone-700">
+    <div class="w-2 h-2 rounded-full" data-tooltip-color></div>
+    <span class="text-stone-400 text-xs capitalize" data-tooltip-category></span>
+  </div>
+</div>

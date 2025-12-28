@@ -1,23 +1,12 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Container from '../../components/Container.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import {
-  getAllProjects,
-  categoryColors,
-  type ProjectCategory,
-} from '../../lib/projects';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import TimelineCalendar from '@/components/timeline/TimelineCalendar.astro';
+import TimelineTooltip from '@/components/timeline/TimelineTooltip.astro';
+import { getAllProjects } from '@/lib/projects';
 
 const projects = await getAllProjects();
-
-const categoryLabels: Record<ProjectCategory, string> = {
-  building: 'Building',
-  code: 'Code',
-  career: 'Career',
-  creative: 'Creative',
-};
-
-const categories = Object.keys(categoryLabels) as ProjectCategory[];
 ---
 
 <BaseLayout
@@ -28,32 +17,15 @@ const categories = Object.keys(categoryLabels) as ProjectCategory[];
     class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-stone-100/80 to-stone-50"
   >
     <Container>
-      <div
-        class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12"
-      >
-        <div class="max-w-3xl">
-          <h1
-            class="text-3xl sm:text-4xl font-bold text-stone-800 tracking-tight"
-          >
-            Projects
-          </h1>
-          <p class="mt-4 text-lg text-stone-600">
-            Things I've built, both with my hands and with code.
-          </p>
-        </div>
-        <div class="flex flex-wrap gap-3 text-sm">
-          {
-            categories.map((cat) => (
-              <div class="flex items-center gap-1.5">
-                <div
-                  class="w-2.5 h-2.5 rounded-full"
-                  style={`background-color: ${categoryColors[cat]}`}
-                />
-                <span class="text-stone-500">{categoryLabels[cat]}</span>
-              </div>
-            ))
-          }
-        </div>
+      <div class="mb-12">
+        <h1
+          class="text-3xl sm:text-4xl font-bold text-stone-800 tracking-tight"
+        >
+          Projects
+        </h1>
+        <p class="mt-4 text-lg text-stone-600">
+          Things I've built, both with my hands and with code.
+        </p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -65,4 +37,15 @@ const categories = Object.keys(categoryLabels) as ProjectCategory[];
       </div>
     </Container>
   </section>
+
+  <!-- Timeline -->
+  <section class="py-8 sm:py-12 bg-stone-50">
+    <Container>
+      <h2 class="text-lg font-semibold text-stone-700 mb-4">Timeline</h2>
+      <TimelineCalendar />
+    </Container>
+  </section>
+
+  <TimelineTooltip />
+  <script src="@/scripts/timeline.ts"></script>
 </BaseLayout>

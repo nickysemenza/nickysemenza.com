@@ -91,8 +91,8 @@ export function getProjectBySlug(
 }
 
 export const categoryColors: Record<ProjectCategory, string> = {
-  building: 'var(--color-copper)',
-  code: '#3b82f6',
-  career: '#6b7280',
-  creative: '#8b5cf6',
+  building: '#c4956a', // warm terracotta
+  code: '#7b9eb8', // dusty blue
+  career: '#8a8580', // warm gray
+  creative: '#a898b8', // dusty purple
 };
