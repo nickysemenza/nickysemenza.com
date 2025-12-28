@@ -2,81 +2,200 @@
 /* https://github.com/tailwindlabs/tailwindcss-typography/issues/372#issuecomment-2610917304 */
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --tw-prose-body: oklch(0.971 0.014 343.198);
   --font-display: 'Fraunces Variable', serif;
   --font-body: 'Atkinson Hyperlegible', sans-serif;
+
   /* Copper/brass accent palette */
   --color-copper: #b87333;
   --color-copper-light: #d4956a;
   --color-copper-dark: #8b5a2b;
-}
 
-body {
-  font-family: 'Atkinson Hyperlegible', sans-serif;
-  background-color: #fafaf9; /* stone-50 */
-}
+  /* Custom easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
-/* Display font for headings */
-h1,
-h2,
-h3 {
-  font-family: 'Fraunces Variable', serif;
-  font-optical-sizing: auto;
-}
+  /* Animation definitions */
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+  --animate-letter-reveal: letter-reveal 0.6s var(--ease-out-expo) forwards;
+  --animate-draw-line: draw-line 1s var(--ease-out-expo) forwards;
 
-/* Entrance animations */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  @keyframes letter-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px) rotateX(-20deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+  }
+
+  @keyframes draw-line {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  to {
-    opacity: 1;
+
+  body {
+    @apply font-body bg-stone-50;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-optical-sizing: auto;
   }
 }
 
-.animate-fade-up {
-  animation: fade-up 0.6s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-/* Stagger delays */
-.delay-100 {
-  animation-delay: 100ms;
-}
-.delay-200 {
-  animation-delay: 200ms;
-}
-.delay-300 {
-  animation-delay: 300ms;
-}
-.delay-400 {
-  animation-delay: 400ms;
-}
-
-/* Start invisible for animation */
-.animate-fade-up,
-.animate-fade-in {
+/* Animation utilities that need initial opacity: 0 */
+@utility animate-fade-up {
+  animation: var(--animate-fade-up);
   opacity: 0;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Skip to main content link */
+@utility skip-link {
+  @apply absolute -top-10 left-0 bg-stone-800 text-white px-4 py-2 z-[100] transition-[top] duration-200;
+  &:focus {
+    @apply top-0;
+  }
+}
+
+/* Hide scrollbars cross-browser */
+@utility scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Scroll-triggered reveal animations */
+@utility reveal {
+  @apply opacity-0 translate-y-[30px] transition-all duration-[800ms];
+  transition-timing-function: var(--ease-out-expo);
+  &.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@utility reveal-left {
+  @apply opacity-0 -translate-x-[30px] transition-all duration-[800ms];
+  transition-timing-function: var(--ease-out-expo);
+  &.revealed {
+    @apply opacity-100 translate-x-0;
+  }
+}
+
+@utility reveal-scale {
+  @apply opacity-0 scale-95 transition-all duration-[800ms];
+  transition-timing-function: var(--ease-out-expo);
+  &.revealed {
+    @apply opacity-100 scale-100;
+  }
+}
+
+/* Construction grid background */
+@utility construction-grid {
+  background-image:
+    linear-gradient(to right, rgba(120, 113, 108, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 113, 108, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Image grain overlay effect */
+@utility image-grain {
+  @apply relative overflow-hidden;
+  &::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  &:hover::after {
+    @apply opacity-[0.15];
+  }
+}
+
+/* Copper duotone hover */
+@utility image-copper-hover {
+  @apply relative;
+  &::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 z-[1];
+    background: linear-gradient(
+      135deg,
+      rgba(184, 115, 51, 0.1),
+      rgba(139, 90, 43, 0.2)
+    );
+  }
+  &:hover::before {
+    @apply opacity-100;
+  }
+}
+
+/* Hero title letter animation */
+@utility hero-letter {
+  @apply inline-block opacity-0;
+  animation: var(--animate-letter-reveal);
+}
+
+/* Line drawing animation */
+@utility hero-line {
+  @apply h-0.5 bg-copper w-0;
+  animation: var(--animate-draw-line);
+  animation-delay: 0.8s;
+}
+
+/* Reading progress bar */
+@utility reading-progress {
+  @apply fixed top-0 left-0 h-[5px] z-[9999] w-0;
+  background: linear-gradient(
+    90deg,
+    var(--color-copper),
+    var(--color-copper-light)
+  );
+  transition: width 0.1s linear;
+  box-shadow: 0 2px 4px rgba(184, 115, 51, 0.4);
+}
+
+/* Prose link animation (for blog posts) */
+@utility prose-link-animated {
+  & :where(a) {
+    @apply relative no-underline;
+  }
+  & :where(a)::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-px bg-copper transition-[width] duration-300;
+    transition-timing-function: var(--ease-out-expo);
+  }
+  & :where(a):hover::after {
+    @apply w-full;
+  }
 }
 
 /* Accessibility: Respect reduced motion preference */
@@ -97,219 +216,4 @@ html {
 :focus-visible {
   outline: 2px solid var(--color-copper);
   outline-offset: 2px;
-}
-
-/* Skip to main content link */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #292524; /* stone-800 */
-  color: white;
-  padding: 8px 16px;
-  z-index: 100;
-  transition: top 0.2s;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* Construction grid background */
-.construction-grid {
-  background-image:
-    linear-gradient(to right, rgba(120, 113, 108, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(120, 113, 108, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.construction-grid-dense {
-  background-image:
-    linear-gradient(to right, rgba(120, 113, 108, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(120, 113, 108, 0.05) 1px, transparent 1px),
-    linear-gradient(to right, rgba(120, 113, 108, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(120, 113, 108, 0.02) 1px, transparent 1px);
-  background-size:
-    80px 80px,
-    80px 80px,
-    20px 20px,
-    20px 20px;
-}
-
-/* Scroll-triggered reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition:
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-left.revealed {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.95);
-  transition:
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-scale.revealed {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Stagger delays for reveals */
-.reveal-delay-1 {
-  transition-delay: 100ms;
-}
-.reveal-delay-2 {
-  transition-delay: 200ms;
-}
-.reveal-delay-3 {
-  transition-delay: 300ms;
-}
-.reveal-delay-4 {
-  transition-delay: 400ms;
-}
-
-/* Image grain overlay effect */
-.image-grain {
-  position: relative;
-  overflow: hidden;
-}
-
-.image-grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-.image-grain:hover::after {
-  opacity: 0.15;
-}
-
-/* Copper duotone hover */
-.image-copper-hover {
-  position: relative;
-}
-
-.image-copper-hover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(184, 115, 51, 0.1),
-    rgba(139, 90, 43, 0.2)
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.image-copper-hover:hover::before {
-  opacity: 1;
-}
-
-/* Hero title letter animation */
-@keyframes letter-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px) rotateX(-20deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-  }
-}
-
-.hero-letter {
-  display: inline-block;
-  animation: letter-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-}
-
-/* Line drawing animation */
-@keyframes draw-line {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.hero-line {
-  height: 2px;
-  background: var(--color-copper);
-  animation: draw-line 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: 0.8s;
-  width: 0;
-}
-
-/* Copper text utility for JS toggling */
-.text-copper {
-  color: var(--color-copper);
-}
-
-/* Animated underline links */
-.link-underline {
-  position: relative;
-  text-decoration: none;
-}
-
-.link-underline::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 2px;
-  background: var(--color-copper);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* Reading progress bar */
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 5px;
-  background: linear-gradient(
-    90deg,
-    var(--color-copper),
-    var(--color-copper-light)
-  );
-  z-index: 9999;
-  width: 0%;
-  transition: width 0.1s linear;
-  box-shadow: 0 2px 4px rgba(184, 115, 51, 0.4);
 }

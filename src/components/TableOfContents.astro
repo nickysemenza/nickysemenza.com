@@ -16,7 +16,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 
 <div class="toc-wrapper relative">
   <nav
-    class="toc-nav rounded-lg border border-stone-200 bg-stone-50/50 p-4 text-sm max-h-[calc(100vh-8rem)] overflow-y-auto"
+    class="toc-nav scrollbar-hidden rounded-lg border border-stone-200 bg-stone-50/50 p-4 text-sm max-h-[calc(100vh-8rem)] overflow-y-auto"
   >
     <h4 class="text-xs font-semibold text-copper uppercase tracking-wider mb-3">
       On this page
@@ -53,13 +53,3 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 </div>
 
 <script src="../scripts/toc.ts"></script>
-
-<style>
-  .toc-nav {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-  }
-  .toc-nav::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-  }
-</style>
